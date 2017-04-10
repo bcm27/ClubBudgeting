@@ -18,7 +18,8 @@ CREATE TABLE MemberTitle (
 CREATE TABLE Member (
   id INT(11) AUTO_INCREMENT PRIMARY KEY,
   firstName VARCHAR(40) NOT NULL,
-  lastName VARCHAR(40) NOT NULL
+  lastName VARCHAR(40) NOT NULL,
+  password VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE ClubXMember (
@@ -57,9 +58,9 @@ CREATE TABLE Purchase (
 CREATE TABLE Budget (
   id INT(11) AUTO_INCREMENT PRIMARY KEY,
   allocatedMoney DECIMAL(8,2) NOT NULL,
-  spentMoney DECIMAL(6,2) NOT NULL,
-  balance DECIMAL(6,2) NOT NULL,
-  debt DECIMAL(6,2) DEFAULT NULL,
+  spentMoney DECIMAL(8,2) NOT NULL,
+  balance DECIMAL(8,2) NOT NULL,
+  debt DECIMAL(8,2) DEFAULT NULL,
   CONSTRAINT FKBudget_id FOREIGN KEY (id) REFERENCES Club (id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -75,7 +76,7 @@ CREATE TABLE BudgetXPurchase (
 
 CREATE TABLE History (
   clubId INT(11),
-  previousInfo char(300,
+  previousInfo char(30),
   CONSTRAINT FKHistory_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
