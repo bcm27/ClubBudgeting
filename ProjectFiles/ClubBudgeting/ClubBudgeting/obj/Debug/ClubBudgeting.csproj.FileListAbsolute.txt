@@ -1,1 +1,2 @@
 e:\storage\documents\visual studio 2015\Projects\ClubBudgeting\ClubBudgeting\bin\Debug\ClubBudgeting.exe.config
+C:\Users\Xavier\Desktop\ClubBudgeting\ProjectFiles\ClubBudgeting\ClubBudgeting\bin\Debug\ClubBudgeting.exe.config
