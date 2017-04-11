@@ -39,19 +39,19 @@ CREATE TABLE PurchaseType (
   type VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE Purchase (
+CREATE TABLE Transactions (
   id INT(11) AUTO_INCREMENT PRIMARY KEY,
-  purchaseDate DATE DEFAULT NULL,
+  purchaseDate DATE NOT NULL,
   cost DECIMAL(6,2) NOT NULL,
   description varchar(100) DEFAULT NULL,
-  purchaseType INT(11),
+  transactionsType INT(11),
   memberId INT(11) NOT NULL,
   clubId INT(11) NOT NULL,
-  CONSTRAINT FKPurchase_memberId FOREIGN KEY (memberId) REFERENCES Member (id)
+  CONSTRAINT FKTransactions_memberId FOREIGN KEY (memberId) REFERENCES Member (id)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT FKPurchase_purchaseType FOREIGN KEY (purchaseType) REFERENCES 
+  CONSTRAINT FKTransactions_transactionsType FOREIGN KEY (transactionsType) REFERENCES 
     PurchaseType (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT FKPurchase_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
+  CONSTRAINT FKTransactions_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
     ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -67,12 +67,11 @@ CREATE TABLE Budget (
 
 CREATE TABLE BudgetXPurchase (
   budgetId INT(11),
-  purchaseId INT(11),
-  CONSTRAINT FKBudgetXPurchase_purchaseId FOREIGN KEY (purchaseId)
-    REFERENCES Purchase (id) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT FKBudgetXPurchase_budgetId FOREIGN KEY (budgetId)
-    REFERENCES Budget (id) ON DELETE CASCADE ON UPDATE CASCADE
-);
+  transactionsId INT(11),
+  CONSTRAINT FKBudgetXTransactions_purchaseId FOREIGN KEY (transactionsId)
+    REFERENCES Transactions (id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT FKBudgetXTransactions_budgetId FOREIGN KEY (budgetId)
+    REFERENCES Budget (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE History (
   clubId INT(11),
