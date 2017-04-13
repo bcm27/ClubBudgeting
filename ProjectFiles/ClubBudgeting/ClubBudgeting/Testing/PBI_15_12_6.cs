@@ -11,6 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 {
+   /*
    // SQL is our unimplemented interface (C# does not have interfaces, so we imporvised)
    [TestFixture]
    class PBI_15_12_6
@@ -207,6 +208,7 @@ namespace ClubBudgeting.Testing
          }
 
          Assert.True(false);
-      }*/
+      }
    }
+   */
 }

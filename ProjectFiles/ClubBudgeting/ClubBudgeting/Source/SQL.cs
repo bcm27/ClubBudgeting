@@ -64,6 +64,21 @@ namespace ClubBudgeting
          }
       } // Instance
 
+      public bool getUser(string userName, string hashPass)
+      {        
+         statement = string.Format("SELECT * FROM Member WHERE"
+          + "userName = {0} AND pass = {1};", userName, hashPass);
+
+         cmd = new MySqlCommand(statement, SQLCONN);
+         try
+         {
+            Reader = cmd.ExecuteReader();
+            Reader.Read();
+            return true;
+         }
+         catch { return false; }
+      }
+
       /// <summary>
       /// log in function, if any errors happen, throws exception
       /// </summary>
@@ -75,6 +90,7 @@ namespace ClubBudgeting
          statement = string.Format("SELECT adminRight, clubId FROM Member WHERE"
             + "userName = {0} AND pass = {1};", user, pass);
          cmd = new MySqlCommand(statement, SQLCONN);
+
          try
          {
             Reader = cmd.ExecuteReader();

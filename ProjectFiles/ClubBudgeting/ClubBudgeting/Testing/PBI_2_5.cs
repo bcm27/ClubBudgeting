@@ -191,6 +191,7 @@ namespace ClubBudgeting.Testing
             pass = false;
          }
          Assert.True(pass);
-      } // end PBI_5_OverLimit*/
+      } // end PBI_5_OverLimit
+      */
    } // end of scope
 } // end of namespace

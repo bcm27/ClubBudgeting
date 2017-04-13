@@ -12,6 +12,7 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 {
+   /*
    class PBI_3_1
    {
       MySqlConnection SQLCONN = new MySqlConnection("server=localhost;"
@@ -132,4 +133,5 @@ namespace ClubBudgeting.Testing
          Assert.True(false);  // shouldn't be true
       }
    }
+   */
 }
