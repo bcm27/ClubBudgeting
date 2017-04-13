@@ -54,7 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\parameters.cs" />
+    <Compile Include="Source\Parameters.cs" />
     <Compile Include="Source\Security.cs" />
     <Compile Include="Source\SQL.cs" />
     <Compile Include="Source\User.cs" />
