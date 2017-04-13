@@ -64,6 +64,12 @@ namespace ClubBudgeting
          }
       } // Instance
 
+      /// <summary>
+      /// searches for a user in the database and returns a bool for the resultS
+      /// </summary>
+      /// <param name="userName"></param>
+      /// <param name="hashPass"></param>
+      /// <returns></returns>
       public bool getUser(string userName, string hashPass)
       {        
          statement = string.Format("SELECT * FROM Member WHERE"
