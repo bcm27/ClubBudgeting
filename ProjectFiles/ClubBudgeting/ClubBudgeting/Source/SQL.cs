@@ -64,20 +64,13 @@ namespace ClubBudgeting
          }
       } // Instance
 
-      public bool getUser(string userName, string hashPass)
-      {        
-         statement = string.Format("SELECT * FROM Member WHERE"
-          + "userName = {0} AND pass = {1};", userName, hashPass);
+      /*
+       * ---------
+       * Functions
+       * ---------
+       */
 
-         cmd = new MySqlCommand(statement, SQLCONN);
-         try
-         {
-            Reader = cmd.ExecuteReader();
-            Reader.Read();
-            return true;
-         }
-         catch { return false; }
-      }
+
 
       /// <summary>
       /// log in function, if any errors happen, throws exception
@@ -90,7 +83,6 @@ namespace ClubBudgeting
          statement = string.Format("SELECT adminRight, clubId FROM Member WHERE"
             + "userName = {0} AND pass = {1};", user, pass);
          cmd = new MySqlCommand(statement, SQLCONN);
-
          try
          {
             Reader = cmd.ExecuteReader();
@@ -156,16 +148,48 @@ namespace ClubBudgeting
          return true;
       } // addClub
 
-
-      public void getReceipts()
+      /// <summary>
+      /// creates a new user to add to the database
+      /// </summary>
+      /// <param name="pLists"></param>
+      /// <returns></returns>
+      public bool addMember(Parameters pLists)
       {
-         statement = "SELECT invoice, fileExtention FROM Transactions WHERE "
-            + "id = 1;";
+         string[] listing = { "@user", "@desc" };
+         string[] prams = pLists.PARAM_LIST;
+         statement = "INSERT INTO Club VALUES "
+            + "(null, @club, @desc);";
          cmd = new MySqlCommand(statement, SQLCONN);
-         Reader = cmd.ExecuteReader();
-         Reader.Read();
-         byte[] b = Encoding.ASCII.GetBytes(Reader[0].ToString());
-         System.IO.File.WriteAllBytes(@"F:\picture." + Reader[1].ToString(), b);
+         cmd.Prepare();
+         try
+         {
+            addParams(cmd, listing, prams).ExecuteNonQuery();
+         }
+         catch
+         {
+            return false;
+         }
+         return true;
+      } // addClub
+
+      /// <summary>
+      /// adds a pdf receipts
+      /// </summary>
+      /// <param name="pLists">@file, @date, @cost, @club</param>
+      /// <returns>file added</returns>
+      public bool addPDFReceipt(Parameters pLists)
+      {
+         return true;
+      }
+
+      /// <summary>
+      /// retrieves PDF from DB
+      /// </summary>
+      /// <param name="pLists">@date, @cost, @club</param>
+      /// <returns></returns>
+      public string getPDF(Parameters pLists)
+      {
+         return "hi";
       }
 
       /// <summary>
