@@ -20,9 +20,7 @@ namespace ClubBudgeting
 
       public void addParams(params string[] sList)
       {
-         int i = 0;
-         foreach (string s in sList)
-            prams[i++] = s;
+         this.prams = sList;
       }
 
       /// <summary>

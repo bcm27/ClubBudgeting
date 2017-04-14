@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace ClubBudgeting
 {
@@ -81,6 +82,7 @@ namespace ClubBudgeting
       {
          statement = string.Format("SELECT * FROM Member WHERE"
           + "userName = {0} AND pass = {1};", userName, hashPass);
+         return true;
       }
 
       /// <summary>
@@ -109,6 +111,7 @@ namespace ClubBudgeting
       /// <summary>
       /// Adding a transaction to the database, checking prior
       /// capped if null add NULL, the rest cannot be null
+      /// {@date, @FILE, @EXT, @price, @DESC, @club}
       /// </summary>
       /// <param name="date">Will be checked</param>
       /// <param name="file">Byte array to a string</param>
@@ -116,18 +119,20 @@ namespace ClubBudgeting
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         string[] listing = { "@date", "@file", "@ext", "@price", "@desc", "@club" };
-         string[] prams = pLists.PARAM_LIST;
+         string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc", "@club" };
          statement = "INSERT INTO Transactions VALUES "
-            + "(null, @date, @file, @ext, @price, @desc, false,@club);";
+            + "(null, ' @Date ', @File, @Ext, @price, @desc, @club, false);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
+         cmd.Parameters["@Date"].Value = pLists.PARAM_LIST[0];
          try
          {
-            addParams(cmd, listing, prams).ExecuteNonQuery();
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          
@@ -142,14 +147,13 @@ namespace ClubBudgeting
       public bool addClub(Parameters pLists)
       {
          string[] listing = { "@club", "@desc" };
-         string[] prams = pLists.PARAM_LIST;
          statement = "INSERT INTO Club VALUES "
             + "(null, @club, @desc);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
          {
-            addParams(cmd, listing, prams).ExecuteNonQuery();
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
          catch
          {
@@ -168,14 +172,14 @@ namespace ClubBudgeting
          string[] listing = { "@user", "@desc" };
          string[] prams = pLists.PARAM_LIST;
          statement = "INSERT INTO Club VALUES "
-            + "(null, @club, @desc);";
+            + "(null, '@club', '@desc');";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
          {
             addParams(cmd, listing, prams).ExecuteNonQuery();
          }
-         catch
+         catch 
          {
             return false;
          }
@@ -215,6 +219,7 @@ namespace ClubBudgeting
       {
          for (int i = 0; i < listing.Length; i++)
             cmd.Parameters.AddWithValue(listing[i], prams[i]);
+         
          return cmd;
       }
    }
