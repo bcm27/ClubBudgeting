@@ -10,23 +10,34 @@ using System.Windows.Forms;
 
 namespace ClubBudgeting.Forms
 {
-   public partial class DashboardAdmin : Form
+   public partial class ClubList : Form
    {
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
-      public DashboardAdmin()
+      private static string[] clubNames;
+
+      public ClubList()
       {
          InitializeComponent();
 
-         budgetInfo();
+         loadClubNames();
       }
 
-      public void budgetInfo()
+      private void loadClubNames()
       {
-         //lab1_acctName.Text = "Account Name: " + SQL.getAccountName(us.CLUB_ID);
-         //lab2_defundNum.Text = "Defund Number: " + SQL.getDefund(us.CLUB_ID);
-         //lab3_budgetTotal.Text = "Budget Total: $" + SQL.getBudget(us.CLUB_ID);
+         clubNames = sql.CLUB_LIST;
+
+         foreach (string cName in clubNames)
+         {
+            listBox1_clubList.Items.Add(cName);
+         }
       }
+
+      private void but1_clubInfo_Click(object sender, EventArgs e)
+      {
+
+      }
+
    }
 }
