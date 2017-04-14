@@ -24,7 +24,7 @@ namespace ClubBudgeting.Forms
       //#####################################################################//
       private void ViewTransactions_Load(object sender, EventArgs e)
       {
-         sql.getTransactions(us.CLUB_ID);
+         //sql.getTransactions(us.CLUB_ID);
       }
    }
 }
