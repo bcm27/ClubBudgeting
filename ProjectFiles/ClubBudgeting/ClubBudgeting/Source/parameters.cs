@@ -10,11 +10,22 @@ namespace ClubBudgeting
    {
       string[] prams;
       
+      public Parameters() { }
+
       public Parameters( string[] prams)
       {
          this.prams = prams;
       }
 
+
+      public void addParams(params string[] sList)
+      {
+         this.prams = sList;
+      }
+
+      /// <summary>
+      /// get functions for getting and setting
+      /// </summary>
       public string[] PARAM_LIST
       {
          get { return prams; }

@@ -22,9 +22,10 @@ CREATE TABLE Transactions (
 	purchaseDate DATE NOT NULL,
 	invoice LONGBLOB DEFAULT NULL,
     fileExtention VARCHAR(4) DEFAULT NULL,
-	cost DECIMAL(6,2) NOT NULL,
+	cost DECIMAL(8,2) NOT NULL,
 	description VARCHAR(100) DEFAULT NULL,
 	clubId INT NOT NULL,
+    approved BOOL DEFAULT FALSE,
 	CONSTRAINT FKTransactions_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
 		ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -59,5 +60,6 @@ insert into club Values (NULL, 'PC+', null);
     
     select * from Transactions;
     select * from club;
+    SELECT * FROM Transactions WHERE purchaseDate = '2017-04-22';
     
     

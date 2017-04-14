@@ -11,21 +11,23 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 {
-   /*
+   
    // SQL is our unimplemented interface (C# does not have interfaces, so we imporvised)
    [TestFixture]
    class PBI_15_12_6
    {
       MySqlConnection SQLCONN = new MySqlConnection
-         ("server=localhost;user=root;database=Club_Funds;port=3306;"
+         ("server=localhost;user=root;database=ClubSchema2;port=3306;"
          +"password=potato123");
       bool pass;
       SQL sql = SQL.Instance;
+      User u = User.Instance;
+      Parameters pList;
 
-
-      [SetUp]
+       [SetUp]
       public void beforeTests()
       {
+         pList = new Parameters();
          SQLCONN.Open();
          pass = true;
       }
@@ -36,7 +38,18 @@ namespace ClubBudgeting.Testing
          SQLCONN.Close();
          pass = true;
       }
-      /*
+      
+
+      [Test]
+      public void addTest()
+      {
+         string statement, temp = "";
+         MySqlCommand cmd;
+         MySqlDataReader rd;
+         // correct format for a purchase
+         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "1");
+         Assert.True(sql.addTransaction(pList));
+      }
       /// <summary>
       /// test for adding transactions, purchases, returns and 
       /// something that goes over a budget
@@ -47,10 +60,9 @@ namespace ClubBudgeting.Testing
          string statement, temp = "";
          MySqlCommand cmd;
          MySqlDataReader rd;
-         byte[] file = null;
-
          // correct format for a purchase
-         sql.addTransaction("2017-04-20", 20.20, file.ToString()); 
+         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "1" );
+         sql.addTransaction(pList); 
          try
          {
             statement = "SELECT * FROM Transactions WHERE purchaseDate = "
@@ -58,7 +70,7 @@ namespace ClubBudgeting.Testing
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[2].ToString();
+            temp = rd[4].ToString();
             rd.Close();
          }
          catch
@@ -68,16 +80,17 @@ namespace ClubBudgeting.Testing
          Assert.AreEqual("20.20", temp);
 
          // correct format for a return
-         sql.addTransaction("2017-04-21", -20.20, file.ToString()); 
+         pList.addParams("2017-04-21", "NULL", "NULL", "-20.20", "NULL", "1" /*u.clubId*/);
+         sql.addTransaction(pList);
 
          try
          {
             statement = "SELECT * FROM Transactions WHERE purchaseDate = "
-               +"'2017-04-21'";
+               + "'2017-04-21'";
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[2].ToString();
+            temp = rd[4].ToString();
             rd.Close();
          }
          catch
@@ -87,16 +100,17 @@ namespace ClubBudgeting.Testing
          Assert.AreEqual("-20.20", temp);
 
          // too large of a purchase
-         sql.addTransaction("2017-04-22", 20000.20, file.ToString()); 
+         pList.addParams("2017-04-22", "NULL", "NULL", "20000.20", "NULL", "1" /*u.clubId*/);
+         sql.addTransaction(pList);
 
          try
          {
             statement = "SELECT * FROM Transactions WHERE purchaseDate = "
-               +"'2017-04-22'";
+               + "'2017-04-22'";
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[2].ToString();
+            temp = rd[4].ToString();
             rd.Close();
          }
          catch
@@ -208,7 +222,7 @@ namespace ClubBudgeting.Testing
          }
 
          Assert.True(false);
-      }
+      }*/
    }
-   */
+   
 }
