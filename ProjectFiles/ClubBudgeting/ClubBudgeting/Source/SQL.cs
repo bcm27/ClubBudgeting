@@ -45,6 +45,21 @@ namespace ClubBudgeting
          SQLCONN.Open();
       } // Initilize
 
+      internal string getAccountName(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
+      internal string getDefund(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
+      internal string getBudget(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
       /// <summary>
       /// Management for static instance of this class
       /// </summaryUser
