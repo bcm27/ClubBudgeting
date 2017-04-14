@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace ClubBudgeting
 {
@@ -64,6 +65,13 @@ namespace ClubBudgeting
          }
       } // Instance
 
+
+      /*
+       * ---------
+       * Functions
+       * ---------
+       */
+
       /// <summary>
       /// searches for a user in the database and returns a bool for the resultS
       /// </summary>
@@ -71,18 +79,10 @@ namespace ClubBudgeting
       /// <param name="hashPass"></param>
       /// <returns></returns>
       public bool getUser(string userName, string hashPass)
-      {        
+      {
          statement = string.Format("SELECT * FROM Member WHERE"
           + "userName = {0} AND pass = {1};", userName, hashPass);
-
-         cmd = new MySqlCommand(statement, SQLCONN);
-         try
-         {
-            Reader = cmd.ExecuteReader();
-            Reader.Read();
-            return true;
-         }
-         catch { return false; }
+         return true;
       }
 
       /// <summary>
@@ -96,7 +96,6 @@ namespace ClubBudgeting
          statement = string.Format("SELECT adminRight, clubId FROM Member WHERE"
             + "userName = {0} AND pass = {1};", user, pass);
          cmd = new MySqlCommand(statement, SQLCONN);
-
          try
          {
             Reader = cmd.ExecuteReader();
@@ -111,67 +110,100 @@ namespace ClubBudgeting
 
       /// <summary>
       /// Adding a transaction to the database, checking prior
+      /// capped if null add NULL, the rest cannot be null
+      /// {@date, @FILE, @EXT, @price, @DESC, @club}
       /// </summary>
       /// <param name="date">Will be checked</param>
       /// <param name="file">Byte array to a string</param>
-      /// <param name="price">total of purchase</param>
+      /// <param name="price">@date, @FILE, @EXT, @price, @DESC, @club</param>
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         string[] listing = { "@date", "@ext", "@price", "@desc", "@club" };
-         string[] prams = pLists.PARAM_LIST;
-         statement = string.Format("INSERT INTO Transactions VALUES "
-            + "(null, @date, {0}, @ext, @price, @desc, @club);", prams[4].ToString());
+         string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc", "@club" };
+         statement = "INSERT INTO Transactions VALUES "
+            + "(null, @Date, @File, @Ext, @price, @desc, @club, false);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
          {
-            addParams(cmd, listing, prams).ExecuteNonQuery();
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();            
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
-         }
-         
+         }         
          return true;
       } // addTransaction
 
       /// <summary>
-      /// Adding a transaction to the database, checking prior
+      /// 
       /// </summary>
-      /// <param name="date">Will be checked</param>
-      /// <param name="file">Byte array to a string</param>
-      /// <param name="price">total of purchase</param>
-      /// <returns>Whether or not the user is an admit</returns>
+      /// <param name="pLists"></param>
+      /// <returns></returns>
       public bool addClub(Parameters pLists)
       {
          string[] listing = { "@club", "@desc" };
-         string[] prams = pLists.PARAM_LIST;
          statement = "INSERT INTO Club VALUES "
             + "(null, @club, @desc);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
          {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         }
+         catch (MySql.Data.MySqlClient.MySqlException ex)
+         {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         }
+         return true;
+      } // addClub
+
+      /// <summary>
+      /// creates a new user to add to the database
+      /// </summary>
+      /// <param name="pLists">@user, @desc</param>
+      /// <returns>completed</returns>
+      public bool addMember(Parameters pLists)
+      {
+         string[] listing = { "@user", "@desc" };
+         string[] prams = pLists.PARAM_LIST;
+         statement = "INSERT INTO Club VALUES "
+            + "(null, '@club', '@desc');";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         try
+         {
             addParams(cmd, listing, prams).ExecuteNonQuery();
          }
-         catch
+         catch 
          {
             return false;
          }
          return true;
       } // addClub
 
-
-      public void getReceipts()
+      /// <summary>
+      /// adds a pdf receipts
+      /// </summary>
+      /// <param name="pLists">@file, @date, @cost, @club</param>
+      /// <returns>completed</returns>
+      public bool addPDFReceipt(Parameters pLists)
       {
-         statement = "SELECT invoice, fileExtention FROM Transactions WHERE "
-            + "id = 1;";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         Reader = cmd.ExecuteReader();
-         Reader.Read();
-         byte[] b = Encoding.ASCII.GetBytes(Reader[0].ToString());
-         System.IO.File.WriteAllBytes(@"F:\picture." + Reader[1].ToString(), b);
+         return true;
+      }
+
+      /// <summary>
+      /// retrieves PDF from DB
+      /// </summary>
+      /// <param name="pLists">@date, @cost, @club</param>
+      /// <returns></returns>
+      public string getPDF(Parameters pLists)
+      {
+         return "hi";
       }
 
       /// <summary>
@@ -187,6 +219,7 @@ namespace ClubBudgeting
       {
          for (int i = 0; i < listing.Length; i++)
             cmd.Parameters.AddWithValue(listing[i], prams[i]);
+         
          return cmd;
       }
    }

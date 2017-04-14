@@ -9,10 +9,16 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
-{
+{/*
+   class FileManager
+   {
+
+   }
+
+   /*
    [TestFixture]
    class PBI_TESTING
-   {/*
+   {
       private static string server_details = "server=localhost;"
                                            + "user=root;"
                                            + "database=Club_Funds;"
@@ -191,7 +197,6 @@ namespace ClubBudgeting.Testing
             pass = false;
          }
          Assert.True(pass);
-      } // end PBI_5_OverLimit
-      */
-   } // end of scope
+      } // end PBI_5_OverLimit//
+   } // end of scope*/
 } // end of namespace

@@ -53,7 +53,7 @@ namespace ClubBudgeting
 
       public string CLUB_ID
       {
-         get { return "1"; }
+         get { return club; }
       }
       
       /// <summary>
