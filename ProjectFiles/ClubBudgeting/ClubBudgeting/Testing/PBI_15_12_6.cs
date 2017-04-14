@@ -90,7 +90,7 @@ namespace ClubBudgeting.Testing
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[2].ToString();
+            temp = rd[4].ToString();
             rd.Close();
          }
          catch
@@ -100,7 +100,7 @@ namespace ClubBudgeting.Testing
          Assert.AreEqual("-20.20", temp);
 
          // too large of a purchase
-         pList.addParams("2017-04-22", "NULL", "NULL", "200000.20", "NULL", "1" /*u.clubId*/);
+         pList.addParams("2017-04-22", "NULL", "NULL", "20000.20", "NULL", "1" /*u.clubId*/);
          sql.addTransaction(pList);
 
          try
@@ -110,7 +110,7 @@ namespace ClubBudgeting.Testing
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[2].ToString();
+            temp = rd[4].ToString();
             rd.Close();
          }
          catch

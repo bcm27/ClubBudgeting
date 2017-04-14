@@ -121,21 +121,19 @@ namespace ClubBudgeting
       {
          string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc", "@club" };
          statement = "INSERT INTO Transactions VALUES "
-            + "(null, ' @Date ', @File, @Ext, @price, @desc, @club, false);";
+            + "(null, @Date, @File, @Ext, @price, @desc, @club, false);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
-         cmd.Parameters["@Date"].Value = pLists.PARAM_LIST[0];
          try
          {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();            
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
             MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
-         }
-         
+         }         
          return true;
       } // addTransaction
 
@@ -155,8 +153,10 @@ namespace ClubBudgeting
          {
             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          return true;
