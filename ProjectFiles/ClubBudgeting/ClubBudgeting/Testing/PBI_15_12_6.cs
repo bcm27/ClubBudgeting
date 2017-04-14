@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 {
-   /*
+   
    // SQL is our unimplemented interface (C# does not have interfaces, so we imporvised)
    [TestFixture]
    class PBI_15_12_6
@@ -36,7 +36,7 @@ namespace ClubBudgeting.Testing
          SQLCONN.Close();
          pass = true;
       }
-      /*
+      
       /// <summary>
       /// test for adding transactions, purchases, returns and 
       /// something that goes over a budget
@@ -47,8 +47,8 @@ namespace ClubBudgeting.Testing
          string statement, temp = "";
          MySqlCommand cmd;
          MySqlDataReader rd;
-         byte[] file = null;
-
+         Parameters pList = new Parameters();
+         pList.addParams( "NULL", "NULL", "2017-04-20", );
          // correct format for a purchase
          sql.addTransaction("2017-04-20", 20.20, file.ToString()); 
          try

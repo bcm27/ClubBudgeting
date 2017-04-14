@@ -25,6 +25,7 @@ CREATE TABLE Transactions (
 	cost DECIMAL(6,2) NOT NULL,
 	description VARCHAR(100) DEFAULT NULL,
 	clubId INT NOT NULL,
+    approved BOOL NOT NULL,
 	CONSTRAINT FKTransactions_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
 		ON DELETE CASCADE ON UPDATE CASCADE
 );

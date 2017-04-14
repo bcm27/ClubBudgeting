@@ -64,14 +64,13 @@ namespace ClubBudgeting
          }
       } // Instance
 
-<<<<<<< HEAD
+
       /*
        * ---------
        * Functions
        * ---------
        */
 
-=======
       /// <summary>
       /// searches for a user in the database and returns a bool for the resultS
       /// </summary>
@@ -79,11 +78,10 @@ namespace ClubBudgeting
       /// <param name="hashPass"></param>
       /// <returns></returns>
       public bool getUser(string userName, string hashPass)
-      {        
+      {
          statement = string.Format("SELECT * FROM Member WHERE"
           + "userName = {0} AND pass = {1};", userName, hashPass);
->>>>>>> f05347478e2427dd580610898f680b71eb748236
-
+      }
 
       /// <summary>
       /// log in function, if any errors happen, throws exception
@@ -110,17 +108,18 @@ namespace ClubBudgeting
 
       /// <summary>
       /// Adding a transaction to the database, checking prior
+      /// capped if null add NULL, the rest cannot be null
       /// </summary>
       /// <param name="date">Will be checked</param>
       /// <param name="file">Byte array to a string</param>
-      /// <param name="price">total of purchase</param>
+      /// <param name="price">@date, @FILE, @EXT, @price, @DESC, @club</param>
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         string[] listing = { "@date", "@ext", "@price", "@desc", "@club" };
+         string[] listing = { "@date", "@file", "@ext", "@price", "@desc", "@club" };
          string[] prams = pLists.PARAM_LIST;
-         statement = string.Format("INSERT INTO Transactions VALUES "
-            + "(null, @date, {0}, @ext, @price, @desc, @club);", prams[4].ToString());
+         statement = "INSERT INTO Transactions VALUES "
+            + "(null, @date, @file, @ext, @price, @desc, false,@club);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
@@ -136,12 +135,10 @@ namespace ClubBudgeting
       } // addTransaction
 
       /// <summary>
-      /// Adding a transaction to the database, checking prior
+      /// 
       /// </summary>
-      /// <param name="date">Will be checked</param>
-      /// <param name="file">Byte array to a string</param>
-      /// <param name="price">total of purchase</param>
-      /// <returns>Whether or not the user is an admit</returns>
+      /// <param name="pLists"></param>
+      /// <returns></returns>
       public bool addClub(Parameters pLists)
       {
          string[] listing = { "@club", "@desc" };
@@ -164,8 +161,8 @@ namespace ClubBudgeting
       /// <summary>
       /// creates a new user to add to the database
       /// </summary>
-      /// <param name="pLists"></param>
-      /// <returns></returns>
+      /// <param name="pLists">@user, @desc</param>
+      /// <returns>completed</returns>
       public bool addMember(Parameters pLists)
       {
          string[] listing = { "@user", "@desc" };
@@ -189,7 +186,7 @@ namespace ClubBudgeting
       /// adds a pdf receipts
       /// </summary>
       /// <param name="pLists">@file, @date, @cost, @club</param>
-      /// <returns>file added</returns>
+      /// <returns>completed</returns>
       public bool addPDFReceipt(Parameters pLists)
       {
          return true;
