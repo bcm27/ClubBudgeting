@@ -75,6 +75,7 @@
          this.but1_login.TabIndex = 4;
          this.but1_login.Text = "Login";
          this.but1_login.UseVisualStyleBackColor = true;
+         this.but1_login.Click += new System.EventHandler(this.but1_login_Click);
          // 
          // Form1
          // 

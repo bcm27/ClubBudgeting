@@ -16,6 +16,9 @@ namespace ClubBudgeting
       MySqlCommand cmd;
       MySqlDataReader Reader;
 
+      // string array to hold list of club names
+      private static string[] clubArray;
+
       /// <summary>
       /// Static instance of this class
       /// </summary>
@@ -43,7 +46,24 @@ namespace ClubBudgeting
             + "port=3306;"
             + "password=potato123");
          SQLCONN.Open();
+
+         fillClubArray();
       } // Initilize
+
+      internal string getAccountName(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
+      internal string getDefund(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
+      internal string getBudget(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
 
       /// <summary>
       /// Management for static instance of this class
@@ -223,5 +243,37 @@ namespace ClubBudgeting
          
          return cmd;
       }
+
+
+      private Array fillClubArray()
+      {
+         int nameCtr = 0;
+         statement = "SELECT name FROM Club";
+         cmd = new MySqlCommand(statement, SQLCONN);
+
+         try
+         {
+            Reader = cmd.ExecuteReader();
+
+            // read in and store each club's name
+            while (Reader.Read())
+               clubArray[nameCtr++] = Reader.GetString(nameCtr);
+         }
+         catch
+         {
+            throw new Exception("fillClubArray failed");
+         }
+
+         return clubArray;
+      }
+
+      /// <summary>
+      /// Return a copy of the list of club names in the database
+      /// </summary>
+      public string[] CLUB_LIST
+      {
+         get { return clubArray; }
+      }
+
    }
 }

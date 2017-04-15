@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace ClubBudgeting.Forms
 {
-   public partial class DashboardAdmin : Form
+   public partial class ViewTransactions : Form
    {
+      // static instance methods so we can access this information
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
-      public DashboardAdmin()
+      public ViewTransactions()
       {
          InitializeComponent();
-
-         budgetInfo();
       }
 
-      public void budgetInfo()
+      //#####################################################################//
+      private void ViewTransactions_Load(object sender, EventArgs e)
       {
-         //lab1_acctName.Text = "Account Name: " + SQL.getAccountName(us.CLUB_ID);
-         //lab2_defundNum.Text = "Defund Number: " + SQL.getDefund(us.CLUB_ID);
-         //lab3_budgetTotal.Text = "Budget Total: $" + SQL.getBudget(us.CLUB_ID);
+         //sql.getTransactions(us.CLUB_ID);
       }
    }
 }
