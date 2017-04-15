@@ -10,7 +10,7 @@ namespace ClubBudgeting.Source
    class Security
    {
       // ability to run SQL 
-      private static SQL SQLInstance;
+      private static SQL sql = SQL.Instance;
 
       //#####################################################################//
       /// <summary>
@@ -44,8 +44,8 @@ namespace ClubBudgeting.Source
       /// <param name="userName"></param>
       /// <param name="password"></param>
       /// <returns></returns>
-     // public bool varifyPassword(string userName, string hashPass)
-     // { return SQL.getUser(userName, hashPass); } 
+      public bool varifyPassword(string userName, string hashPass)
+      { return sql.getUser(userName, hashPass); } 
 
    } // end of class Security
 } // end of name space

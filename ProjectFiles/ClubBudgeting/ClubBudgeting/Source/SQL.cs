@@ -93,14 +93,15 @@ namespace ClubBudgeting
       /// <returns>Tuple(adminPrivleges, clubId)</returns>
       public Tuple<bool, string> logIn(string user, string pass)
       {
-         statement = string.Format("SELECT adminRight, clubId FROM Member WHERE"
-            + "userName = {0} AND pass = {1};", user, pass);
+         statement = string.Format("SELECT adminRight, clubId FROM Member" 
+            + " WHERE userName = {0} AND pass = {1};", user, pass);
          cmd = new MySqlCommand(statement, SQLCONN);
          try
          {
             Reader = cmd.ExecuteReader();
             Reader.Read();
-            return new Tuple<bool, string>(Reader[0].ToString().ToUpper() == "FALSE", Reader[1].ToString());
+            return new Tuple<bool, string>(Reader[0].ToString().ToUpper() ==
+               "FALSE", Reader[1].ToString());
          }
          catch
          {
@@ -126,11 +127,11 @@ namespace ClubBudgeting
          cmd.Prepare();
          try
          {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();            
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();     
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+            MessageBox.Show("Error " + ex.Number +" has occurred: "+ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }         
@@ -155,7 +156,7 @@ namespace ClubBudgeting
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+            MessageBox.Show("Error "+ex.Number + " has occurred: " +ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
