@@ -10,11 +10,14 @@ CREATE TABLE Club (
 
 CREATE TABLE Member (
 	id INT AUTO_INCREMENT PRIMARY KEY,
+    clubId INT NOT NULL,
 	adminRight BOOL NOT NULL,
     userName VARCHAR(40) NOT NULL UNIQUE KEY,
 	firstName VARCHAR(40) DEFAULT NULL,
 	lastName VARCHAR(40) DEFAULT NULL,
-	pass VARCHAR(100) NOT NULL
+	pass VARCHAR(100) NOT NULL,
+	CONSTRAINT FKMember_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
+		ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Transactions (
@@ -30,7 +33,7 @@ CREATE TABLE Transactions (
 		ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE term (
+CREATE TABLE Term (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     semester VARCHAR(3) NOT NULL
 );
@@ -52,14 +55,18 @@ CREATE TABLE BudgetProposal (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     termId INT NOT NULL,
     proposal LONGBLOB NOT NULL,
+    fileExtention VARCHAR(4) DEFAULT NULL,
 	CONSTRAINT FKBudgetProposal_termId FOREIGN KEY (termId) REFERENCES Term (id)
 		ON DELETE CASCADE ON UPDATE CASCADE    
 );
 insert into club Values (NULL, 'PC+', null);
-    
-    
-    select * from Transactions;
-    select * from club;
-    SELECT * FROM Transactions WHERE purchaseDate = '2017-04-22';
+insert into Term Values (NULL, 'F13');
+insert into Term Values (NULL, 'S14');
+insert into Term Values (NULL, 'F14');
+insert into Term Values (NULL, 'S15');
+insert into Term Values (NULL, 'F15');
+insert into Term Values (NULL, 'S16');
+insert into Term Values (NULL, 'F16');
+insert into Term Values (NULL, 'S17');
     
     
