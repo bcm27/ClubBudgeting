@@ -31,7 +31,7 @@ namespace ClubBudgeting.Forms
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void ViewTransactions_Load(object sender, EventArgs e)
-      { loadList(sql.getTransactions(us.CLUB_ID)); }
+      { loadList(sql.getTransactions(new Parameters(us.CLUB_ID))); }
 
       /// <summary>
       /// 
