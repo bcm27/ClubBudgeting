@@ -117,8 +117,6 @@ namespace ClubBudgeting.Testing
          {
             Assert.True(true);
          }
-
-         Assert.True(false);
       }
 
      
