@@ -512,6 +512,13 @@ namespace ClubBudgeting
          get { return clubArray; }
       }
 
+
+      //#####################################################################//
+      /// <summary>
+      /// Gets an arraylist of all the clubIds transactions.
+      /// </summary>
+      /// <param name="clubId"></param>
+      /// <returns></returns>
       public ArrayList getTransactions(string clubId)
       {
          statement = "SELECT * FROM Transactions where clubId = " + clubId;
@@ -529,7 +536,7 @@ namespace ClubBudgeting
                int loop = 0;
                while(loop >= 7)
                   partialTransaction.Add(Reader[loop++].ToString());
-               // approved boolean
+
                transactions.Add(partialTransaction);
                // create collection of information
             }
