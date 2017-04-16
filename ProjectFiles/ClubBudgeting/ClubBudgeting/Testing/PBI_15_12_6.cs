@@ -121,7 +121,7 @@ namespace ClubBudgeting.Testing
          Assert.True(false);
       }
 
-      /*
+     
       /// <summary>
       /// testing for user logins, correct passwords, incorect passwords, 
       /// bad user, different types of users
@@ -132,23 +132,23 @@ namespace ClubBudgeting.Testing
          bool accessed = false;
 
          // correct user/pass for a user
-         accessed = sql.LogIn("Steve", "1234567890"); 
+         accessed = sql.checkPass("Steve", "1234567890"); 
          Assert.True(accessed);
 
          // false pass for a correct user user
-         accessed = sql.LogIn("Steve", "cat"); 
+         accessed = sql.checkPass("Steve", "cat"); 
          Assert.True(accessed);
 
          // incorrect user
-         accessed = sql.LogIn("joe", "dog");
+         accessed = sql.checkPass("joe", "dog");
          Assert.True(accessed);
 
          // correct user/pass for a admin
-         accessed = sql.LogIn("mike", "1234567890"); 
+         accessed = sql.checkPass("mike", "1234567890"); 
          Assert.True(accessed);
 
          // incorrect pass for a correct user
-         accessed = sql.LogIn("mike", "1234567890"); 
+         accessed = sql.checkPass("mike", "1234567890"); 
          Assert.True(accessed);
       }
 
@@ -160,17 +160,19 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_6()
       {
-         string statement, temp = "";
          MySqlCommand cmd;
          MySqlDataReader rd;
+         Parameters pList = new Parameters
+            (sql.getCurrSemesterId(), System.IO.File.ReadAllBytes
+            (@"F:\Documents\GitHub\MeierPiler\Timelog.xlsx"), "xlsx");
 
          // correct file and type
-         sql.addBudget(@"C:\path\to\the\budgetProposal.XML", "'2017-04-20'"); 
+         sql.AddBudgetProp(pList); 
 
          try
          {
-            statement = "SELECT * FROM BudgetProposals WHERE dateAdded = " 
-               + "'2017-04-20'";
+            string statement = 
+               "SELECT * FROM BudgetProposal;";
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
@@ -183,6 +185,7 @@ namespace ClubBudgeting.Testing
 
          Assert.True(true);
 
+         /*
          // not a budgetProposal file
          sql.addBudget(@"C:\path\to\the\Incorrect_file.XML", "'2017-04-21'"); 
 
@@ -221,8 +224,8 @@ namespace ClubBudgeting.Testing
             Assert.True(true); // file does not exist.
          }
 
-         Assert.True(false);
-      }*/
+         Assert.True(false);*/
+      }
    }
    
 }
