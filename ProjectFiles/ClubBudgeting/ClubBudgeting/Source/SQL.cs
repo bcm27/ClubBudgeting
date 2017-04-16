@@ -369,7 +369,7 @@ namespace ClubBudgeting
          }
          return true;
       }
-      
+     
       /// <summary>
       /// returns current semester Id
       /// </summary>

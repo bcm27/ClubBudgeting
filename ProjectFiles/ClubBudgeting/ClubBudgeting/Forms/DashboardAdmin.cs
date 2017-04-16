@@ -24,21 +24,30 @@ namespace ClubBudgeting.Forms
          budgetInfo();
       }
 
+      /// <summary>
+      /// Load and display the budget info for the selected club
+      /// </summary>
       public void budgetInfo()
       {
-         lab_clubName.Text = sql.getAccountName(clubListForm.getClubIndex);
+         lab_clubName.Text = clubListForm.getClubName;
          lab_budget.Text = 
-            sql.getCurrClubBudg(new Parameters(clubListForm.getClubIndex));
+          sql.getCurrClubBudg(new Parameters(clubListForm.getClubIndex));
       }
 
+      /// <summary>
+      /// Add a purchase transaction
+      /// </summary>
       private void but1_submitPurchase_Click(object sender, EventArgs e)
       {
-         //sql.addTransaction();
+         sql.addTransaction(new Parameters(clubListForm.getClubIndex));
       }
 
+      /// <summary>
+      /// Add a refund transaction
+      /// </summary>
       private void but2_submitRefund_Click(object sender, EventArgs e)
       {
-         //sql.addTransaction();
+         sql.addTransaction(new Parameters(clubListForm.getClubIndex));
       }
    }
 }
