@@ -370,24 +370,6 @@ namespace ClubBudgeting
          return true;
       }
 
-      public string getAccountName(string cLUB_ID)
-      {
-
-
-         throw new NotImplementedException();
-      }
-
-      public string getDefund(string cLUB_ID)
-      {
-         throw new NotImplementedException();
-      }
-
-      public string getBudget(string cLUB_ID)
-      {
-         throw new NotImplementedException();
-      }
-
-
       /// <summary>
       /// returns current semester Id
       /// </summary>
@@ -422,8 +404,8 @@ namespace ClubBudgeting
       public string getCurrClubBudg(Parameters pList)
       {
          string[] listings = { "@clubId"};
-         statement = "SELECT balance, max(termId) FROM budget "
-            + "WHERE clubId = @clubId";
+         statement = "SELECT balance, max(termId) FROM Budget "
+            + "WHERE clubId = @clubId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          string temp;
