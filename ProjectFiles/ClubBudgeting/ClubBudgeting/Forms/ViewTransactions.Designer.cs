@@ -28,13 +28,23 @@
       /// </summary>
       private void InitializeComponent()
       {
+         this.listView_trans = new System.Windows.Forms.ListView();
          this.SuspendLayout();
+         // 
+         // listView_trans
+         // 
+         this.listView_trans.Location = new System.Drawing.Point(114, 105);
+         this.listView_trans.Name = "listView_trans";
+         this.listView_trans.Size = new System.Drawing.Size(527, 354);
+         this.listView_trans.TabIndex = 0;
+         this.listView_trans.UseCompatibleStateImageBehavior = false;
          // 
          // ViewTransactions
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(801, 531);
+         this.Controls.Add(this.listView_trans);
          this.Name = "ViewTransactions";
          this.Text = "ViewTransactions";
          this.Load += new System.EventHandler(this.ViewTransactions_Load);
@@ -43,5 +53,7 @@
       }
 
       #endregion
+
+      private System.Windows.Forms.ListView listView_trans;
    }
 }

@@ -43,7 +43,6 @@ CREATE TABLE Budget (
     clubId INT NOT NULL,
 	termId INT NOT NULL,
 	allocatedMoney DECIMAL(8,2) NOT NULL,
-	spentMoney DECIMAL(8,2) NOT NULL,
 	balance DECIMAL(8,2) NOT NULL,
 	debt DECIMAL(8,2) DEFAULT NULL,
 	CONSTRAINT FKBudget_clubId FOREIGN KEY (clubId) REFERENCES Club (id)
@@ -69,9 +68,9 @@ insert into Term Values (NULL, 'F15');
 insert into Term Values (NULL, 'S16');
 insert into Term Values (NULL, 'F16');
 insert into Term Values (NULL, 'S17');
-insert into Budget values (null, 1,8, 100.00, 0.00, 100.00, 0.00);
+insert into Budget values (null, 1,8, 100.00, 100.00, 0.00);
 
 select * from BudgetProposal;
 SELECT proposal, fileExtention FROM BudgetProposal WHERE id = 1;
 select * from Transactions;
-    
+    SELECT balance, max(termId) FROM budget WHERE clubId = 1;
