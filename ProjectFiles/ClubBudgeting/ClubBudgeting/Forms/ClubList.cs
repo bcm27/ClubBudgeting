@@ -15,7 +15,6 @@ namespace ClubBudgeting.Forms
    {
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
-
       private static ArrayList clubNames = new ArrayList();
 
       public ClubList()
