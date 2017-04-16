@@ -29,7 +29,7 @@ namespace ClubBudgeting
       private static SQL SQLInstance;
 
       /// <summary>
-      /// To prevent access by more than one thread. This is the specific lock 
+      /// To prevent access by more than one thread. This is the specific lock
       /// belonging to the FileManager Class object.
       /// </summary>
       private static Object fmLock = typeof(User);
