@@ -20,6 +20,8 @@ namespace ClubBudgeting
 
       // string array to hold list of club names
       private ArrayList clubArray = new ArrayList();
+      // string array of transaction information
+      private ArrayList transactions = new ArrayList();
 
       /// <summary>
       /// Static instance of this class
@@ -506,6 +508,37 @@ namespace ClubBudgeting
       {
          get { return clubArray; }
       }
+
+      public ArrayList getTransactions(string clubId)
+      {
+         statement = "SELECT * FROM Transactions where clubId = " + clubId;
+         cmd = new MySqlCommand(statement, SQLCONN);
+
+         try
+         {
+            Reader = cmd.ExecuteReader();
+
+            // read in and store each transaction's information 
+            while (Reader.Read())
+            {
+               ArrayList partialTransaction = new ArrayList();
+
+               int loop = 0;
+               while(loop >= 7)
+                  partialTransaction.Add(Reader[loop++].ToString());
+               // approved boolean
+               transactions.Add(partialTransaction);
+               // create collection of information
+            }
+         }
+         catch
+         {
+            throw new Exception("Get transactions failed... :(");
+         }
+
+         return transactions;
+         
+      } // end get Transactions
 
    }
 }

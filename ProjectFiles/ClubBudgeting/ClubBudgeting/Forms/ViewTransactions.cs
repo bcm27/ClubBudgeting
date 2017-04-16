@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClubBudgeting.Source;
 
 namespace ClubBudgeting.Forms
 {
@@ -24,7 +25,7 @@ namespace ClubBudgeting.Forms
       //#####################################################################//
       private void ViewTransactions_Load(object sender, EventArgs e)
       {
-         //sql.getTransactions(us.CLUB_ID);
+         
       }
    }
 }
