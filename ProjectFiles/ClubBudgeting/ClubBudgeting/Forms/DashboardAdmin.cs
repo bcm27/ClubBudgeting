@@ -15,7 +15,7 @@ namespace ClubBudgeting.Forms
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
-      private ClubList clubListForm;
+      private ClubList clubListForm = new ClubList();
 
       public DashboardAdmin()
       {
@@ -26,10 +26,19 @@ namespace ClubBudgeting.Forms
 
       public void budgetInfo()
       {
-         lab_clubName.Text = clubListForm.listBox.SelectedIndex.ToString();
-         //lab1_acctName.Text = "Account Name: " + SQL.getAccountName(us.CLUB_ID);
-         //lab2_defundNum.Text = "Defund Number: " + SQL.getDefund(us.CLUB_ID);
-         //lab3_budgetTotal.Text = "Budget Total: $" + SQL.getBudget(us.CLUB_ID);
+         lab_clubName.Text = sql.getAccountName(clubListForm.getClubIndex);
+         lab_num.Text = sql.getDefund(clubListForm.getClubIndex);
+         lab_budget.Text = sql.getCurrentBudget(clubListForm.getClubIndex);
+      }
+
+      private void but1_submitPurchase_Click(object sender, EventArgs e)
+      {
+         //sql.addTransaction();
+      }
+
+      private void but2_submitRefund_Click(object sender, EventArgs e)
+      {
+         //sql.addTransaction();
       }
    }
 }

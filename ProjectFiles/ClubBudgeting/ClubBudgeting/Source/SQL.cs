@@ -62,21 +62,6 @@ namespace ClubBudgeting
          fillClubArray();
       } // Initilize
 
-      internal string getAccountName(string cLUB_ID)
-      {
-         throw new NotImplementedException();
-      }
-
-      internal string getDefund(string cLUB_ID)
-      {
-         throw new NotImplementedException();
-      }
-
-      internal string getBudget(string cLUB_ID)
-      {
-         throw new NotImplementedException();
-      }
-
       /// <summary>
       /// Management for static instance of this class
       /// </summaryUser
@@ -296,6 +281,24 @@ namespace ClubBudgeting
          }
          return true;
       }
+
+      public string getAccountName(string cLUB_ID)
+      {
+
+
+         throw new NotImplementedException();
+      }
+
+      public string getDefund(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
+      public string getBudget(string cLUB_ID)
+      {
+         throw new NotImplementedException();
+      }
+
 
       /// <summary>
       /// closes everything needed

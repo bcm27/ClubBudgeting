@@ -17,6 +17,7 @@ namespace ClubBudgeting.Forms
       private static User us = User.Instance;
 
       private static ArrayList clubNames = new ArrayList();
+      private static string clubIndex;
 
       public ClubList()
       {
@@ -37,16 +38,18 @@ namespace ClubBudgeting.Forms
 
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
+         clubIndex = listBox1_clubList.SelectedIndex.ToString();
+
          DashboardAdmin adminForm = new DashboardAdmin();
          adminForm.StartPosition = FormStartPosition.CenterParent;
          adminForm.Show(ParentForm);
       }
 
-      public ListBox listBox
+      public string getClubIndex
       {
          get
          {
-            return listBox1_clubList;
+            return clubIndex;
          }
       }
 

@@ -55,7 +55,7 @@
          // 
          this.but1_clubInfo.Location = new System.Drawing.Point(489, 241);
          this.but1_clubInfo.Name = "but1_clubInfo";
-         this.but1_clubInfo.Size = new System.Drawing.Size(181, 63);
+         this.but1_clubInfo.Size = new System.Drawing.Size(197, 73);
          this.but1_clubInfo.TabIndex = 2;
          this.but1_clubInfo.Text = "View club information";
          this.but1_clubInfo.UseVisualStyleBackColor = true;

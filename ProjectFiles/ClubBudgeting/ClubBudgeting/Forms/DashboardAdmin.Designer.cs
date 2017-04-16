@@ -29,7 +29,6 @@
       private void InitializeComponent()
       {
          this.lab1_acctName = new System.Windows.Forms.Label();
-         this.lab2_defundNum = new System.Windows.Forms.Label();
          this.lab3_budgetTotal = new System.Windows.Forms.Label();
          this.lab4_purchaseAmt = new System.Windows.Forms.Label();
          this.lab5_refundAmt = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@
          this.txtbx2_refundAmt = new System.Windows.Forms.TextBox();
          this.but3_logout = new System.Windows.Forms.Button();
          this.lab_clubName = new System.Windows.Forms.Label();
-         this.lab_num = new System.Windows.Forms.Label();
          this.lab_budget = new System.Windows.Forms.Label();
          this.SuspendLayout();
          // 
@@ -52,19 +50,10 @@
          this.lab1_acctName.TabIndex = 0;
          this.lab1_acctName.Text = "Account Name:";
          // 
-         // lab2_defundNum
-         // 
-         this.lab2_defundNum.AutoSize = true;
-         this.lab2_defundNum.Location = new System.Drawing.Point(39, 91);
-         this.lab2_defundNum.Name = "lab2_defundNum";
-         this.lab2_defundNum.Size = new System.Drawing.Size(168, 25);
-         this.lab2_defundNum.TabIndex = 1;
-         this.lab2_defundNum.Text = "Defund Number:";
-         // 
          // lab3_budgetTotal
          // 
          this.lab3_budgetTotal.AutoSize = true;
-         this.lab3_budgetTotal.Location = new System.Drawing.Point(39, 139);
+         this.lab3_budgetTotal.Location = new System.Drawing.Point(39, 95);
          this.lab3_budgetTotal.Name = "lab3_budgetTotal";
          this.lab3_budgetTotal.Size = new System.Drawing.Size(140, 25);
          this.lab3_budgetTotal.TabIndex = 2;
@@ -73,7 +62,7 @@
          // lab4_purchaseAmt
          // 
          this.lab4_purchaseAmt.AutoSize = true;
-         this.lab4_purchaseAmt.Location = new System.Drawing.Point(39, 219);
+         this.lab4_purchaseAmt.Location = new System.Drawing.Point(39, 175);
          this.lab4_purchaseAmt.Name = "lab4_purchaseAmt";
          this.lab4_purchaseAmt.Size = new System.Drawing.Size(259, 25);
          this.lab4_purchaseAmt.TabIndex = 3;
@@ -82,7 +71,7 @@
          // lab5_refundAmt
          // 
          this.lab5_refundAmt.AutoSize = true;
-         this.lab5_refundAmt.Location = new System.Drawing.Point(39, 289);
+         this.lab5_refundAmt.Location = new System.Drawing.Point(39, 245);
          this.lab5_refundAmt.Name = "lab5_refundAmt";
          this.lab5_refundAmt.Size = new System.Drawing.Size(231, 25);
          this.lab5_refundAmt.TabIndex = 4;
@@ -90,39 +79,41 @@
          // 
          // txtbx1_purchaseAmt
          // 
-         this.txtbx1_purchaseAmt.Location = new System.Drawing.Point(319, 216);
+         this.txtbx1_purchaseAmt.Location = new System.Drawing.Point(319, 172);
          this.txtbx1_purchaseAmt.Name = "txtbx1_purchaseAmt";
          this.txtbx1_purchaseAmt.Size = new System.Drawing.Size(192, 31);
          this.txtbx1_purchaseAmt.TabIndex = 6;
          // 
          // but1_submitPurchase
          // 
-         this.but1_submitPurchase.Location = new System.Drawing.Point(571, 216);
+         this.but1_submitPurchase.Location = new System.Drawing.Point(571, 172);
          this.but1_submitPurchase.Name = "but1_submitPurchase";
          this.but1_submitPurchase.Size = new System.Drawing.Size(191, 31);
          this.but1_submitPurchase.TabIndex = 7;
          this.but1_submitPurchase.Text = "Submit purchase";
          this.but1_submitPurchase.UseVisualStyleBackColor = true;
+         this.but1_submitPurchase.Click += new System.EventHandler(this.but1_submitPurchase_Click);
          // 
          // but2_submitRefund
          // 
-         this.but2_submitRefund.Location = new System.Drawing.Point(571, 289);
+         this.but2_submitRefund.Location = new System.Drawing.Point(571, 245);
          this.but2_submitRefund.Name = "but2_submitRefund";
          this.but2_submitRefund.Size = new System.Drawing.Size(191, 31);
          this.but2_submitRefund.TabIndex = 9;
          this.but2_submitRefund.Text = "Submit refund";
          this.but2_submitRefund.UseVisualStyleBackColor = true;
+         this.but2_submitRefund.Click += new System.EventHandler(this.but2_submitRefund_Click);
          // 
          // txtbx2_refundAmt
          // 
-         this.txtbx2_refundAmt.Location = new System.Drawing.Point(319, 289);
+         this.txtbx2_refundAmt.Location = new System.Drawing.Point(319, 245);
          this.txtbx2_refundAmt.Name = "txtbx2_refundAmt";
          this.txtbx2_refundAmt.Size = new System.Drawing.Size(192, 31);
          this.txtbx2_refundAmt.TabIndex = 8;
          // 
          // but3_logout
          // 
-         this.but3_logout.Location = new System.Drawing.Point(44, 401);
+         this.but3_logout.Location = new System.Drawing.Point(44, 357);
          this.but3_logout.Name = "but3_logout";
          this.but3_logout.Size = new System.Drawing.Size(209, 48);
          this.but3_logout.TabIndex = 10;
@@ -138,19 +129,10 @@
          this.lab_clubName.TabIndex = 11;
          this.lab_clubName.Text = "Club name";
          // 
-         // lab_num
-         // 
-         this.lab_num.AutoSize = true;
-         this.lab_num.Location = new System.Drawing.Point(213, 91);
-         this.lab_num.Name = "lab_num";
-         this.lab_num.Size = new System.Drawing.Size(84, 25);
-         this.lab_num.TabIndex = 12;
-         this.lab_num.Text = "number";
-         // 
          // lab_budget
          // 
          this.lab_budget.AutoSize = true;
-         this.lab_budget.Location = new System.Drawing.Point(185, 139);
+         this.lab_budget.Location = new System.Drawing.Point(185, 95);
          this.lab_budget.Name = "lab_budget";
          this.lab_budget.Size = new System.Drawing.Size(78, 25);
          this.lab_budget.TabIndex = 13;
@@ -160,9 +142,8 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(864, 477);
+         this.ClientSize = new System.Drawing.Size(864, 435);
          this.Controls.Add(this.lab_budget);
-         this.Controls.Add(this.lab_num);
          this.Controls.Add(this.lab_clubName);
          this.Controls.Add(this.but3_logout);
          this.Controls.Add(this.but2_submitRefund);
@@ -172,7 +153,6 @@
          this.Controls.Add(this.lab5_refundAmt);
          this.Controls.Add(this.lab4_purchaseAmt);
          this.Controls.Add(this.lab3_budgetTotal);
-         this.Controls.Add(this.lab2_defundNum);
          this.Controls.Add(this.lab1_acctName);
          this.Name = "DashboardAdmin";
          this.Text = "Dashboard Admin";
@@ -184,7 +164,6 @@
       #endregion
 
       private System.Windows.Forms.Label lab1_acctName;
-      private System.Windows.Forms.Label lab2_defundNum;
       private System.Windows.Forms.Label lab3_budgetTotal;
       private System.Windows.Forms.Label lab4_purchaseAmt;
       private System.Windows.Forms.Label lab5_refundAmt;
@@ -194,7 +173,6 @@
       private System.Windows.Forms.TextBox txtbx2_refundAmt;
       private System.Windows.Forms.Button but3_logout;
       private System.Windows.Forms.Label lab_clubName;
-      private System.Windows.Forms.Label lab_num;
       private System.Windows.Forms.Label lab_budget;
    }
 }
