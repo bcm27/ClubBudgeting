@@ -14,7 +14,8 @@ namespace ClubBudgeting.Forms
    {
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
-
+ 
+      private const int kDateLength = 10;  // length of the date string
       private ClubList clubListForm = new ClubList();
 
       public DashboardAdmin()
@@ -31,23 +32,21 @@ namespace ClubBudgeting.Forms
       {
          lab_clubName.Text = clubListForm.getClubName;
          lab_budget.Text = 
-          sql.getCurrClubBudg(new Parameters(clubListForm.getClubIndex));
+            sql.getCurrClubBudg(new Parameters(clubListForm.getClubIndex));
       }
 
       /// <summary>
-      /// Add a purchase transaction
+      /// Add a transaction
       /// </summary>
-      private void but1_submitPurchase_Click(object sender, EventArgs e)
+      private void but1_submitTransaction_Click(object sender, EventArgs e)
       {
-         sql.addTransaction(new Parameters(clubListForm.getClubIndex));
+         if (txtbx2_date.ToString().Length == kDateLength)
+            sql.addTransaction(new Parameters(txtbx2_date, null, null,
+             txtbx1_transAmt, null, clubListForm.getClubIndex));
+         else
+            throw new Exception("Date is not formatted correctly");
+
       }
 
-      /// <summary>
-      /// Add a refund transaction
-      /// </summary>
-      private void but2_submitRefund_Click(object sender, EventArgs e)
-      {
-         sql.addTransaction(new Parameters(clubListForm.getClubIndex));
-      }
    }
 }
