@@ -12,9 +12,10 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 {
-   /*
+
    class PBI_3_1
    {
+      SQL sql = SQL.Instance;
       MySqlConnection SQLCONN = new MySqlConnection("server=localhost;"
        + "user=root;database=Club_Funds;port=3306;password=potato123");
       string stmt;
@@ -35,11 +36,11 @@ namespace ClubBudgeting.Testing
       public void PBI_1()
       {
          MySqlDataReader rd;
-         string var = "";
+         string var = "Solar Car";
          stmt = "";
          MySqlCommand cmd;
-
-         SQL.addClub(null, "Solar Car", "Club builds solar car"); // check Club
+         
+         sql.addClub(new Parameters( "Solar Car", "Club builds solar car")); // check Club
 
          try
          {
@@ -59,7 +60,7 @@ namespace ClubBudgeting.Testing
 
          Assert.True(true);
 
-         SQL.addBudget(null, 10000, 5000, 3000, 2000);   // check Budget
+         sql.addBudget(new Parameters(2 ,8, 10000, 5000, 2000));   // check Budget
 
          try
          {
@@ -79,7 +80,7 @@ namespace ClubBudgeting.Testing
 
          Assert.True(true);
       }
-
+      /*
       [Test]
       public void PBI_3()
       {
@@ -89,9 +90,9 @@ namespace ClubBudgeting.Testing
          MySqlCommand cmd;
 
          // need to add club and budget before transaction
-         SQL.addClub(null, "Solar Car", "Club builds solar car");
-         SQL.addBudget(null, 10000, 5000, 3000, 2000);
-         SQL.addTransaction("null", "2012-12-12", 300, "Food costs", 2, 1);
+         sql.addClub(null, "Solar Car", "Club builds solar car");
+         sql.addBudget(null, 10000, 5000, 3000, 2000);
+         sql.addTransaction("null", "2012-12-12", 300, "Food costs", 2, 1);
 
          try
          {
@@ -114,7 +115,7 @@ namespace ClubBudgeting.Testing
          try
          {
             // refund so this should fail 
-            SQL.addTransaction("null", "2012-12-12", -12000, "Travel", 1, 1, 1);
+            sql.addTransaction("null", "2012-12-12", -12000, "Travel", 1, 1, 1);
 
             stmt = "SELECT * FROM Transactions WHERE transactionsType = 1";
             cmd = new MySqlCommand(stmt, SQLCONN);
@@ -131,7 +132,6 @@ namespace ClubBudgeting.Testing
          }
 
          Assert.True(false);  // shouldn't be true
-      }
+      }*/
    }
-   */
 }

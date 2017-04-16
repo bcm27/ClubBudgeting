@@ -24,27 +24,29 @@ namespace ClubBudgeting.Forms
          InitializeComponent();
       }
 
-      //#####################################################################//
       /// <summary>
       /// When the form is loaded, load the data from the club onto the list
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void ViewTransactions_Load(object sender, EventArgs e)
-      { loadList(sql.getTransactions(us.CLUB_ID)); }
+      { loadList(sql.getTransactions(new Parameters(us.CLUB_ID))); }
 
       /// <summary>
-      /// 
+      /// loads the transactions for the club Id into the viewList.
       /// </summary>
       /// <param name="trans"></param>
       private void loadList(ArrayList trans)
       {
+
+         listView_trans.Columns.Add("Transactions");
+
          foreach (ArrayList dataP in trans)
          {
-            int loop = 0;
-            while(loop >= 3)
-               listView_trans.Items.Add(dataP[loop++].ToString()); // add club name to listbox
+            var item1 = new ListViewItem(new[] { "id123", "Tom", "24" });
+
+            listView_trans.Items.Add(dataP[0].ToString());
          }
-      }
+      } // end loadList
    }
 }
