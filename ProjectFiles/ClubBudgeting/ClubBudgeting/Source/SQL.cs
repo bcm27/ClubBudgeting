@@ -170,17 +170,18 @@ namespace ClubBudgeting
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc", "@club" };
-         statement = "INSERT INTO Transactions VALUES "
-            + "(null, @Date, @File, @Ext, @price, @desc, @club, false);";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
+         object o = pLists.PARAM_LIST[5];
+         string s = pLists.PARAM_LIST[3].ToString();
 
-         if(double.Parse(getCurrClubBudg(
-            new Parameters(pLists.PARAM_LIST[5]))) 
-            >= double.Parse(pLists.PARAM_LIST[3].ToString()))
+         if (double.Parse(getCurrClubBudg(new Parameters(o))) 
+            >= double.Parse(s))
          {
 
+            string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc", "@club" };
+            statement = "INSERT INTO Transactions VALUES "
+               + "(null, @Date, @File, @Ext, @price, @desc, @club, false);";
+            cmd = new MySqlCommand(statement, SQLCONN);
+            cmd.Prepare();
             try
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();

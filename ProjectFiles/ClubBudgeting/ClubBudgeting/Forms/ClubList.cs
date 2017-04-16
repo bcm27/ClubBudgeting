@@ -39,7 +39,7 @@ namespace ClubBudgeting.Forms
 
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
-         clubIndex = listBox1_clubList.SelectedIndex.ToString();
+         clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
          clubName = listBox1_clubList.SelectedItem.ToString();
 
          DashboardAdmin adminForm = new DashboardAdmin();
