@@ -60,9 +60,16 @@ namespace ClubBudgeting.Forms
       /// <param name="e"></param>
       private void but1_view_transactions_Click(object sender, EventArgs e)
       {
-         ViewTransactions newForm = new ViewTransactions(); // Instantiate a Form3 object.
-         newForm.StartPosition = FormStartPosition.CenterParent;
-         newForm.Show(ParentForm);
+         try
+         {
+            ViewTransactions newForm = new ViewTransactions(); // Instantiate a Form3 object.
+            newForm.StartPosition = FormStartPosition.CenterParent;
+            newForm.Show(ParentForm);
+         }
+         catch
+         {
+            System.Diagnostics.Debug.WriteLine("Faildd to view transactions");
+         }
       }
    }
 }
