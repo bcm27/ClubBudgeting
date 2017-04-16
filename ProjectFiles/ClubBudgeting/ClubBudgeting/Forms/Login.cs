@@ -34,5 +34,12 @@ namespace ClubBudgeting
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
       }
+
+      private void but1_adminForm_Click(object sender, EventArgs e)
+      {
+         ClubList newForm = new ClubList();
+         newForm.StartPosition = FormStartPosition.CenterParent;
+         newForm.Show(ParentForm);
+      }
    }
 }

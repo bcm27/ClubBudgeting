@@ -334,7 +334,7 @@ namespace ClubBudgeting
          {
             Reader = cmd.ExecuteReader();
 
-            // read in and store each club's name
+            // read in and store each club's name and 
             while (Reader.Read())
             {
                ArrayList clubInfo = new ArrayList();

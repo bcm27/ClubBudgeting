@@ -70,7 +70,7 @@
          this.Controls.Add(this.listBox1_clubList);
          this.Controls.Add(this.lab1_selectClub);
          this.Name = "ClubList";
-         this.Text = "DashboardAdmin";
+         this.Text = "Club List";
          this.ResumeLayout(false);
          this.PerformLayout();
 

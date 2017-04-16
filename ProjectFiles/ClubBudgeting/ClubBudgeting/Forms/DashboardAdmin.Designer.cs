@@ -38,6 +38,9 @@
          this.but2_submitRefund = new System.Windows.Forms.Button();
          this.txtbx2_refundAmt = new System.Windows.Forms.TextBox();
          this.but3_logout = new System.Windows.Forms.Button();
+         this.lab_clubName = new System.Windows.Forms.Label();
+         this.lab_num = new System.Windows.Forms.Label();
+         this.lab_budget = new System.Windows.Forms.Label();
          this.SuspendLayout();
          // 
          // lab1_acctName
@@ -126,11 +129,41 @@
          this.but3_logout.Text = "Logout";
          this.but3_logout.UseVisualStyleBackColor = true;
          // 
+         // lab_clubName
+         // 
+         this.lab_clubName.AutoSize = true;
+         this.lab_clubName.Location = new System.Drawing.Point(203, 41);
+         this.lab_clubName.Name = "lab_clubName";
+         this.lab_clubName.Size = new System.Drawing.Size(115, 25);
+         this.lab_clubName.TabIndex = 11;
+         this.lab_clubName.Text = "Club name";
+         // 
+         // lab_num
+         // 
+         this.lab_num.AutoSize = true;
+         this.lab_num.Location = new System.Drawing.Point(213, 91);
+         this.lab_num.Name = "lab_num";
+         this.lab_num.Size = new System.Drawing.Size(84, 25);
+         this.lab_num.TabIndex = 12;
+         this.lab_num.Text = "number";
+         // 
+         // lab_budget
+         // 
+         this.lab_budget.AutoSize = true;
+         this.lab_budget.Location = new System.Drawing.Point(185, 139);
+         this.lab_budget.Name = "lab_budget";
+         this.lab_budget.Size = new System.Drawing.Size(78, 25);
+         this.lab_budget.TabIndex = 13;
+         this.lab_budget.Text = "budget";
+         // 
          // DashboardAdmin
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(864, 477);
+         this.Controls.Add(this.lab_budget);
+         this.Controls.Add(this.lab_num);
+         this.Controls.Add(this.lab_clubName);
          this.Controls.Add(this.but3_logout);
          this.Controls.Add(this.but2_submitRefund);
          this.Controls.Add(this.txtbx2_refundAmt);
@@ -142,7 +175,7 @@
          this.Controls.Add(this.lab2_defundNum);
          this.Controls.Add(this.lab1_acctName);
          this.Name = "DashboardAdmin";
-         this.Text = "DashboardAdmin";
+         this.Text = "Dashboard Admin";
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -160,5 +193,8 @@
       private System.Windows.Forms.Button but2_submitRefund;
       private System.Windows.Forms.TextBox txtbx2_refundAmt;
       private System.Windows.Forms.Button but3_logout;
+      private System.Windows.Forms.Label lab_clubName;
+      private System.Windows.Forms.Label lab_num;
+      private System.Windows.Forms.Label lab_budget;
    }
 }

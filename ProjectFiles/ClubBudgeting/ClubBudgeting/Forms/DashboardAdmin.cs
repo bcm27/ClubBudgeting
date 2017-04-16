@@ -15,6 +15,8 @@ namespace ClubBudgeting.Forms
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
+      private ClubList clubListForm;
+
       public DashboardAdmin()
       {
          InitializeComponent();
@@ -24,6 +26,7 @@ namespace ClubBudgeting.Forms
 
       public void budgetInfo()
       {
+         lab_clubName.Text = clubListForm.listBox.SelectedIndex.ToString();
          //lab1_acctName.Text = "Account Name: " + SQL.getAccountName(us.CLUB_ID);
          //lab2_defundNum.Text = "Defund Number: " + SQL.getDefund(us.CLUB_ID);
          //lab3_budgetTotal.Text = "Budget Total: $" + SQL.getBudget(us.CLUB_ID);
