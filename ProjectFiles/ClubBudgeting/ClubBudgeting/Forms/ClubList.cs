@@ -15,7 +15,9 @@ namespace ClubBudgeting.Forms
    {
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
+      
       private static ArrayList clubNames = new ArrayList();
+      private static string clubIndex;
 
       public ClubList()
       {
@@ -28,15 +30,27 @@ namespace ClubBudgeting.Forms
       {
          clubNames = sql.CLUB_LIST;
 
-         foreach (string cName in clubNames)
+         foreach (ArrayList club in clubNames)
          {
-            listBox1_clubList.Items.Add(cName);
+            listBox1_clubList.Items.Add(club[1]); // add club name to listbox
          }
       }
 
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
+         clubIndex = listBox1_clubList.SelectedIndex.ToString();
 
+         DashboardAdmin adminForm = new DashboardAdmin();
+         adminForm.StartPosition = FormStartPosition.CenterParent;
+         adminForm.Show(ParentForm);
+      }
+
+      public string getClubIndex
+      {
+         get
+         {
+            return clubIndex;
+         }
       }
 
    }

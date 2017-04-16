@@ -93,7 +93,12 @@
     <Compile Include="Testing\PBI_15_12_6.cs" />
     <Compile Include="Testing\PBI_2_5.cs" />
     <Compile Include="Testing\PBI_3_1.cs" />
-
+    <EmbeddedResource Include="Forms\ClubList.resx">
+      <DependentUpon>ClubList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DashboardAdmin.resx">
+      <DependentUpon>DashboardAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DashboardMember.resx">
       <DependentUpon>DashboardMember.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,7 +107,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewTransactions.resx">
       <DependentUpon>ViewTransactions.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

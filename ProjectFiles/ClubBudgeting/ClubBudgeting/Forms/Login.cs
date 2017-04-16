@@ -13,6 +13,8 @@ namespace ClubBudgeting
 {
    public partial class Form1 : Form
    {
+      private ClubList clubForm = new ClubList();
+
       public Form1()
       {
          InitializeComponent();
@@ -33,6 +35,12 @@ namespace ClubBudgeting
          DashboardMember newForm = new DashboardMember(); // Instantiate a Form3 object.
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
+      }
+
+      private void but1_adminForm_Click(object sender, EventArgs e)
+      {
+         clubForm.StartPosition = FormStartPosition.CenterParent;
+         clubForm.Show(ParentForm);
       }
    }
 }
