@@ -22,6 +22,7 @@ namespace ClubBudgeting
 
       public void addParams(params object[] sList)
       {
+         prams.Clear();
          foreach (object o in sList)
             prams.Add(o);
       }

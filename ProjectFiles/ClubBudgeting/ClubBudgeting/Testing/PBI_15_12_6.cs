@@ -121,7 +121,7 @@ namespace ClubBudgeting.Testing
          Assert.True(false);
       }
 
-      /*
+     
       /// <summary>
       /// testing for user logins, correct passwords, incorect passwords, 
       /// bad user, different types of users
@@ -132,25 +132,25 @@ namespace ClubBudgeting.Testing
          bool accessed = false;
 
          // correct user/pass for a user
-         accessed = sql.LogIn("Steve", "1234567890"); 
+         accessed = sql.checkPass("Steve", "1234567890"); 
          Assert.True(accessed);
 
          // false pass for a correct user user
-         accessed = sql.LogIn("Steve", "cat"); 
+         accessed = sql.checkPass("Steve", "cat"); 
          Assert.True(accessed);
 
          // incorrect user
-         accessed = sql.LogIn("joe", "dog");
+         accessed = sql.checkPass("joe", "dog");
          Assert.True(accessed);
 
          // correct user/pass for a admin
-         accessed = sql.LogIn("mike", "1234567890"); 
+         accessed = sql.checkPass("mike", "1234567890"); 
          Assert.True(accessed);
 
          // incorrect pass for a correct user
-         accessed = sql.LogIn("mike", "1234567890"); 
+         accessed = sql.checkPass("mike", "1234567890"); 
          Assert.True(accessed);
-      }*/
+      }
 
 
       /// <summary>
@@ -184,6 +184,7 @@ namespace ClubBudgeting.Testing
          }
 
          Assert.True(true);
+
          /*
          // not a budgetProposal file
          sql.addBudget(@"C:\path\to\the\Incorrect_file.XML", "'2017-04-21'"); 

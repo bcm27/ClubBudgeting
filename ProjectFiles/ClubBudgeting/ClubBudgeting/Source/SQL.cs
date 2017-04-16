@@ -113,7 +113,7 @@ namespace ClubBudgeting
       public bool checkPass(string user, string pass)
       {
          Parameters pList = new Parameters(user, sec.hash(pass));
-         statement = "SELECT * FROM Member"
+         statement = "SELECT userName FROM Member"
             + " WHERE userName = @user AND pass = @pass;";
          string[] listing = { "@user", "@pass" };
          cmd = new MySqlCommand(statement, SQLCONN);
@@ -121,10 +121,15 @@ namespace ClubBudgeting
          {
             Reader = addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
+
          }
          catch
          {
             return false;
+         }
+         finally
+         {
+            Reader.Close();
          }
          return true;
       }
@@ -146,7 +151,7 @@ namespace ClubBudgeting
          {
             try
             {
-               Reader = 
+               Reader =
                   addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
                Reader.Read();
                return new Tuple<bool, string>(Reader[0].ToString().ToUpper() ==
@@ -158,6 +163,10 @@ namespace ClubBudgeting
                   + ex.Message, "Error", MessageBoxButtons.OK,
                   MessageBoxIcon.Error);
                return null;
+            }
+            finally
+            {
+               Reader.Close();
             }
          }
          return null;
@@ -179,15 +188,22 @@ namespace ClubBudgeting
             + "(null, @Date, @File, @Ext, @price, @desc, @club, false);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
-         try
+
+         if(double.Parse(getCurrClubBudg(
+            new Parameters(pLists.PARAM_LIST[5]))) 
+            >= double.Parse(pLists.PARAM_LIST[3].ToString()))
          {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-         }
-         catch (MySql.Data.MySqlClient.MySqlException ex)
-         {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
+
+            try
+            {
+               addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+            }
+            catch (MySql.Data.MySqlClient.MySqlException ex)
+            {
+               MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               return false;
+            }
          }
          return true;
       } // addTransaction
@@ -295,6 +311,10 @@ namespace ClubBudgeting
          {
             return false;
          }
+         finally
+         {
+            Reader.Close();
+         }
          return true;
       }
 
@@ -307,15 +327,17 @@ namespace ClubBudgeting
       {
          string[] listing = { "@termId", "@file", "@ext" };
          statement = "INSERT INTO BudgetProposal VALUES (null, @termId, "
-            + "@file, @ext;";
+            + "@file, @ext);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
          {
             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          return true;
@@ -329,11 +351,11 @@ namespace ClubBudgeting
       public bool getBudgetProp(Parameters pLists)
       {
          string[] listing = { "@BdgPropId" };
-         statement = "SELECT proposal, fileExtention FROM Transactions"
+         statement = "SELECT proposal, fileExtention FROM BudgetProposal "
             + "WHERE id = @BdgPropId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
-
+         Reader.Close();
          try
          {
             Reader =
@@ -348,9 +370,15 @@ namespace ClubBudgeting
                   + Reader[1].ToString(), (byte[])Reader[0]);
             }
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
+         }
+         finally
+         {
+            Reader.Close();
          }
          return true;
       }
@@ -363,7 +391,6 @@ namespace ClubBudgeting
       {
          statement = "SELECT max(id) FROM Term";
          cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
          string temp;
 
          try
@@ -375,6 +402,41 @@ namespace ClubBudgeting
          catch
          {
             return null;
+         }
+         finally
+         {
+            Reader.Close();
+         }
+         return temp;
+      }
+
+      /// <summary>
+      /// returns current semester Id
+      /// </summary>
+      /// <returns>return ID</returns>
+      public string getCurrClubBudg(Parameters pList)
+      {
+         string[] listings = { "@clubId"};
+         statement = "SELECT balance, max(termId) FROM budget "
+            + "WHERE clubId = @clubId";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         string temp;
+
+         try
+         {
+            Reader = 
+               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         }
+         catch
+         {
+            return null;
+         }
+         finally
+         {
+            Reader.Close();
          }
          return temp;
       }
@@ -428,6 +490,10 @@ namespace ClubBudgeting
          catch
          {
             throw new Exception("fillClubArray failed");
+         }
+         finally
+         {
+            Reader.Close();
          }
 
          return clubArray;
