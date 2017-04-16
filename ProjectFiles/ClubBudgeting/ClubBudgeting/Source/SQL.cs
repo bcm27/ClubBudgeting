@@ -35,7 +35,7 @@ namespace ClubBudgeting
       /// <summary>
       /// security for passwords
       /// </summary>
-      private Security sec =  Security.Instance;
+      private Security sec = Security.Instance;
 
       /// <summary>
       /// open file locations to save, select from 
@@ -103,7 +103,7 @@ namespace ClubBudgeting
        * Functions
        * ---------
        */
-       
+
       /// <summary>
       /// if user/pass combo exists, then it is a user
       /// </summary>
@@ -112,18 +112,18 @@ namespace ClubBudgeting
       /// <returns></returns>
       public bool checkPass(string user, string pass)
       {
-         string[] pList = { user, pass};
+         Parameters pList = new Parameters(user, sec.hash(pass));
          statement = "SELECT * FROM Member"
             + " WHERE userName = @user AND pass = @pass;";
-         string[] listing = { "@user", "@pass"};
+         string[] listing = { "@user", "@pass" };
          cmd = new MySqlCommand(statement, SQLCONN);
          try
          {
-            Reader = addParams(cmd, listing, pList).ExecuteReader();
+            Reader = addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
          }
          catch
-         { 
+         {
             return false;
          }
          return true;
@@ -137,7 +137,7 @@ namespace ClubBudgeting
       /// <returns>Tuple(adminPrivleges, clubId)</returns>
       public Tuple<bool, string> logIn(string user, string pass)
       {
-         string[] pList = { user, sec.hash(pass) };
+         Parameters pList = new Parameters(user, sec.hash(pass));
          statement = "SELECT * FROM Member"
             + " WHERE userName = @user AND pass = @pass;";
          string[] listing = { "@user", "@pass" };
@@ -146,15 +146,16 @@ namespace ClubBudgeting
          {
             try
             {
-               Reader = addParams(cmd, listing, pList).ExecuteReader();
+               Reader = 
+                  addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
                Reader.Read();
                return new Tuple<bool, string>(Reader[0].ToString().ToUpper() ==
                   "FALSE", Reader[1].ToString());
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-               MessageBox.Show("Error " + ex.Number + " has occurred: " 
-                  + ex.Message,"Error", MessageBoxButtons.OK,
+               MessageBox.Show("Error " + ex.Number + " has occurred: "
+                  + ex.Message, "Error", MessageBoxButtons.OK,
                   MessageBoxIcon.Error);
                return null;
             }
@@ -180,14 +181,14 @@ namespace ClubBudgeting
          cmd.Prepare();
          try
          {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();     
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number +" has occurred: "+ex.Message,
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
-         }         
+         }
          return true;
       } // addTransaction
 
@@ -209,7 +210,7 @@ namespace ClubBudgeting
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error "+ex.Number + " has occurred: " +ex.Message,
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
@@ -234,7 +235,7 @@ namespace ClubBudgeting
          {
             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
-         catch 
+         catch
          {
             return false;
          }
@@ -249,7 +250,7 @@ namespace ClubBudgeting
       public bool addPDFReceipt(Parameters pLists)
       {
          string[] listing = { "@file", "@ext", "@transId" };
-         statement = "UPDATE Transactions SET invoice = @file " 
+         statement = "UPDATE Transactions SET invoice = @file "
             + "AND fileExtention = @ext WHERE id = @transId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
@@ -290,11 +291,92 @@ namespace ClubBudgeting
                   + Reader[1].ToString(), (byte[])Reader[0]);
             }
          }
-         catch 
+         catch
          {
             return false;
          }
          return true;
+      }
+
+      /// <summary>
+      /// adds a pdf receipts
+      /// </summary>
+      /// <param name="pLists">@termId, @file, @ext</param>
+      /// <returns>completed</returns>
+      public bool AddBudgetProp(Parameters pLists)
+      {
+         string[] listing = { "@termId", "@file", "@ext" };
+         statement = "INSERT INTO BudgetProposal VALUES (null, @termId, "
+            + "@file, @ext;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         try
+         {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         }
+         catch
+         {
+            return false;
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// retrieves PDF from DB
+      /// </summary>
+      /// <param name="pLists">@BdgPropId</param>
+      /// <returns></returns>
+      public bool getBudgetProp(Parameters pLists)
+      {
+         string[] listing = { "@BdgPropId" };
+         statement = "SELECT proposal, fileExtention FROM Transactions"
+            + "WHERE id = @BdgPropId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try
+         {
+            Reader =
+               addParams(cmd, listing, pLists.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+
+            // Choose and set path
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+               System.IO.File.WriteAllBytes(fbd.SelectedPath
+                  + "\\BudgetProposal."
+                  + Reader[1].ToString(), (byte[])Reader[0]);
+            }
+         }
+         catch
+         {
+            return false;
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// returns current semester Id
+      /// </summary>
+      /// <returns>return ID</returns>
+      public string getCurrSemesterId()
+      {
+         statement = "SELECT max(id) FROM Term";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         string temp;
+
+         try
+         {
+            Reader = cmd.ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         }
+         catch
+         {
+            return null;
+         }
+         return temp;
       }
 
       /// <summary>
@@ -313,11 +395,11 @@ namespace ClubBudgeting
       /// <param name="prams">the parameters</param>
       /// <returns>sterilized command</returns>
       private MySqlCommand addParams
-         (MySqlCommand cmd, string[] listing, string[] prams)
+         (MySqlCommand cmd, string[] listing, ArrayList prams)
       {
          for (int i = 0; i < listing.Length; i++)
             cmd.Parameters.AddWithValue(listing[i], prams[i]);
-         
+
          return cmd;
       }
 

@@ -55,7 +55,7 @@ CREATE TABLE BudgetProposal (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     termId INT NOT NULL,
     proposal LONGBLOB NOT NULL,
-    fileExtention VARCHAR(4) DEFAULT NULL,
+    fileExtention VARCHAR(4) NOT NULL,
 	CONSTRAINT FKBudgetProposal_termId FOREIGN KEY (termId) REFERENCES Term (id)
 		ON DELETE CASCADE ON UPDATE CASCADE    
 );
@@ -68,5 +68,7 @@ insert into Term Values (NULL, 'F15');
 insert into Term Values (NULL, 'S16');
 insert into Term Values (NULL, 'F16');
 insert into Term Values (NULL, 'S17');
+
+select * from BudgetProposal;
     
     

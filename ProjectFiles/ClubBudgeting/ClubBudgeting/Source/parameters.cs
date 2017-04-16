@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,25 +9,27 @@ namespace ClubBudgeting
 {
    class Parameters
    {
-      string[] prams;
+      ArrayList prams;
       
-      public Parameters() { }
+      public Parameters() { prams = new ArrayList(); }
 
-      public Parameters( string[] prams)
+      public Parameters(params object[] sList)
       {
-         this.prams = prams;
+         prams = new ArrayList();
+         foreach (object o in sList)
+            prams.Add(o);
       }
 
-
-      public void addParams(params string[] sList)
+      public void addParams(params object[] sList)
       {
-         this.prams = sList;
+         foreach (object o in sList)
+            prams.Add(o);
       }
 
       /// <summary>
       /// get functions for getting and setting
       /// </summary>
-      public string[] PARAM_LIST
+      public ArrayList PARAM_LIST
       {
          get { return prams; }
          set { prams = value; }

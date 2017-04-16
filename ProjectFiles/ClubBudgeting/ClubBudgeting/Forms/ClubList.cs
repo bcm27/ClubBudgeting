@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace ClubBudgeting.Forms
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
-      private static string[] clubNames;
+      private static ArrayList clubNames;
 
       public ClubList()
       {

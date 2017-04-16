@@ -150,7 +150,7 @@ namespace ClubBudgeting.Testing
          // incorrect pass for a correct user
          accessed = sql.LogIn("mike", "1234567890"); 
          Assert.True(accessed);
-      }
+      }*/
 
 
       /// <summary>
@@ -160,17 +160,19 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_6()
       {
-         string statement, temp = "";
          MySqlCommand cmd;
          MySqlDataReader rd;
+         Parameters pList = new Parameters
+            (sql.getCurrSemesterId(), System.IO.File.ReadAllBytes
+            (@"F:\Documents\GitHub\MeierPiler\Timelog.xlsx"), "xlsx");
 
          // correct file and type
-         sql.addBudget(@"C:\path\to\the\budgetProposal.XML", "'2017-04-20'"); 
+         sql.AddBudgetProp(pList); 
 
          try
          {
-            statement = "SELECT * FROM BudgetProposals WHERE dateAdded = " 
-               + "'2017-04-20'";
+            string statement = 
+               "SELECT * FROM BudgetProposal;";
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
@@ -182,7 +184,7 @@ namespace ClubBudgeting.Testing
          }
 
          Assert.True(true);
-
+         /*
          // not a budgetProposal file
          sql.addBudget(@"C:\path\to\the\Incorrect_file.XML", "'2017-04-21'"); 
 
@@ -221,8 +223,8 @@ namespace ClubBudgeting.Testing
             Assert.True(true); // file does not exist.
          }
 
-         Assert.True(false);
-      }*/
+         Assert.True(false);*/
+      }
    }
    
 }
