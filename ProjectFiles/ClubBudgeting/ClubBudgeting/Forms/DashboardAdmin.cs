@@ -40,13 +40,22 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void but1_submitTransaction_Click(object sender, EventArgs e)
       {
-         if (txtbx2_date.ToString().Length == kDateLength)
+         double parsedVal;
+
+         // transaction amount must be double and date must be formatted right
+         if (txtbx2_date.Text.ToString().Length == kDateLength)
             sql.addTransaction(new Parameters(txtbx2_date, null, null,
              txtbx1_transAmt, null, clubListForm.getClubIndex));
          else
             throw new Exception("Date is not formatted correctly");
-
       }
 
+      /// <summary>
+      /// Add a club
+      /// </summary>
+      private void but_addClub_Click(object sender, EventArgs e)
+      {
+
+      }
    }
 }
