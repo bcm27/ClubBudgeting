@@ -1,3 +1,5 @@
+USE ClubSchema2;
+
 INSERT INTO Club VALUES
   (NULL, 'Solar Car', 'Club that builds and races a solar car'),
   (NULL, 'Plus One', 'A cappella group that performs on campus'),
@@ -50,7 +52,7 @@ INSERT INTO Term VALUES
   (NULL, 2, 8, 500, 150, 350),
   (NULL, 3, 8, 400, 400, 0),
   (NULL, 4, 8, 600, 50, 525),
-  (NULL, 5, 8, 200, 50, 150, 0),
+  (NULL, 5, 8, 200, 50, 150),
   (NULL, 6, 8, 900, 225, 675),
   (NULL, 7, 8, 200, 75, 125),
   (NULL, 8, 8, 15000, 7000, 8000),

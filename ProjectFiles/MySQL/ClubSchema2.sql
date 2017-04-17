@@ -59,3 +59,4 @@ CREATE TABLE BudgetProposal (
 	CONSTRAINT FKBudgetProposal_termId FOREIGN KEY (termId) REFERENCES Term (id)
 		ON DELETE CASCADE ON UPDATE CASCADE    
 );
+
