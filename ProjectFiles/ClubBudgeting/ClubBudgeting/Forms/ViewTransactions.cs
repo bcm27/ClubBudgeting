@@ -55,10 +55,8 @@ namespace ClubBudgeting.Forms
             desc = dataP[5].ToString(),
             appr = dataP[7].ToString();
 
-            var transRow = new ListViewItem(new[] {ID,
-               purDate, cost, desc, appr});
-
-            listView_trans.Items.Add(transRow);
+            listView_trans.Items.Add(new ListViewItem(new[] {ID,
+               purDate, cost, desc, appr}));
          }
       } // end loadList
    }
