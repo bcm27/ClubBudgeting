@@ -19,7 +19,6 @@ namespace ClubBudgeting.Testing
       MySqlConnection SQLCONN = new MySqlConnection
          ("server=localhost;user=root;database=ClubSchema2;port=3306;"
          +"password=potato123");
-      bool pass;
       SQL sql = SQL.Instance;
       User u = User.Instance;
       Parameters pList;
@@ -29,23 +28,18 @@ namespace ClubBudgeting.Testing
       {
          pList = new Parameters();
          SQLCONN.Open();
-         pass = true;
       }
 
       [TearDown]
       public void afterTests()
       {
          SQLCONN.Close();
-         pass = true;
       }
       
 
       [Test]
       public void addTest()
       {
-         string statement, temp = "";
-         MySqlCommand cmd;
-         MySqlDataReader rd;
          // correct format for a purchase
          pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "1");
          Assert.True(sql.addTransaction(pList));
