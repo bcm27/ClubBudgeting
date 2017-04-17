@@ -38,14 +38,24 @@ namespace ClubBudgeting.Forms
       /// <param name="trans"></param>
       private void loadList(ArrayList trans)
       {
+         listView_trans.View = View.Details;
 
-         listView_trans.Columns.Add("Transactions");
+         listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
+         listView_trans.Columns.Add("Purchase Date", 100);
+         listView_trans.Columns.Add("Cost");
+         listView_trans.Columns.Add("Description", 180);
+         listView_trans.Columns.Add("Approved", 25);
 
          foreach (ArrayList dataP in trans)
          {
-            var item1 = new ListViewItem(new[] { "id123", "Tom", "24" });
+            string ID = dataP[0].ToString(),
+            purDate = dataP[1].ToString().Substring(0, 9),
+            cost = dataP[4].ToString(),
+            desc = dataP[5].ToString(),
+            appr = dataP[7].ToString();
 
-            listView_trans.Items.Add(dataP[0].ToString());
+            listView_trans.Items.Add(new ListViewItem(new[] {ID,
+               purDate, cost, desc, appr}));
          }
       } // end loadList
    }
