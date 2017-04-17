@@ -65,7 +65,11 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+<<<<<<< HEAD
          this.ClientSize = new System.Drawing.Size(802, 516);
+=======
+         this.ClientSize = new System.Drawing.Size(758, 516);
+>>>>>>> bcaf68c6596f8d0d013f4b91371514ab8737c303
          this.Controls.Add(this.but1_clubInfo);
          this.Controls.Add(this.listBox1_clubList);
          this.Controls.Add(this.lab1_selectClub);

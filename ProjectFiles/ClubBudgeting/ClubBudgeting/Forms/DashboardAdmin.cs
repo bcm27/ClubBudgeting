@@ -50,12 +50,12 @@ namespace ClubBudgeting.Forms
             {
                sql.addTransaction(new Parameters(txtbx2_date.Text, null, null,
                 txtbx1_transAmt.Text, null, clubListForm.getClubIndex));
-               lab_transStatus.Text = "Was successful";
+               lab_transStatus.Text = "Successfully added";
             }
             else
                throw new Exception();
          }
-         catch (Exception ex)
+         catch
          {
             lab_transStatus.Text = "Failed";
             MessageBox.Show("Error: could not add transaction - " 
@@ -69,17 +69,23 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void but_addClub_Click(object sender, EventArgs e)
       {
-         if (!string.IsNullOrEmpty(txtbx_clubDesc.Text) && 
-          !string.IsNullOrEmpty(txtbx_clubName.Text))
+         try
          {
-            sql.addClub(new Parameters(txtbx_clubName.Text,
-             txtbx_clubDesc.Text));
-            lab_clubStatus.Text = "Successfully added";
+            if (!string.IsNullOrEmpty(txtbx_clubDesc.Text) &&
+             !string.IsNullOrEmpty(txtbx_clubName.Text))
+            {
+               sql.addClub(new Parameters(txtbx_clubName.Text,
+                txtbx_clubDesc.Text));
+               lab_clubStatus.Text = "Successfully added";
+            }
+            else
+               throw new Exception();
          }
-         else
+         catch 
          {
-            lab_transStatus.Text = "Failure to add";
-            throw new Exception("Unable to add club");
+            lab_transStatus.Text = "Failed";
+            MessageBox.Show("Error: could not add club - make sure"
+             + " club name and description are not blank");
          }
       }
    }
