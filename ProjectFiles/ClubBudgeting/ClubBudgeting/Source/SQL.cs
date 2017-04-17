@@ -513,7 +513,7 @@ namespace ClubBudgeting
       {
          get { return clubArray; }
       }
-
+      // hello
       /// <summary>
       /// adds a budget to the specified club
       /// </summary>
