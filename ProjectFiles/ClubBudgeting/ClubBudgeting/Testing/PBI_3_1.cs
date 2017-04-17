@@ -50,7 +50,6 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
 
             rd.Read();
-            var = rd[0].ToString();
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
@@ -75,14 +74,16 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
 
             rd.Read();
-            var = rd[1].ToString();
-            rd.Close();
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
             MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Assert.True(false);
+         }
+         finally
+         {
+            rd.Close();
          }
 
          Assert.True(true);
