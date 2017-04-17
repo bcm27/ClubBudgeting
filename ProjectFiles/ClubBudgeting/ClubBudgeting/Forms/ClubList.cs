@@ -45,12 +45,19 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
-         clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
-         clubName = listBox1_clubList.SelectedItem.ToString();
+         try
+         {
+            clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
+            clubName = listBox1_clubList.SelectedItem.ToString();
 
-         DashboardAdmin adminForm = new DashboardAdmin();
-         adminForm.StartPosition = FormStartPosition.CenterParent;
-         adminForm.Show(ParentForm);
+            DashboardAdmin adminForm = new DashboardAdmin();
+            adminForm.StartPosition = FormStartPosition.CenterParent;
+            adminForm.Show(ParentForm);
+         }
+         catch
+         {
+            MessageBox.Show("Error: please select a club");
+         }
       }
 
       /// <summary>

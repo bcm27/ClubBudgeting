@@ -65,7 +65,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(802, 516);
+         this.ClientSize = new System.Drawing.Size(758, 516);
          this.Controls.Add(this.but1_clubInfo);
          this.Controls.Add(this.listBox1_clubList);
          this.Controls.Add(this.lab1_selectClub);
