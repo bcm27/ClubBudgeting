@@ -46,6 +46,8 @@
          this.lab_ = new System.Windows.Forms.Label();
          this.label3 = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
+         this.lab_transStatus = new System.Windows.Forms.Label();
+         this.lab_clubStatus = new System.Windows.Forms.Label();
          this.SuspendLayout();
          // 
          // lab1_acctName
@@ -138,7 +140,7 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(336, 325);
+         this.label1.Location = new System.Drawing.Point(336, 335);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(152, 25);
          this.label1.TabIndex = 15;
@@ -206,11 +208,31 @@
          this.label4.TabIndex = 22;
          this.label4.Text = "Add a transaction:";
          // 
+         // lab_transStatus
+         // 
+         this.lab_transStatus.AutoSize = true;
+         this.lab_transStatus.Location = new System.Drawing.Point(763, 257);
+         this.lab_transStatus.Name = "lab_transStatus";
+         this.lab_transStatus.Size = new System.Drawing.Size(73, 25);
+         this.lab_transStatus.TabIndex = 23;
+         this.lab_transStatus.Text = "Status";
+         // 
+         // lab_clubStatus
+         // 
+         this.lab_clubStatus.AutoSize = true;
+         this.lab_clubStatus.Location = new System.Drawing.Point(763, 480);
+         this.lab_clubStatus.Name = "lab_clubStatus";
+         this.lab_clubStatus.Size = new System.Drawing.Size(73, 25);
+         this.lab_clubStatus.TabIndex = 24;
+         this.lab_clubStatus.Text = "Status";
+         // 
          // DashboardAdmin
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(880, 719);
+         this.ClientSize = new System.Drawing.Size(988, 719);
+         this.Controls.Add(this.lab_clubStatus);
+         this.Controls.Add(this.lab_transStatus);
          this.Controls.Add(this.label4);
          this.Controls.Add(this.label3);
          this.Controls.Add(this.but_addClub);
@@ -256,5 +278,7 @@
       private System.Windows.Forms.Label lab_;
       private System.Windows.Forms.Label label3;
       private System.Windows.Forms.Label label4;
+      private System.Windows.Forms.Label lab_transStatus;
+      private System.Windows.Forms.Label lab_clubStatus;
    }
 }

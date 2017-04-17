@@ -43,11 +43,18 @@ namespace ClubBudgeting.Forms
          double parsedVal;
 
          // transaction amount must be double and date must be formatted right
-         if (txtbx2_date.Text.ToString().Length == kDateLength)
-            sql.addTransaction(new Parameters(txtbx2_date, null, null,
-             txtbx1_transAmt, null, clubListForm.getClubIndex));
+         if (txtbx2_date.Text.ToString().Length == kDateLength &&
+          double.TryParse(txtbx1_transAmt.Text, out parsedVal))
+         {
+            sql.addTransaction(new Parameters(txtbx2_date.Text, null, null,
+             txtbx1_transAmt.Text, null, clubListForm.getClubIndex));
+            lab_transStatus.Text = "Successfully added";
+         }
          else
-            throw new Exception("Date is not formatted correctly");
+         {
+            lab_transStatus.Text = "Failure to add";
+            throw new Exception("Unable to add transaction - fix formatting");
+         }
       }
 
       /// <summary>
@@ -55,7 +62,18 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void but_addClub_Click(object sender, EventArgs e)
       {
-
+         if (!string.IsNullOrEmpty(txtbx_clubDesc.Text) && 
+          !string.IsNullOrEmpty(txtbx_clubName.Text))
+         {
+            sql.addClub(new Parameters(null, txtbx_clubName.Text,
+             txtbx_clubDesc.Text));
+            lab_clubStatus.Text = "Successfully added";
+         }
+         else
+         {
+            lab_transStatus.Text = "Failure to add";
+            throw new Exception("Unable to add club");
+         }
       }
    }
 }
