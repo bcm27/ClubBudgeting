@@ -173,7 +173,7 @@ namespace ClubBudgeting
          string s = pLists.PARAM_LIST[3].ToString();
 
          if (double.Parse(getCurrClubBudg(new Parameters(o)))
-            >= double.Parse(s))
+            >= Math.Abs(double.Parse(s)))
          {
 
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
@@ -513,7 +513,7 @@ namespace ClubBudgeting
       {
          get { return clubArray; }
       }
-
+      // hello
       /// <summary>
       /// adds a budget to the specified club
       /// </summary>
@@ -521,9 +521,10 @@ namespace ClubBudgeting
       /// <returns></returns>
       public bool addBudget(Parameters pLists)
       {
-         string[] listing = { "@clubId", "@termId:", "@Budget", "@bal", "@debt" };
+         string[] listing = { "@clubId", "@termId", "@Budget", "@bal",
+            "@debt" };
          statement = "INSERT INTO Budget VALUES "
-            + "(null, @clubId, @termId, @Budget, @bal, @debt);";
+            + "( NULL, @clubId, @termId, @Budget, @bal, @debt );";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
@@ -532,7 +533,8 @@ namespace ClubBudgeting
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message + ex.StackTrace,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
