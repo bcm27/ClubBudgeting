@@ -14,6 +14,8 @@ namespace ClubBudgeting
    public partial class Form1 : Form
    {
       private ClubList clubForm = new ClubList();
+      private static SQL sql = SQL.Instance;
+      private static User us = User.Instance;
 
       public Form1()
       {
@@ -29,19 +31,38 @@ namespace ClubBudgeting
       /// <param name="e"></param>
       private void but1_login_Click(object sender, EventArgs e)
       {
-         // check user previledges if admin launch admin window
+         try
+         {
+            string check = sql.logIn(txtbx1_userName.Text, txtbx2_password.Text);
+            // check user previledges; if admin launch admin window
+            if (check != "0")
+            {
+               us.CLUB_ID = check;
+               openUserForm();
+            }
+            else
+               openAdminForm();                     
+         }
+         catch(Exception ex)
+         {
+            MessageBox.Show("Error with logging in has occurred: " +
+              ex.Message,
+               "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+         }
+      } // end button login press
 
-         // do this or
+      private void openUserForm()
+      {
          DashboardMember newForm = new DashboardMember(); // Instantiate a Form3 object.
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
-      }
+      } // end open user dashboard
 
-      // test button
-      private void but1_adminForm_Click(object sender, EventArgs e)
+      private void openAdminForm()
       {
-         clubForm.StartPosition = FormStartPosition.CenterParent;
-         clubForm.Show(ParentForm);
-      }
+         DashboardAdmin newForm = new DashboardAdmin();
+         newForm.StartPosition = FormStartPosition.CenterParent;
+         newForm.Show(ParentForm);
+      } // end open admin dashboard
    }
 }
