@@ -42,7 +42,7 @@ namespace ClubBudgeting.Testing
          stmt = "";
          MySqlCommand cmd;
          // check Club
-         sql.addClub(new Parameters( "Solar Car", "Club builds solar car")); 
+         sql.addClub(new Parameters("Solar Car", "Club builds solar car"));
 
          try
          {
@@ -55,7 +55,7 @@ namespace ClubBudgeting.Testing
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + 
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
                ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Assert.True(false);
@@ -64,7 +64,7 @@ namespace ClubBudgeting.Testing
          Assert.True(true);
 
          // check Budget
-         sql.addBudget(new Parameters(2, 8, 1000.00, 500.00, 200.00)); 
+         sql.addBudget(new Parameters(2, 8, 1000.00, 500.00, 200.00));
 
          try
          {
@@ -85,7 +85,7 @@ namespace ClubBudgeting.Testing
 
          Assert.True(true);
       }
-      /*
+
       [Test]
       public void PBI_3()
       {
@@ -95,9 +95,10 @@ namespace ClubBudgeting.Testing
          MySqlCommand cmd;
 
          // need to add club and budget before transaction
-         sql.addClub(null, "Solar Car", "Club builds solar car");
-         sql.addBudget(null, 10000, 5000, 3000, 2000);
-         sql.addTransaction("null", "2012-12-12", 300, "Food costs", 2, 1);
+         sql.addClub(new Parameters("Solar Car", "Club builds solar car"));
+         sql.addBudget(new Parameters(2, 8, 10000, 5000, 2000));
+         sql.addTransaction(new Parameters("2012-12-12", null, null, 300,
+            "Food costs", 2));
 
          try
          {
@@ -107,7 +108,7 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
 
             rd.Read();
-            var = rd[2].ToString();
+            var = rd[1].ToString();
             rd.Close();
          }
          catch
@@ -120,7 +121,8 @@ namespace ClubBudgeting.Testing
          try
          {
             // refund so this should fail 
-            sql.addTransaction("null", "2012-12-12", -12000, "Travel", 1, 1, 1);
+            sql.addTransaction(new Parameters("2012-12-12", null, null, -12000,
+               "Travel", 2));
 
             stmt = "SELECT * FROM Transactions WHERE transactionsType = 1";
             cmd = new MySqlCommand(stmt, SQLCONN);
@@ -135,8 +137,6 @@ namespace ClubBudgeting.Testing
          {
             Assert.True(true);   // this transaction should fail
          }
-
-         Assert.True(false);  // shouldn't be true
-      }*/
+      }
    }
 }

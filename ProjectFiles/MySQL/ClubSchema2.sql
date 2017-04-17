@@ -80,4 +80,3 @@ select * from Transactions;
     SELECT * FROM Transactions WHERE purchaseDate = '2017-04-20';
     SELECT * FROM Transactions WHERE clubId = 1;
     SELECT name FROM Club WHERE name = 'Solar Car';
-    INSERT INTO Budget VALUES ( NULL, 2, 8, 2000, 500, 200 );

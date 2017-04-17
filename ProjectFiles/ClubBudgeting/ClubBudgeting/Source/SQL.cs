@@ -173,7 +173,7 @@ namespace ClubBudgeting
          string s = pLists.PARAM_LIST[3].ToString();
 
          if (double.Parse(getCurrClubBudg(new Parameters(o)))
-            >= double.Parse(s))
+            >= Math.Abs(double.Parse(s)))
          {
 
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
@@ -521,7 +521,7 @@ namespace ClubBudgeting
       /// <returns></returns>
       public bool addBudget(Parameters pLists)
       {
-         string[] listing = { "@clubId", "@termId:", "@Budget", "@bal",
+         string[] listing = { "@clubId", "@termId", "@Budget", "@bal",
             "@debt" };
          statement = "INSERT INTO Budget VALUES "
             + "( NULL, @clubId, @termId, @Budget, @bal, @debt );";
