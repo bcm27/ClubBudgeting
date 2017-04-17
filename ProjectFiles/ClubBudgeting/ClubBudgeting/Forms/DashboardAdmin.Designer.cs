@@ -62,7 +62,7 @@
          // lab3_budgetTotal
          // 
          this.lab3_budgetTotal.AutoSize = true;
-         this.lab3_budgetTotal.Location = new System.Drawing.Point(36, 89);
+         this.lab3_budgetTotal.Location = new System.Drawing.Point(36, 81);
          this.lab3_budgetTotal.Name = "lab3_budgetTotal";
          this.lab3_budgetTotal.Size = new System.Drawing.Size(140, 25);
          this.lab3_budgetTotal.TabIndex = 2;
@@ -80,7 +80,7 @@
          // lab5_refundAmt
          // 
          this.lab5_refundAmt.AutoSize = true;
-         this.lab5_refundAmt.Location = new System.Drawing.Point(39, 291);
+         this.lab5_refundAmt.Location = new System.Drawing.Point(36, 277);
          this.lab5_refundAmt.Name = "lab5_refundAmt";
          this.lab5_refundAmt.Size = new System.Drawing.Size(265, 25);
          this.lab5_refundAmt.TabIndex = 4;
@@ -95,7 +95,7 @@
          // 
          // txtbx2_date
          // 
-         this.txtbx2_date.Location = new System.Drawing.Point(319, 291);
+         this.txtbx2_date.Location = new System.Drawing.Point(319, 274);
          this.txtbx2_date.Name = "txtbx2_date";
          this.txtbx2_date.Size = new System.Drawing.Size(192, 31);
          this.txtbx2_date.TabIndex = 8;
@@ -121,7 +121,7 @@
          // lab_budget
          // 
          this.lab_budget.AutoSize = true;
-         this.lab_budget.Location = new System.Drawing.Point(182, 89);
+         this.lab_budget.Location = new System.Drawing.Point(182, 81);
          this.lab_budget.Name = "lab_budget";
          this.lab_budget.Size = new System.Drawing.Size(78, 25);
          this.lab_budget.TabIndex = 13;
@@ -131,7 +131,7 @@
          // 
          this.but1_submitTransaction.Location = new System.Drawing.Point(575, 218);
          this.but1_submitTransaction.Name = "but1_submitTransaction";
-         this.but1_submitTransaction.Size = new System.Drawing.Size(169, 104);
+         this.but1_submitTransaction.Size = new System.Drawing.Size(169, 87);
          this.but1_submitTransaction.TabIndex = 14;
          this.but1_submitTransaction.Text = "Submit transaction";
          this.but1_submitTransaction.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(336, 335);
+         this.label1.Location = new System.Drawing.Point(333, 321);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(152, 25);
          this.label1.TabIndex = 15;
@@ -150,7 +150,7 @@
          // 
          this.but_addClub.Location = new System.Drawing.Point(575, 440);
          this.but_addClub.Name = "but_addClub";
-         this.but_addClub.Size = new System.Drawing.Size(169, 104);
+         this.but_addClub.Size = new System.Drawing.Size(169, 92);
          this.but_addClub.TabIndex = 20;
          this.but_addClub.Text = "Add club";
          this.but_addClub.UseVisualStyleBackColor = true;
@@ -158,7 +158,7 @@
          // 
          // txtbx_clubDesc
          // 
-         this.txtbx_clubDesc.Location = new System.Drawing.Point(319, 513);
+         this.txtbx_clubDesc.Location = new System.Drawing.Point(319, 501);
          this.txtbx_clubDesc.Name = "txtbx_clubDesc";
          this.txtbx_clubDesc.Size = new System.Drawing.Size(192, 31);
          this.txtbx_clubDesc.TabIndex = 19;
@@ -173,7 +173,7 @@
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(39, 513);
+         this.label2.Location = new System.Drawing.Point(39, 501);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(244, 25);
          this.label2.TabIndex = 17;
