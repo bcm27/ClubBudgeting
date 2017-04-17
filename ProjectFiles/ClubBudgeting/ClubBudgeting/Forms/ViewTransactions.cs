@@ -38,8 +38,9 @@ namespace ClubBudgeting.Forms
       /// <param name="trans"></param>
       private void loadList(ArrayList trans)
       {
+         listView_trans.View = View.Details;
 
-         listView_trans.Columns.Add("ID");
+         listView_trans.Columns.Add("ID", 20, HorizontalAlignment.Center);
          listView_trans.Columns.Add("Purchase Date");
          listView_trans.Columns.Add("Cost");
          listView_trans.Columns.Add("Description");
