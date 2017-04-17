@@ -49,7 +49,7 @@ namespace ClubBudgeting.Forms
          foreach (ArrayList dataP in trans)
          {
             string ID = dataP[0].ToString(),
-            purDate = dataP[1].ToString(),
+            purDate = dataP[1].ToString().Substring(0, 9),
             cost = dataP[4].ToString(),
             desc = dataP[5].ToString(),
             appr = dataP[7].ToString();
