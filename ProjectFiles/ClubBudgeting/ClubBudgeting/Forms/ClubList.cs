@@ -17,6 +17,7 @@ namespace ClubBudgeting.Forms
       private static User us = User.Instance;
       
       private static ArrayList clubNames = new ArrayList();
+      private static string clubName;
       private static string clubIndex;
 
       public ClubList()
@@ -26,6 +27,9 @@ namespace ClubBudgeting.Forms
          loadClubNames();
       }
 
+      /// <summary>
+      /// Load club names into the listbox
+      /// </summary>
       private void loadClubNames()
       {
          clubNames = sql.CLUB_LIST;
@@ -36,20 +40,38 @@ namespace ClubBudgeting.Forms
          }
       }
 
+      /// <summary>
+      /// Save the selected club's info and create new admin form
+      /// </summary>
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
-         clubIndex = listBox1_clubList.SelectedIndex.ToString();
+         clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
+         clubName = listBox1_clubList.SelectedItem.ToString();
 
          DashboardAdmin adminForm = new DashboardAdmin();
          adminForm.StartPosition = FormStartPosition.CenterParent;
          adminForm.Show(ParentForm);
       }
 
+      /// <summary>
+      /// Get function for club index
+      /// </summary>
       public string getClubIndex
       {
          get
          {
             return clubIndex;
+         }
+      }
+
+      /// <summary>
+      /// Get function for club name
+      /// </summary>
+      public string getClubName
+      {
+         get
+         {
+            return clubName;
          }
       }
 

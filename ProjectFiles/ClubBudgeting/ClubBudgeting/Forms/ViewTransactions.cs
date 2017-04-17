@@ -30,7 +30,7 @@ namespace ClubBudgeting.Forms
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void ViewTransactions_Load(object sender, EventArgs e)
-      { loadList(sql.getTransactions(us.CLUB_ID)); }
+      { loadList(sql.getTransactions(new Parameters(us.CLUB_ID))); }
 
       /// <summary>
       /// loads the transactions for the club Id into the viewList.
@@ -39,13 +39,26 @@ namespace ClubBudgeting.Forms
       private void loadList(ArrayList trans)
       {
 
-         listView_trans.Columns.Add("Transactions");
+         listView_trans.Columns.Add("ID");
+         listView_trans.Columns.Add("Purchase Date");
+         listView_trans.Columns.Add("Cost");
+         listView_trans.Columns.Add("Description");
+         listView_trans.Columns.Add("Approved");
 
          foreach (ArrayList dataP in trans)
          {
-            var item1 = new ListViewItem(new[] { "id123", "Tom", "24" });
+            string ID = dataP[0].ToString(),
+            purDate = dataP[1].ToString(),
+            //invoice = dataP[2].ToString(),
+            //fileExt = dataP[3].ToString(),
+            cost = dataP[4].ToString(),
+            desc = dataP[5].ToString(),
+            appr = dataP[7].ToString();
 
-            listView_trans.Items.Add(dataP[0].ToString());
+            var transRow = new ListViewItem(new[] {ID,
+               purDate, cost, desc, appr});
+
+            listView_trans.Items.Add(transRow);
          }
       } // end loadList
    }

@@ -10,12 +10,6 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 {/*
-   class FileManager
-   {
-
-   }
-
-   /*
    [TestFixture]
    class PBI_TESTING
    {
@@ -26,9 +20,9 @@ namespace ClubBudgeting.Testing
       private MySqlConnection SQLCONN = new MySqlConnection(server_details);
       private MySqlCommand cmd;
       private MySqlDataReader rd;
-      private FileManager fm = new FileManager();
       private bool pass = false;
       private string statement, temp;
+
       // tests that happen before every test is run
       [SetUp]
       public void beforeTests()
@@ -39,6 +33,7 @@ namespace ClubBudgeting.Testing
          statement = temp = "";
          Assert.True(pass);
       }
+
       // tests that happen after every test is run
       [TearDown]
       public void afterTests()
@@ -87,9 +82,9 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_2_AddReceipt()
       {
-         string pdf = fm.getPdF(),
-            accountId = fm.getAccountId(),
-            clubId = fm.getClubId();
+         string pdf = "some series of bytes",
+            accountId = "123534",
+            clubId = "1234534";
          try
          {
             SQL.addPDFReceipt(pdf, accountId, clubId);
@@ -177,10 +172,8 @@ namespace ClubBudgeting.Testing
          try
          {
             int budgetLimit = 50;
-            string accountId = fm.getAccountId(),
-                clubId = fm.getClubId(),
-                money = fm.getBudget();
-            SQL.AddToBudget(clubId, accountId, money);
+            string clubId = sql.getClubId(), money = fm.getBudget();
+            SQL.addBudget(clubId, accountId, money);
             statement = "SELECT * FROM Budget";
             cmd = new MySqlCommand(statement, SQLCONN);
             MySqlDataReader rd = cmd.ExecuteReader();
@@ -198,5 +191,5 @@ namespace ClubBudgeting.Testing
          }
          Assert.True(pass);
       } // end PBI_5_OverLimit//
-   } // end of scope*/
-} // end of namespace
+   } // end of scope */
+} // end of namespace 
