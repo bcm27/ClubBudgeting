@@ -9,6 +9,7 @@ using NUnit.Compatibility;
 using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace ClubBudgeting.Testing
 {
@@ -16,6 +17,7 @@ namespace ClubBudgeting.Testing
    class PBI_3_1
    {
       SQL sql = SQL.Instance;
+      MySqlDataReader rd;
       MySqlConnection SQLCONN = new MySqlConnection("server=localhost;"
        + "user=root;database=Club_Funds;port=3306;password=potato123");
       string stmt;
@@ -35,8 +37,7 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_1()
       {
-         MySqlDataReader rd;
-         string var = "Solar Car";
+         string var = "";
          stmt = "";
          MySqlCommand cmd;
          
@@ -44,37 +45,43 @@ namespace ClubBudgeting.Testing
 
          try
          {
-            stmt = "SELECT * FROM Club WHERE name = 'Solar Car'";
+            stmt = "SELECT name FROM Club WHERE name = 'Solar Car'";
             cmd = new MySqlCommand(stmt, SQLCONN);
-            cmd.ExecuteNonQuery();
             rd = cmd.ExecuteReader();
 
             rd.Read();
-            var = rd[1].ToString();
-            rd.Close();
+            var = rd[0].ToString();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Assert.True(false);
+         }
+         finally
+         {
+            rd.Close();
          }
 
          Assert.True(true);
 
-         sql.addBudget(new Parameters(2 ,8, 10000, 5000, 2000));   // check Budget
+         // check Budget
+         sql.addBudget(new Parameters(2 ,8, 10000, 5000, 2000)); 
 
          try
          {
-            stmt = "SELECT * FROM Budget where allocatedMoney = 10000";
+            stmt = "SELECT * FROM Budget WHERE clubId = 2";
             cmd = new MySqlCommand(stmt, SQLCONN);
-            cmd.ExecuteNonQuery();
             rd = cmd.ExecuteReader();
 
             rd.Read();
             var = rd[1].ToString();
             rd.Close();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Assert.True(false);
          }
 
