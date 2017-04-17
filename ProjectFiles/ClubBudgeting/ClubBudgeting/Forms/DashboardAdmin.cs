@@ -26,9 +26,9 @@ namespace ClubBudgeting.Forms
 
       public void budgetInfo()
       {
-         lab_clubName.Text = sql.getAccountName(clubListForm.getClubIndex);
-         lab_num.Text = sql.getDefund(clubListForm.getClubIndex);
-         lab_budget.Text = sql.getCurrentBudget(clubListForm.getClubIndex);
+         //lab_clubName.Text = sql.getAccountName(clubListForm.getClubIndex);
+         //lab_num.Text = sql.getDefund(clubListForm.getClubIndex);
+         //lab_budget.Text = sql.getCurrentBudget(clubListForm.getClubIndex);
       }
 
       private void but1_submitPurchase_Click(object sender, EventArgs e)
