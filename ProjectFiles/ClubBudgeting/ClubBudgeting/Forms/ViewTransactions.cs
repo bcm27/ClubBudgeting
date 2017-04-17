@@ -38,19 +38,18 @@ namespace ClubBudgeting.Forms
       /// <param name="trans"></param>
       private void loadList(ArrayList trans)
       {
+         listView_trans.View = View.Details;
 
-         listView_trans.Columns.Add("ID");
-         listView_trans.Columns.Add("Purchase Date");
+         listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
+         listView_trans.Columns.Add("Purchase Date", 100);
          listView_trans.Columns.Add("Cost");
-         listView_trans.Columns.Add("Description");
-         listView_trans.Columns.Add("Approved");
+         listView_trans.Columns.Add("Description", 180);
+         listView_trans.Columns.Add("Approved", 25);
 
          foreach (ArrayList dataP in trans)
          {
             string ID = dataP[0].ToString(),
-            purDate = dataP[1].ToString(),
-            //invoice = dataP[2].ToString(),
-            //fileExt = dataP[3].ToString(),
+            purDate = dataP[1].ToString().Substring(0, 9),
             cost = dataP[4].ToString(),
             desc = dataP[5].ToString(),
             appr = dataP[7].ToString();
