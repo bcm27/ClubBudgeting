@@ -69,14 +69,15 @@ insert into Term Values (NULL, 'S16');
 insert into Term Values (NULL, 'F16');
 insert into Term Values (NULL, 'S17');
 insert into Budget values (null, 1,8, 100.00, 100.00, 0.00);
-INSERT INTO Budget VALUES (null, 2, 8, 20000, 5000, 2000);
 
 select * from BudgetProposal;
 select * from Budget;
 select * from Club;
+select* from term;
 SELECT proposal, fileExtention FROM BudgetProposal WHERE id = 1;
 select * from Transactions;
     SELECT balance, max(termId) FROM budget WHERE clubId = 1;
     SELECT * FROM Transactions WHERE purchaseDate = '2017-04-20';
     SELECT * FROM Transactions WHERE clubId = 1;
     SELECT name FROM Club WHERE name = 'Solar Car';
+    INSERT INTO Budget VALUES ( NULL, 2, 8, 2000, 500, 200 );

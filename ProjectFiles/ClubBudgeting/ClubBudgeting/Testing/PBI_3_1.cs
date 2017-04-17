@@ -18,8 +18,9 @@ namespace ClubBudgeting.Testing
    {
       SQL sql = SQL.Instance;
       MySqlDataReader rd;
-      MySqlConnection SQLCONN = new MySqlConnection("server=localhost;"
-       + "user=root;database=Club_Funds;port=3306;password=potato123");
+      MySqlConnection SQLCONN = new MySqlConnection
+         ("server=localhost;user=root;database=ClubSchema2;port=3306;"
+         + "password=potato123");
       string stmt;
 
       [SetUp]
@@ -40,8 +41,8 @@ namespace ClubBudgeting.Testing
          string var = "";
          stmt = "";
          MySqlCommand cmd;
-         
-         sql.addClub(new Parameters( "Solar Car", "Club builds solar car")); // check Club
+         // check Club
+         sql.addClub(new Parameters( "Solar Car", "Club builds solar car")); 
 
          try
          {
@@ -50,22 +51,20 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
 
             rd.Read();
+            rd.Close();
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + 
+               ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Assert.True(false);
-         }
-         finally
-         {
-            rd.Close();
          }
 
          Assert.True(true);
 
          // check Budget
-         sql.addBudget(new Parameters(2 ,8, 10000, 5000, 2000)); 
+         sql.addBudget(new Parameters(2, 8, 1000.00, 500.00, 200.00)); 
 
          try
          {
@@ -74,16 +73,14 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
 
             rd.Read();
+            rd.Close();
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             Assert.True(false);
-         }
-         finally
-         {
-            rd.Close();
          }
 
          Assert.True(true);

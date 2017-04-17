@@ -521,9 +521,10 @@ namespace ClubBudgeting
       /// <returns></returns>
       public bool addBudget(Parameters pLists)
       {
-         string[] listing = { "@clubId", "@termId:", "@Budget", "@bal", "@debt" };
+         string[] listing = { "@clubId", "@termId:", "@Budget", "@bal",
+            "@debt" };
          statement = "INSERT INTO Budget VALUES "
-            + "(null, @clubId, @termId, @Budget, @bal, @debt);";
+            + "( NULL, @clubId, @termId, @Budget, @bal, @debt );";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
@@ -532,7 +533,8 @@ namespace ClubBudgeting
          }
          catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + ex.Message,
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message + ex.StackTrace,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
