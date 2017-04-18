@@ -406,7 +406,7 @@ namespace ClubBudgeting
       }
 
       /// <summary>
-      /// returns current semester Id
+      /// returns the budget for the clubId passed as a param
       /// </summary>
       /// <returns>return ID</returns>
       public string getCurrClubBudg(Parameters pList)
@@ -571,6 +571,37 @@ namespace ClubBudgeting
          }
       }
 
+      /// <summary>
+      /// returns the clubName when searched for by the clubID
+      /// </summary>
+      /// <param name="pList"></param>
+      /// <returns></returns>
+      public string getClubName(Parameters pList)
+      {
+         string[] listings = { "@clubId" };
+         statement = "SELECT id FROM Member WHERE clubId = @clubId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         string temp;
+
+         try
+         {
+            Reader =
+               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         }
+         catch
+         {
+            return null;
+         }
+         finally
+         {
+            Reader.Close();
+         }
+         return temp;
+      }
       /// <summary>
       /// closes everything needed
       /// </summary>

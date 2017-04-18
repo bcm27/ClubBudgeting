@@ -13,8 +13,8 @@ namespace ClubBudgeting.Forms
 {
    public partial class DashboardMember : Form
    {
-      //private static SQL sql = SQL.Instance;
-      //private static User us = User.Instance;
+      private static SQL sql = SQL.Instance;
+      private static User us = User.Instance;
 
       public DashboardMember()
       {
@@ -47,9 +47,13 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void budgetInfo()
       {
-         //lab1_accountName.Text = "Account Name: " + sql.getAccountName(us.CLUB_ID);
-         //lab2_defnum.Text = "Defund Number: " + sql.getDefund(us.CLUB_ID);
-        // lab3_budget.Text = "Budget Total: $"+ sql.getBudget(us.CLUB_ID);
+         lab1_accountName.Text = "Account Name: " 
+            + sql.getClubName(new Parameters(us.CLUB_ID));
+
+         lab2_defnum.Text = "Defund Number: ";// + sql.getDefund(us.CLUB_ID);
+
+         lab3_budget.Text = "Budget Total: $"
+            + sql.getCurrClubBudg(new Parameters(us.CLUB_ID));
       }
 
       //#####################################################################//
@@ -71,5 +75,17 @@ namespace ClubBudgeting.Forms
             System.Diagnostics.Debug.WriteLine("Faildd to view transactions");
          }
       }
+
+      private void button1_Click(object sender, EventArgs e)
+      {
+         openFileD_budget_prop.Filter = ".pdf Files | *.pdf;";
+         openFileD_budget_prop.InitialDirectory = @"C:\Users";
+
+         if (openFileD_budget_prop.ShowDialog() == DialogResult.OK)
+         {
+            string SOURCE_FILE = openFileD_budget_prop.SafeFileName;
+            string SOURCE_DIR = openFileD_budget_prop.InitialDirectory;
+         }
+      }// button click event for upload budget proposal 
    }
 }

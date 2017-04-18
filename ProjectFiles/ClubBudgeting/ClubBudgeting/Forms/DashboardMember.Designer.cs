@@ -32,8 +32,8 @@
          this.lab2_defnum = new System.Windows.Forms.Label();
          this.lab3_budget = new System.Windows.Forms.Label();
          this.but1_view_transactions = new System.Windows.Forms.Button();
-         this.but2_budget_prop = new System.Windows.Forms.Button();
-         this.button1 = new System.Windows.Forms.Button();
+         this.but2_budget_prop_submit = new System.Windows.Forms.Button();
+         this.but1_upload_budget_prop = new System.Windows.Forms.Button();
          this.txtbx_1_budget_file_path = new System.Windows.Forms.TextBox();
          this.lab4_budget_prop_filePath = new System.Windows.Forms.Label();
          this.but6_logout = new System.Windows.Forms.Button();
@@ -41,6 +41,8 @@
          this.but5_receipt_submit = new System.Windows.Forms.Button();
          this.lab5_receipt_filePath = new System.Windows.Forms.Label();
          this.txtbx2_receipt_file_path = new System.Windows.Forms.TextBox();
+         this.openFileD_budget_prop = new System.Windows.Forms.OpenFileDialog();
+         this.openFileD_receipt = new System.Windows.Forms.OpenFileDialog();
          this.SuspendLayout();
          // 
          // lab1_accountName
@@ -80,23 +82,24 @@
          this.but1_view_transactions.UseVisualStyleBackColor = true;
          this.but1_view_transactions.Click += new System.EventHandler(this.but1_view_transactions_Click);
          // 
-         // but2_budget_prop
+         // but2_budget_prop_submit
          // 
-         this.but2_budget_prop.Location = new System.Drawing.Point(170, 110);
-         this.but2_budget_prop.Name = "but2_budget_prop";
-         this.but2_budget_prop.Size = new System.Drawing.Size(140, 23);
-         this.but2_budget_prop.TabIndex = 4;
-         this.but2_budget_prop.Text = "Budget Proposal Submit";
-         this.but2_budget_prop.UseVisualStyleBackColor = true;
+         this.but2_budget_prop_submit.Location = new System.Drawing.Point(170, 110);
+         this.but2_budget_prop_submit.Name = "but2_budget_prop_submit";
+         this.but2_budget_prop_submit.Size = new System.Drawing.Size(140, 23);
+         this.but2_budget_prop_submit.TabIndex = 4;
+         this.but2_budget_prop_submit.Text = "Budget Proposal Submit";
+         this.but2_budget_prop_submit.UseVisualStyleBackColor = true;
          // 
-         // button1
+         // but1_upload_budget_prop
          // 
-         this.button1.Location = new System.Drawing.Point(170, 81);
-         this.button1.Name = "button1";
-         this.button1.Size = new System.Drawing.Size(140, 23);
-         this.button1.TabIndex = 5;
-         this.button1.Text = "Upload Budget Proposal";
-         this.button1.UseVisualStyleBackColor = true;
+         this.but1_upload_budget_prop.Location = new System.Drawing.Point(170, 81);
+         this.but1_upload_budget_prop.Name = "but1_upload_budget_prop";
+         this.but1_upload_budget_prop.Size = new System.Drawing.Size(140, 23);
+         this.but1_upload_budget_prop.TabIndex = 5;
+         this.but1_upload_budget_prop.Text = "Upload Budget Proposal";
+         this.but1_upload_budget_prop.UseVisualStyleBackColor = true;
+         this.but1_upload_budget_prop.Click += new System.EventHandler(this.button1_Click);
          // 
          // txtbx_1_budget_file_path
          // 
@@ -159,6 +162,14 @@
          this.txtbx2_receipt_file_path.Size = new System.Drawing.Size(312, 20);
          this.txtbx2_receipt_file_path.TabIndex = 13;
          // 
+         // openFileD_budget_prop
+         // 
+         this.openFileD_budget_prop.FileName = "openFileD_budget_prop";
+         // 
+         // openFileD_receipt
+         // 
+         this.openFileD_receipt.FileName = "openFileDialog2";
+         // 
          // DashboardMember
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -171,8 +182,8 @@
          this.Controls.Add(this.but6_logout);
          this.Controls.Add(this.lab4_budget_prop_filePath);
          this.Controls.Add(this.txtbx_1_budget_file_path);
-         this.Controls.Add(this.button1);
-         this.Controls.Add(this.but2_budget_prop);
+         this.Controls.Add(this.but1_upload_budget_prop);
+         this.Controls.Add(this.but2_budget_prop_submit);
          this.Controls.Add(this.but1_view_transactions);
          this.Controls.Add(this.lab3_budget);
          this.Controls.Add(this.lab2_defnum);
@@ -191,8 +202,8 @@
       private System.Windows.Forms.Label lab2_defnum;
       private System.Windows.Forms.Label lab3_budget;
       private System.Windows.Forms.Button but1_view_transactions;
-      private System.Windows.Forms.Button but2_budget_prop;
-      private System.Windows.Forms.Button button1;
+      private System.Windows.Forms.Button but2_budget_prop_submit;
+      private System.Windows.Forms.Button but1_upload_budget_prop;
       private System.Windows.Forms.TextBox txtbx_1_budget_file_path;
       private System.Windows.Forms.Label lab4_budget_prop_filePath;
       private System.Windows.Forms.Button but6_logout;
@@ -200,5 +211,7 @@
       private System.Windows.Forms.Button but5_receipt_submit;
       private System.Windows.Forms.Label lab5_receipt_filePath;
       private System.Windows.Forms.TextBox txtbx2_receipt_file_path;
+      private System.Windows.Forms.OpenFileDialog openFileD_budget_prop;
+      private System.Windows.Forms.OpenFileDialog openFileD_receipt;
    }
 }
