@@ -45,14 +45,6 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
-<<<<<<< HEAD
-         clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
-         clubName = listBox1_clubList.SelectedItem.ToString();
-
-         DashboardAdmin adminForm = new DashboardAdmin();
-         adminForm.StartPosition = FormStartPosition.CenterParent;
-         adminForm.Show(ParentForm);
-=======
          try
          {
             clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
@@ -66,7 +58,6 @@ namespace ClubBudgeting.Forms
          {
             MessageBox.Show("Error: please select a club");
          }
->>>>>>> bcaf68c6596f8d0d013f4b91371514ab8737c303
       }
 
       /// <summary>

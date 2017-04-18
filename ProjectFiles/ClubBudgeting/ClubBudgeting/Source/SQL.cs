@@ -128,14 +128,14 @@ namespace ClubBudgeting
       /// <returns>Tuple(adminPrivleges, clubId)</returns>
       public string logIn(string user, string pass)
       {
-         Parameters pList = new Parameters(user, sec.hash(pass));
-         statement = "SELECT * FROM Member"
-            + " WHERE userName = @user AND pass = @pass;";
-         string[] listing = { "@user", "@pass" };
          string ret = "";
-         cmd = new MySqlCommand(statement, SQLCONN);
          if (checkPass(user, sec.hash(pass)))
          {
+            Parameters pList = new Parameters(user, sec.hash(pass));
+            statement = "SELECT * FROM Member"
+               + " WHERE userName = @user AND pass = @pass;";
+            string[] listing = { "@user", "@pass" };
+            cmd = new MySqlCommand(statement, SQLCONN);
             try
             {
                Reader =
@@ -159,6 +159,32 @@ namespace ClubBudgeting
             }
          }
          return ret;
+      }
+
+      /// <summary>
+      /// adds a user to the DB, hash pass first.
+      /// </summary>
+      /// <param name="pLists">@user, @first, @last, @pass</param>
+      /// <returns>addedreturns>
+      public bool addUser(Parameters pLists)
+      {
+         string[] listing = { "@user", "@first", "@last", "@pass" };
+         statement = "INSERT INTO Member VALUES "
+            + "(null, @user, @first, @last, @pass);";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         try
+         {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         }
+         catch (MySql.Data.MySqlClient.MySqlException ex)
+         {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         }
+         return true;
       }
 
       /// <summary>
