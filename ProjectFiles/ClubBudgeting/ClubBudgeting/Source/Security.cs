@@ -50,19 +50,9 @@ namespace ClubBudgeting.Source
       /// <returns></returns>
       public string hash(string tohash)
       {
-         byte[] salt;
-
-         // hash password in bytes
-         new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
-         var pbkdf2 = new Rfc2898DeriveBytes(tohash, salt, 10000);
-         byte[] hash = pbkdf2.GetBytes(20);
-
-         // combine salt and password bytes
-         byte[] hashBytes = new byte[36];
-         Array.Copy(salt, 0, hashBytes, 0, 16);
-         Array.Copy(hash, 0, hashBytes, 16, 20);
-
-         // mesh the salt + hash together
+         var bytes = new UTF8Encoding().GetBytes(tohash);
+         var hashBytes = System.Security.Cryptography.MD5.Create().ComputeHash
+            (bytes);
          return Convert.ToBase64String(hashBytes);
       }// end of hash
 

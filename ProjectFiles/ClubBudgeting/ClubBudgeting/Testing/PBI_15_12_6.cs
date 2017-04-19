@@ -7,6 +7,7 @@ using NUnit.Compatibility;
 using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using ClubBudgeting.Source;
 
 
 namespace ClubBudgeting.Testing
@@ -21,6 +22,7 @@ namespace ClubBudgeting.Testing
          +"password=potato123");
       SQL sql = SQL.Instance;
       User u = User.Instance;
+      Security sec = Security.Instance;
       Parameters pList;
 
        [SetUp]
@@ -123,24 +125,34 @@ namespace ClubBudgeting.Testing
       {
          bool accessed = false;
 
+         // add users to test
+         sql.addUser(new Parameters(3, false, "ltarnow", "Lee", "Tarnow", 
+            sec.hash("123456789")));
+         sql.addUser(new Parameters(5, false, "ngerber", "nicole", "gerber", 
+            sec.hash("Pineapple")));
+         sql.addUser(new Parameters(7, false, "nflanders", "Nick", "Flanders", 
+            sec.hash("kitten")));
+         sql.addUser(new Parameters(3, false, "abreneman", "Amanda", "Breneman",
+            sec.hash("dog")));
+
          // correct user/pass for a user
-         accessed = sql.checkPass("Steve", "1234567890"); 
+         accessed = sql.checkPass("ltarnow", "1234567890"); 
          Assert.True(accessed);
 
          // false pass for a correct user user
-         accessed = sql.checkPass("Steve", "cat"); 
+         accessed = sql.checkPass("ltarnow", "cat"); 
          Assert.True(accessed);
 
          // incorrect user
-         accessed = sql.checkPass("joe", "dog");
+         accessed = sql.checkPass("smeier", "dog");
          Assert.True(accessed);
 
          // correct user/pass for a admin
-         accessed = sql.checkPass("mike", "1234567890"); 
+         accessed = sql.checkPass("ngerber", "Pineapple"); 
          Assert.True(accessed);
 
          // incorrect pass for a correct user
-         accessed = sql.checkPass("mike", "1234567890"); 
+         accessed = sql.checkPass("ngerber", "pineapple"); 
          Assert.True(accessed);
       }
 

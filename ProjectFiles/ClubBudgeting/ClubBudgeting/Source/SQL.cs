@@ -168,9 +168,10 @@ namespace ClubBudgeting
       /// <returns>addedreturns>
       public bool addUser(Parameters pLists)
       {
-         string[] listing = { "@user", "@first", "@last", "@pass" };
+         string[] listing = { "@club","@admin", "@user", "@first", "@last",
+            "@pass" };
          statement = "INSERT INTO Member VALUES "
-            + "(null, @user, @first, @last, @pass);";
+            + "(null, @club, @admin, @user, @first, @last, @pass);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
