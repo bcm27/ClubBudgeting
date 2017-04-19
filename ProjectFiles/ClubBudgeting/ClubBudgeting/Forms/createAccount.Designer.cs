@@ -37,10 +37,12 @@
          this.lab4_firstName = new System.Windows.Forms.Label();
          this.lab5_lastName = new System.Windows.Forms.Label();
          this.lab6_clubID = new System.Windows.Forms.Label();
-         this.textBox1 = new System.Windows.Forms.TextBox();
-         this.textBox2 = new System.Windows.Forms.TextBox();
+         this.txt4_firstName = new System.Windows.Forms.TextBox();
+         this.txtbx5_lastName = new System.Windows.Forms.TextBox();
          this.but1_register = new System.Windows.Forms.Button();
          this.comboBox_clublist = new System.Windows.Forms.ComboBox();
+         this.button1 = new System.Windows.Forms.Button();
+         this.lab7_admin = new System.Windows.Forms.Label();
          this.SuspendLayout();
          // 
          // lab1_account
@@ -118,19 +120,19 @@
          this.lab6_clubID.TabIndex = 8;
          this.lab6_clubID.Text = "ClubId";
          // 
-         // textBox1
+         // txt4_firstName
          // 
-         this.textBox1.Location = new System.Drawing.Point(302, 20);
-         this.textBox1.Name = "textBox1";
-         this.textBox1.Size = new System.Drawing.Size(100, 20);
-         this.textBox1.TabIndex = 9;
+         this.txt4_firstName.Location = new System.Drawing.Point(302, 20);
+         this.txt4_firstName.Name = "txt4_firstName";
+         this.txt4_firstName.Size = new System.Drawing.Size(100, 20);
+         this.txt4_firstName.TabIndex = 9;
          // 
-         // textBox2
+         // txtbx5_lastName
          // 
-         this.textBox2.Location = new System.Drawing.Point(302, 55);
-         this.textBox2.Name = "textBox2";
-         this.textBox2.Size = new System.Drawing.Size(100, 20);
-         this.textBox2.TabIndex = 10;
+         this.txtbx5_lastName.Location = new System.Drawing.Point(302, 55);
+         this.txtbx5_lastName.Name = "txtbx5_lastName";
+         this.txtbx5_lastName.Size = new System.Drawing.Size(100, 20);
+         this.txtbx5_lastName.TabIndex = 10;
          // 
          // but1_register
          // 
@@ -152,15 +154,36 @@
          this.comboBox_clublist.TabIndex = 14;
          this.comboBox_clublist.SelectedIndexChanged += new System.EventHandler(this.comboBox_clublist_SelectedIndexChanged);
          // 
+         // button1
+         // 
+         this.button1.Location = new System.Drawing.Point(428, 18);
+         this.button1.Name = "button1";
+         this.button1.Size = new System.Drawing.Size(75, 23);
+         this.button1.TabIndex = 15;
+         this.button1.Text = "Is Admin?";
+         this.button1.UseVisualStyleBackColor = true;
+         this.button1.Click += new System.EventHandler(this.button1_Click);
+         // 
+         // lab7_admin
+         // 
+         this.lab7_admin.AutoSize = true;
+         this.lab7_admin.Location = new System.Drawing.Point(425, 49);
+         this.lab7_admin.Name = "lab7_admin";
+         this.lab7_admin.Size = new System.Drawing.Size(29, 13);
+         this.lab7_admin.TabIndex = 16;
+         this.lab7_admin.Text = "True";
+         // 
          // CreateAccount
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(518, 129);
+         this.Controls.Add(this.lab7_admin);
+         this.Controls.Add(this.button1);
          this.Controls.Add(this.comboBox_clublist);
          this.Controls.Add(this.but1_register);
-         this.Controls.Add(this.textBox2);
-         this.Controls.Add(this.textBox1);
+         this.Controls.Add(this.txtbx5_lastName);
+         this.Controls.Add(this.txt4_firstName);
          this.Controls.Add(this.lab6_clubID);
          this.Controls.Add(this.lab5_lastName);
          this.Controls.Add(this.lab4_firstName);
@@ -188,9 +211,11 @@
       private System.Windows.Forms.Label lab4_firstName;
       private System.Windows.Forms.Label lab5_lastName;
       private System.Windows.Forms.Label lab6_clubID;
-      private System.Windows.Forms.TextBox textBox1;
-      private System.Windows.Forms.TextBox textBox2;
+      private System.Windows.Forms.TextBox txt4_firstName;
+      private System.Windows.Forms.TextBox txtbx5_lastName;
       private System.Windows.Forms.Button but1_register;
       private System.Windows.Forms.ComboBox comboBox_clublist;
+      private System.Windows.Forms.Button button1;
+      private System.Windows.Forms.Label lab7_admin;
    }
 }
