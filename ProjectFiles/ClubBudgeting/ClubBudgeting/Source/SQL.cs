@@ -269,8 +269,11 @@ namespace ClubBudgeting
          {
             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message + ex.StackTrace,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          return true;
@@ -465,7 +468,7 @@ namespace ClubBudgeting
       /// <summary>
       /// Gets an arraylist of all the clubIds transactions.
       /// </summary>
-      /// <param name="clubId"></param>
+      /// <param name="clubId">@club</param>
       /// <returns></returns>
       public ArrayList getTransactions(Parameters pList)
       {
@@ -496,6 +499,10 @@ namespace ClubBudgeting
             MessageBox.Show("Error " + ex.Number + " has occurred: " +
                ex.Message,
                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+         }
+         finally
+         {
+            Reader.Close();
          }
 
          return transactions;
