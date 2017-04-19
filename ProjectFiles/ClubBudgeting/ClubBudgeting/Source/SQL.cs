@@ -132,7 +132,8 @@ namespace ClubBudgeting
          if (checkPass(user, sec.hash(pass)))
          {
             Parameters pList = new Parameters(user, sec.hash(pass));
-            statement = "SELECT * FROM Member"
+            statement = "SELECT adminRight, c.name FROM Member"
+               + " JOIN Club c ON c.id = clubId"
                + " WHERE userName = @user AND pass = @pass;";
             string[] listing = { "@user", "@pass" };
             cmd = new MySqlCommand(statement, SQLCONN);
@@ -141,17 +142,14 @@ namespace ClubBudgeting
                Reader =
                   addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
                Reader.Read();
-               if (Reader[0].ToString().ToUpper() == "FALSE")
+               if (Reader[0].ToString() == "False")
                   ret = Reader[1].ToString();
                else
                   ret = "0";
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
-               MessageBox.Show("Error " + ex.Number + " has occurred: "
-                  + ex.Message, "Error", MessageBoxButtons.OK,
-                  MessageBoxIcon.Error);
-               return null;
+               throw ex;
             }
             finally
             {

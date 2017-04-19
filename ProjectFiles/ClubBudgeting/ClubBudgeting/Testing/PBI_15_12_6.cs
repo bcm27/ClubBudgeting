@@ -126,13 +126,13 @@ namespace ClubBudgeting.Testing
          bool accessed = false;
 
          // add users to test
-         sql.addUser(new Parameters(3, false, "ltarnow", "Lee", "Tarnow", 
+         sql.addUser(new Parameters(3, 0, "ltarnow", "Lee", "Tarnow", 
             sec.hash("123456789")));
-         sql.addUser(new Parameters(5, false, "ngerber", "nicole", "gerber", 
+         sql.addUser(new Parameters(5, 0, "ngerber", "nicole", "gerber", 
             sec.hash("Pineapple")));
-         sql.addUser(new Parameters(7, false, "nflanders", "Nick", "Flanders", 
+         sql.addUser(new Parameters(7, 0, "nflanders", "Nick", "Flanders", 
             sec.hash("kitten")));
-         sql.addUser(new Parameters(3, true, "abreneman", "Amanda", "Breneman",
+         sql.addUser(new Parameters(3, 1, "abreneman", "Amanda", "Breneman",
             sec.hash("dog")));
 
          // correct user/pass for a user
