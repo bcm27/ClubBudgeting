@@ -36,9 +36,11 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Add a transaction - transaction amount must be a number and the date
+      /// Add transaction - transaction amount must be a number and the date
       /// must be the proper number of characters (10)
       /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void but1_submitTransaction_Click(object sender, EventArgs e)
       {
          double parsedVal;
@@ -65,8 +67,10 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Add a club - club must have both a name and description to get added
+      /// Add club - club must have both a name and description to get added
       /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void but_addClub_Click(object sender, EventArgs e)
       {
          try
@@ -86,6 +90,25 @@ namespace ClubBudgeting.Forms
             lab_transStatus.Text = "Failed";
             MessageBox.Show("Error: could not add club - make sure"
              + " club name and description are not blank");
+         }
+      }
+
+      /// <summary>
+      /// View transactions - pull up transactions window
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void but_viewTransactions_Click(object sender, EventArgs e)
+      {
+         try
+         {
+            ViewTransactions transactionsForm = new ViewTransactions();
+            transactionsForm.StartPosition = FormStartPosition.CenterParent;
+            transactionsForm.Show(ParentForm);
+         }
+         catch
+         {
+            MessageBox.Show("Error: could not show transactions");
          }
       }
    }
