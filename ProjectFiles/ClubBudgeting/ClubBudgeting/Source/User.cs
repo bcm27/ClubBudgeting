@@ -14,8 +14,7 @@ namespace ClubBudgeting
       Parameters pLists;
 
       // username and club
-      private string username,
-         club;
+      private string username, clubId, clubName;
 
       // instance
       SQL sql = SQL.Instance;
@@ -53,10 +52,16 @@ namespace ClubBudgeting
 
       public string CLUB_ID
       {
-         get { return club; }
-         set { club = value; }
+         get { return clubId; }
+         set { clubId = value; }
       }
-      
+
+      public string CLUB_NAME
+      {
+         get { return clubName; }
+         set { clubName = value; }
+      }
+
       /// <summary>
       /// Management for static instance of this class
       /// </summaryUser
