@@ -73,9 +73,10 @@ namespace ClubBudgeting
 
       private void but2_createAccount_Click(object sender, EventArgs e)
       {
-         createAccount newForm = new createAccount();
+         CreateAccount newForm = new CreateAccount();
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
       }
-   }
+
+   } // end class
 }
