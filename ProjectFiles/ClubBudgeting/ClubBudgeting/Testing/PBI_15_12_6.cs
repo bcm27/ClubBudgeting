@@ -132,7 +132,7 @@ namespace ClubBudgeting.Testing
             sec.hash("Pineapple")));
          sql.addUser(new Parameters(7, false, "nflanders", "Nick", "Flanders", 
             sec.hash("kitten")));
-         sql.addUser(new Parameters(3, false, "abreneman", "Amanda", "Breneman",
+         sql.addUser(new Parameters(3, true, "abreneman", "Amanda", "Breneman",
             sec.hash("dog")));
 
          // correct user/pass for a user
