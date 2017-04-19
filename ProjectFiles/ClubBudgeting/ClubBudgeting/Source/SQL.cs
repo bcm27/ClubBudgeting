@@ -126,22 +126,25 @@ namespace ClubBudgeting
       /// <param name="user">case sensitive</param>
       /// <param name="pass">already hashed</param>
       /// <returns>Tuple(adminPrivleges, clubId)</returns>
-      public Tuple<bool, string> logIn(string user, string pass)
+      public string logIn(string user, string pass)
       {
-         Parameters pList = new Parameters(user, sec.hash(pass));
-         statement = "SELECT * FROM Member"
-            + " WHERE userName = @user AND pass = @pass;";
-         string[] listing = { "@user", "@pass" };
-         cmd = new MySqlCommand(statement, SQLCONN);
+         string ret = "";
          if (checkPass(user, sec.hash(pass)))
          {
+            Parameters pList = new Parameters(user, sec.hash(pass));
+            statement = "SELECT * FROM Member"
+               + " WHERE userName = @user AND pass = @pass;";
+            string[] listing = { "@user", "@pass" };
+            cmd = new MySqlCommand(statement, SQLCONN);
             try
             {
                Reader =
                   addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
                Reader.Read();
-               return new Tuple<bool, string>(Reader[0].ToString().ToUpper() ==
-                  "FALSE", Reader[1].ToString());
+               if (Reader[0].ToString().ToUpper() == "FALSE")
+                  ret = Reader[1].ToString();
+               else
+                  ret = "0";
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -155,7 +158,33 @@ namespace ClubBudgeting
                Reader.Close();
             }
          }
-         return null;
+         return ret;
+      }
+
+      /// <summary>
+      /// adds a user to the DB, hash pass first.
+      /// </summary>
+      /// <param name="pLists">@user, @first, @last, @pass</param>
+      /// <returns>addedreturns>
+      public bool addUser(Parameters pLists)
+      {
+         string[] listing = { "@user", "@first", "@last", "@pass" };
+         statement = "INSERT INTO Member VALUES "
+            + "(null, @user, @first, @last, @pass);";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         try
+         {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         }
+         catch (MySql.Data.MySqlClient.MySqlException ex)
+         {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         }
+         return true;
       }
 
       /// <summary>

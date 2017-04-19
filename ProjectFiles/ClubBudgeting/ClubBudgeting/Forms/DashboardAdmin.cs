@@ -87,7 +87,6 @@ namespace ClubBudgeting.Forms
             MessageBox.Show("Error: could not add club - make sure"
              + " club name and description are not blank");
          }
-
       }
    }
 }

@@ -94,10 +94,11 @@ namespace ClubBudgeting
       {
          try
          {
-            Tuple<bool, string> temp = sql.logIn(name, pass);
+            string temp = sql.logIn(name, pass);
             username = name;
-            admin = temp.Item1;
-            club = temp.Item2;
+            if (temp.Equals("0"))
+               admin = true;
+            club = temp;
             loggedIn = true;
             return true;
          }
