@@ -43,6 +43,8 @@ namespace ClubBudgeting.Forms
       /// <summary>
       /// Save the selected club's info and create new admin form
       /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void but1_clubInfo_Click(object sender, EventArgs e)
       {
          try
@@ -82,5 +84,14 @@ namespace ClubBudgeting.Forms
          }
       }
 
+      /// <summary>
+      /// Exit form
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void but_exit_Click(object sender, EventArgs e)
+      {
+         this.Close();
+      }
    }
 }

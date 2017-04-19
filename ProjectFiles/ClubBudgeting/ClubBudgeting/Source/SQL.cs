@@ -437,11 +437,12 @@ namespace ClubBudgeting
       public string getCurrClubBudg(Parameters pList)
       {
          string[] listings = { "@clubId" };
+         string temp;
+
          statement = "SELECT balance, max(termId) FROM Budget "
             + "WHERE clubId = @clubId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
-         string temp;
 
          try
          {
@@ -597,6 +598,38 @@ namespace ClubBudgeting
       }
 
       /// <summary>
+      /// get the total debt
+      /// </summary>
+      /// <param name="pList"></param>
+      /// <returns></returns>
+      public string getDebt(Parameters pList)
+      {
+         string[] listings = { "@clubId" };
+         statement = "SELECT debt FROM Budget WHERE clubId = @clubId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         string temp;
+
+         try
+         {
+            Reader =
+               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         }
+         catch
+         {
+            return null;
+         }
+         finally
+         {
+            Reader.Close();
+         }
+         return temp;
+      }
+
+      /// <summary>
       /// returns the clubName when searched for by the clubID
       /// </summary>
       /// <param name="pList"></param>
@@ -627,6 +660,7 @@ namespace ClubBudgeting
          }
          return temp;
       }
+
       /// <summary>
       /// closes everything needed
       /// </summary>

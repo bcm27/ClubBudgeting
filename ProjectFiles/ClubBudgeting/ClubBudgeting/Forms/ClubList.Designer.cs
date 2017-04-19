@@ -31,12 +31,13 @@
          this.lab1_selectClub = new System.Windows.Forms.Label();
          this.listBox1_clubList = new System.Windows.Forms.ListBox();
          this.but1_clubInfo = new System.Windows.Forms.Button();
+         this.but_exit = new System.Windows.Forms.Button();
          this.SuspendLayout();
          // 
          // lab1_selectClub
          // 
          this.lab1_selectClub.AutoSize = true;
-         this.lab1_selectClub.Location = new System.Drawing.Point(70, 43);
+         this.lab1_selectClub.Location = new System.Drawing.Point(40, 37);
          this.lab1_selectClub.Name = "lab1_selectClub";
          this.lab1_selectClub.Size = new System.Drawing.Size(375, 25);
          this.lab1_selectClub.TabIndex = 0;
@@ -46,26 +47,37 @@
          // 
          this.listBox1_clubList.FormattingEnabled = true;
          this.listBox1_clubList.ItemHeight = 25;
-         this.listBox1_clubList.Location = new System.Drawing.Point(75, 115);
+         this.listBox1_clubList.Location = new System.Drawing.Point(45, 109);
          this.listBox1_clubList.Name = "listBox1_clubList";
          this.listBox1_clubList.Size = new System.Drawing.Size(370, 329);
          this.listBox1_clubList.TabIndex = 1;
          // 
          // but1_clubInfo
          // 
-         this.but1_clubInfo.Location = new System.Drawing.Point(489, 241);
+         this.but1_clubInfo.Location = new System.Drawing.Point(459, 207);
          this.but1_clubInfo.Name = "but1_clubInfo";
-         this.but1_clubInfo.Size = new System.Drawing.Size(197, 73);
+         this.but1_clubInfo.Size = new System.Drawing.Size(197, 101);
          this.but1_clubInfo.TabIndex = 2;
          this.but1_clubInfo.Text = "View club information";
          this.but1_clubInfo.UseVisualStyleBackColor = true;
          this.but1_clubInfo.Click += new System.EventHandler(this.but1_clubInfo_Click);
          // 
+         // but_exit
+         // 
+         this.but_exit.Location = new System.Drawing.Point(459, 385);
+         this.but_exit.Name = "but_exit";
+         this.but_exit.Size = new System.Drawing.Size(197, 53);
+         this.but_exit.TabIndex = 3;
+         this.but_exit.Text = "Exit";
+         this.but_exit.UseVisualStyleBackColor = true;
+         this.but_exit.Click += new System.EventHandler(this.but_exit_Click);
+         // 
          // ClubList
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(758, 516);
+         this.ClientSize = new System.Drawing.Size(702, 486);
+         this.Controls.Add(this.but_exit);
          this.Controls.Add(this.but1_clubInfo);
          this.Controls.Add(this.listBox1_clubList);
          this.Controls.Add(this.lab1_selectClub);
@@ -81,5 +93,6 @@
       private System.Windows.Forms.Label lab1_selectClub;
       private System.Windows.Forms.ListBox listBox1_clubList;
       private System.Windows.Forms.Button but1_clubInfo;
+      private System.Windows.Forms.Button but_exit;
    }
 }

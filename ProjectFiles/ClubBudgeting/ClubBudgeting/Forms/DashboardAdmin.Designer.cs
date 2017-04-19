@@ -34,7 +34,6 @@
          this.lab5_refundAmt = new System.Windows.Forms.Label();
          this.txtbx1_transAmt = new System.Windows.Forms.TextBox();
          this.txtbx2_date = new System.Windows.Forms.TextBox();
-         this.but3_logout = new System.Windows.Forms.Button();
          this.lab_clubName = new System.Windows.Forms.Label();
          this.lab_budget = new System.Windows.Forms.Label();
          this.but1_submitTransaction = new System.Windows.Forms.Button();
@@ -102,15 +101,6 @@
          this.txtbx2_date.Name = "txtbx2_date";
          this.txtbx2_date.Size = new System.Drawing.Size(192, 31);
          this.txtbx2_date.TabIndex = 8;
-         // 
-         // but3_logout
-         // 
-         this.but3_logout.Location = new System.Drawing.Point(41, 627);
-         this.but3_logout.Name = "but3_logout";
-         this.but3_logout.Size = new System.Drawing.Size(209, 48);
-         this.but3_logout.TabIndex = 10;
-         this.but3_logout.Text = "Logout";
-         this.but3_logout.UseVisualStyleBackColor = true;
          // 
          // lab_clubName
          // 
@@ -249,7 +239,7 @@
          // 
          // but_viewTransactions
          // 
-         this.but_viewTransactions.Location = new System.Drawing.Point(742, 35);
+         this.but_viewTransactions.Location = new System.Drawing.Point(754, 50);
          this.but_viewTransactions.Name = "but_viewTransactions";
          this.but_viewTransactions.Size = new System.Drawing.Size(169, 87);
          this.but_viewTransactions.TabIndex = 27;
@@ -261,7 +251,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(988, 719);
+         this.ClientSize = new System.Drawing.Size(988, 621);
          this.Controls.Add(this.but_viewTransactions);
          this.Controls.Add(this.lab_totalDebt);
          this.Controls.Add(this.lab_debt);
@@ -278,7 +268,6 @@
          this.Controls.Add(this.but1_submitTransaction);
          this.Controls.Add(this.lab_budget);
          this.Controls.Add(this.lab_clubName);
-         this.Controls.Add(this.but3_logout);
          this.Controls.Add(this.txtbx2_date);
          this.Controls.Add(this.txtbx1_transAmt);
          this.Controls.Add(this.lab5_refundAmt);
@@ -286,7 +275,7 @@
          this.Controls.Add(this.lab3_budgetTotal);
          this.Controls.Add(this.lab1_acctName);
          this.Name = "DashboardAdmin";
-         this.Text = "Dashboard Admin";
+         this.Text = "Admin Dashboard";
          this.ResumeLayout(false);
          this.PerformLayout();
 
@@ -300,7 +289,6 @@
       private System.Windows.Forms.Label lab5_refundAmt;
       private System.Windows.Forms.TextBox txtbx1_transAmt;
       private System.Windows.Forms.TextBox txtbx2_date;
-      private System.Windows.Forms.Button but3_logout;
       private System.Windows.Forms.Label lab_clubName;
       private System.Windows.Forms.Label lab_budget;
       private System.Windows.Forms.Button but1_submitTransaction;

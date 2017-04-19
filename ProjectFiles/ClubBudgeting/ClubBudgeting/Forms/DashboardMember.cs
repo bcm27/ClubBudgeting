@@ -43,17 +43,19 @@ namespace ClubBudgeting.Forms
 
       //#####################################################################//
       /// <summary>
-      /// loads the information for account, defund and budget
+      /// load account and budget information
       /// </summary>
       private void budgetInfo()
       {
-         lab1_accountName.Text = "Account Name: " 
-            + sql.getClubName(new Parameters(us.CLUB_ID));
-
-         lab2_defnum.Text = "Defund Number: ";// + sql.getDefund(us.CLUB_ID);
+         lab1_accountName.Text = "Club Name: " 
+          + sql.getClubName(new Parameters(us.CLUB_ID));
 
          lab3_budget.Text = "Budget Total: $"
-            + sql.getCurrClubBudg(new Parameters(us.CLUB_ID));
+          + sql.getCurrClubBudg(new Parameters(us.CLUB_ID));
+
+         lab4_debt.Text = "Debt Total: $" 
+          + sql.getDebt(new Parameters(us.CLUB_ID));
+
       }
 
       //#####################################################################//
@@ -86,6 +88,6 @@ namespace ClubBudgeting.Forms
             string SOURCE_FILE = openFileD_budget_prop.SafeFileName;
             string SOURCE_DIR = openFileD_budget_prop.InitialDirectory;
          }
-      }// button click event for upload budget proposal 
+      }
    }
 }
