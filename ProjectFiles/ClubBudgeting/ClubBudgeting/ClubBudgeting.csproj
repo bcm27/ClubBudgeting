@@ -60,6 +60,12 @@
     <Compile Include="Forms\ClubList.Designer.cs">
       <DependentUpon>ClubList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\createAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\createAccount.Designer.cs">
+      <DependentUpon>createAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DashboardAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +101,9 @@
     <Compile Include="Testing\PBI_3_1.cs" />
     <EmbeddedResource Include="Forms\ClubList.resx">
       <DependentUpon>ClubList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\createAccount.resx">
+      <DependentUpon>createAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DashboardAdmin.resx">
       <DependentUpon>DashboardAdmin.cs</DependentUpon>

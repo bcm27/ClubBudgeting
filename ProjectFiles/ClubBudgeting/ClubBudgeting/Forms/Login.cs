@@ -35,15 +35,21 @@ namespace ClubBudgeting
          {
             string check = sql.logIn(txtbx1_userName.Text, txtbx2_password.Text);
             // check user previledges; if admin launch admin window
-            if (check != "0")
+            if (check == "0")
+               openAdminForm();
+            
+            else if (check.Length > 3)
             {
                us.CLUB_ID = check;
                openUserForm();
             }
             else
-               openAdminForm();                     
+            {
+               MessageBox.Show("Inproper username or password", "Error!",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
          }
-         catch(Exception ex)
+         catch (Exception ex)
          {
             MessageBox.Show("Error with logging in has occurred: " +
               ex.Message,
@@ -64,5 +70,12 @@ namespace ClubBudgeting
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
       } // end open admin dashboard
+
+      private void but2_createAccount_Click(object sender, EventArgs e)
+      {
+         createAccount newForm = new createAccount();
+         newForm.StartPosition = FormStartPosition.CenterParent;
+         newForm.Show(ParentForm);
+      }
    }
 }
