@@ -60,7 +60,7 @@ namespace ClubBudgeting
 
       private void openAdminForm()
       {
-         DashboardAdmin newForm = new DashboardAdmin();
+         ClubList newForm = new ClubList();
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
       } // end open admin dashboard

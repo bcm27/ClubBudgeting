@@ -32,7 +32,9 @@ namespace ClubBudgeting.Forms
       {
          lab_clubName.Text = clubListForm.getClubName;
          lab_budget.Text = 
-            sql.getCurrClubBudg(new Parameters(clubListForm.getClubIndex));
+          sql.getCurrClubBudg(new Parameters(clubListForm.getClubIndex));
+         lab_totalDebt.Text = 
+          sql.getDebt(new Parameters(clubListForm.getClubIndex));
       }
 
       /// <summary>
