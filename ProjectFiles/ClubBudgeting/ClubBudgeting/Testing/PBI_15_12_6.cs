@@ -43,7 +43,7 @@ namespace ClubBudgeting.Testing
       public void addTest()
       {
          // correct format for a purchase
-         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "1");
+         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "3");
          Assert.True(sql.addTransaction(pList));
       }
       /// <summary>
@@ -57,7 +57,7 @@ namespace ClubBudgeting.Testing
          MySqlCommand cmd;
          MySqlDataReader rd;
          // correct format for a purchase
-         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "1" );
+         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "6" );
          sql.addTransaction(pList); 
          try
          {
@@ -76,7 +76,7 @@ namespace ClubBudgeting.Testing
          Assert.AreEqual("20.20", temp);
 
          // correct format for a return
-         pList.addParams("2017-04-21", "NULL", "NULL", "-20.20", "NULL", "1" /*u.clubId*/);
+         pList.addParams("2017-04-21", "NULL", "NULL", "-20.20", "NULL", "3" );
          sql.addTransaction(pList);
 
          try
@@ -96,7 +96,7 @@ namespace ClubBudgeting.Testing
          Assert.AreEqual("-20.20", temp);
 
          // too large of a purchase
-         pList.addParams("2017-04-22", "NULL", "NULL", "20000.20", "NULL", "1" /*u.clubId*/);
+         pList.addParams("2017-04-22", "NULL", "NULL", "20000.20", "NULL", "1");
          sql.addTransaction(pList);
 
          try
@@ -132,7 +132,7 @@ namespace ClubBudgeting.Testing
             sec.hash("Pineapple")));
          sql.addUser(new Parameters(7, false, "nflanders", "Nick", "Flanders", 
             sec.hash("kitten")));
-         sql.addUser(new Parameters(3, false, "abreneman", "Amanda", "Breneman",
+         sql.addUser(new Parameters(3, true, "abreneman", "Amanda", "Breneman",
             sec.hash("dog")));
 
          // correct user/pass for a user
