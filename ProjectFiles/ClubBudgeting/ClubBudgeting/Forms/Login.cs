@@ -37,22 +37,16 @@ namespace ClubBudgeting
             // check user previledges; if admin launch admin window
             if (check == "0")
                openAdminForm();
-            
-            else if (check.Length > 3)
+                        
+            else 
             {
                us.CLUB_ID = check;
                openUserForm();
             }
-            else
-            {
-               MessageBox.Show("Inproper username or password", "Error!",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
          }
-         catch (Exception ex)
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
-            MessageBox.Show("Error with logging in has occurred: " +
-              ex.Message,
+            MessageBox.Show("Incorrect username/password combination",
                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
       } // end button login press
