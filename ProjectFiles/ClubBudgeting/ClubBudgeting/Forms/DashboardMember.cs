@@ -98,7 +98,7 @@ namespace ClubBudgeting.Forms
       {
          listView_trans.View = View.Details;
 
-         listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
+         //listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
          listView_trans.Columns.Add("Purchase Date", 100);
          listView_trans.Columns.Add("Cost");
          listView_trans.Columns.Add("Description", 180);
@@ -112,7 +112,7 @@ namespace ClubBudgeting.Forms
             desc = dataP[5].ToString(),
             appr = dataP[7].ToString();
 
-            listView_trans.Items.Add(new ListViewItem(new[] {ID,
+            listView_trans.Items.Add(new ListViewItem(new[] {
                purDate, cost, desc, appr}));
          }
       } // end loadList

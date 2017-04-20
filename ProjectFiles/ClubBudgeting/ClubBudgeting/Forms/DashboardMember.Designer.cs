@@ -60,7 +60,7 @@
          // 
          // but1_upload_budget_prop
          // 
-         this.but1_upload_budget_prop.Location = new System.Drawing.Point(15, 140);
+         this.but1_upload_budget_prop.Location = new System.Drawing.Point(15, 110);
          this.but1_upload_budget_prop.Name = "but1_upload_budget_prop";
          this.but1_upload_budget_prop.Size = new System.Drawing.Size(140, 23);
          this.but1_upload_budget_prop.TabIndex = 5;
@@ -79,7 +79,7 @@
          // 
          // but4_upload_receipt
          // 
-         this.but4_upload_receipt.Location = new System.Drawing.Point(15, 111);
+         this.but4_upload_receipt.Location = new System.Drawing.Point(15, 81);
          this.but4_upload_receipt.Name = "but4_upload_receipt";
          this.but4_upload_receipt.Size = new System.Drawing.Size(140, 23);
          this.but4_upload_receipt.TabIndex = 10;
@@ -133,7 +133,6 @@
          this.Controls.Add(this.but4_upload_receipt);
          this.Controls.Add(this.but6_logout);
          this.Controls.Add(this.but1_upload_budget_prop);
-         this.Controls.Add(this.but1_view_transactions);
          this.Controls.Add(this.lab3_budget);
          this.Controls.Add(this.lab1_accountName);
          this.Name = "DashboardMember";
