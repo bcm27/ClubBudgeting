@@ -55,13 +55,16 @@ namespace ClubBudgeting
       private void openUserForm()
       {
          // Instantiate a Form3 object.
-         DashboardMember newForm = new DashboardMember(); 
+         this.Hide();
+         DashboardMember newForm = new DashboardMember();
+         //newForm.Close += (sender, args) => this.Close();
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
       } // end open user dashboard
 
       private void openAdminForm()
       {
+         this.Hide();
          ClubList newForm = new ClubList();
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);

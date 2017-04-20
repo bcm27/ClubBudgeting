@@ -86,5 +86,10 @@ namespace ClubBudgeting.Forms
             MessageBox.Show("Error: could not show transactions");
          }
       }
+
+      private void DashboardAdmin_Load(object sender, EventArgs e)
+      {
+
+      }
    }
 }
