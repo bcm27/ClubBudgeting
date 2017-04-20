@@ -34,6 +34,7 @@ namespace ClubBudgeting
          try
          {
             string check = sql.logIn(txtbx1_userName.Text, txtbx2_password.Text);
+            us.LogIn(txtbx1_userName.Text, txtbx2_password.Text);
             // check user previledges; if admin launch admin window
             if (check == "0")
                openAdminForm();
@@ -53,7 +54,8 @@ namespace ClubBudgeting
 
       private void openUserForm()
       {
-         DashboardMember newForm = new DashboardMember(); // Instantiate a Form3 object.
+         // Instantiate a Form3 object.
+         DashboardMember newForm = new DashboardMember(); 
          newForm.StartPosition = FormStartPosition.CenterParent;
          newForm.Show(ParentForm);
       } // end open user dashboard
