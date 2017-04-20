@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClubBudgeting.Forms;
 using System.Collections;
+using System.IO;
 
 namespace ClubBudgeting.Forms
 {
@@ -17,6 +18,8 @@ namespace ClubBudgeting.Forms
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
       private ArrayList trans = new ArrayList();
+      private string selectedId = null;
+      Parameters pList = new Parameters();
 
       public DashboardMember()
       {
@@ -104,46 +107,59 @@ namespace ClubBudgeting.Forms
          listView_trans.Columns.Add("Purchase Date", 100);
          listView_trans.Columns.Add("Cost");
          listView_trans.Columns.Add("Description", 180);
-         listView_trans.Columns.Add("Approved", 60);
 
          foreach (ArrayList dataP in trans)
          {
             string ID = dataP[0].ToString(),
             purDate = dataP[1].ToString().Substring(0, 9),
-            cost = dataP[4].ToString(),
-            desc = dataP[5].ToString(),
-            appr = dataP[7].ToString();
+            cost = dataP[2].ToString(),
+            desc = dataP[3].ToString();
 
             listView_trans.Items.Add(new ListViewItem(new[] {ID,
-               purDate, cost, desc, appr}));
+               purDate, cost, desc}));
          }
       } // end loadList
 
       private void button1_Click(object sender, EventArgs e)
       {
-         openFileD_budget_prop.Filter = ".pdf Files | *.pdf;";
-         openFileD_budget_prop.InitialDirectory = @"C:\Users";
+         OFD_budget_prop.Filter = "Excel Files | *.xlsx, *.xls, *.csv;";
+         OFD_budget_prop.InitialDirectory = @"C:\Users";
 
-         if (openFileD_budget_prop.ShowDialog() == DialogResult.OK)
+         if (OFD_budget_prop.ShowDialog() == DialogResult.OK)
          {
             byte[] file = System.IO.File.ReadAllBytes
-               (openFileD_budget_prop.FileName);
-            
+               (OFD_budget_prop.FileName);
+            pList.addParams(us.CLUB_ID, file, 
+               Path.GetExtension(OFD_budget_prop.FileName));
+            sql.AddBudgetProp(pList);
          }
       }
 
-      private void listView_trans_SelectedIndexChanged(object sender, EventArgs e)
+      private void LV_trans_SelectedIndexChanged(object sender, EventArgs e)
       {
          if (listView_trans.SelectedItems.Count == 0)
             return;
-         ListViewItem item = listView_trans.SelectedItems[0];
-         System.Diagnostics.Debug.WriteLine(item.SubItems[0].Text);
-
+         selectedId = listView_trans.SelectedItems[0].SubItems[0].Text;
       }
 
       private void but6_logout_Click(object sender, EventArgs e)
       {
          Environment.Exit(0);
+      }
+
+      private void uploadReceipt_Click(object sender, EventArgs e)
+      {
+         OFD_budget_prop.Filter = ".pdf Files | *.pdf; *.png; *.jpg;";
+         OFD_budget_prop.InitialDirectory = @"C:\Users";
+
+         if (OFD_budget_prop.ShowDialog() == DialogResult.OK)
+         {
+            byte[] file = System.IO.File.ReadAllBytes
+               (OFD_budget_prop.FileName);
+            pList.addParams(selectedId, file,
+               Path.GetExtension(OFD_budget_prop.FileName));
+            sql.addPDFReceipt(pList);
+         }
       }
    }
 }

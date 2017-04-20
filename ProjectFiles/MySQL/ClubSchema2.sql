@@ -38,7 +38,7 @@ CREATE TABLE Term (
 
 CREATE TABLE Receipt (
 	id INT AUTO_INCREMENT PRIMARY KEY,  
-    transId INT,
+    transId INT UNIQUE KEY,
 	invoice LONGBLOB DEFAULT NULL,
     fileExtention VARCHAR(4) DEFAULT NULL,
 	CONSTRAINT FKReceipt_transId FOREIGN KEY (transId) REFERENCES Transactions (id)

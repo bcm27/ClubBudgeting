@@ -32,6 +32,8 @@ namespace ClubBudgeting
          try
          {
             string check = sql.logIn(txtbx1_userName.Text, txtbx2_password.Text);
+            us.LogIn(txtbx1_userName.Text, txtbx2_password.Text);
+
             // check user privileges - if admin launch admin window
             if (check == "0")
                openAdminForm();           
