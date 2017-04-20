@@ -11,30 +11,23 @@ using ClubBudgeting.Forms;
 using System.Collections;
 using System.IO;
 
-namespace ClubBudgeting.Forms
-{
-   public partial class DashboardMember : Form
-   {
+namespace ClubBudgeting.Forms {
+   public partial class DashboardMember : Form {
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
+
       private ArrayList trans = new ArrayList();
       private string selectedId = null;
       Parameters pList = new Parameters();
 
-      public DashboardMember()
-      {
+      public DashboardMember() {
          InitializeComponent();
       }
 
-
-      //#####################################################################//
       /// <summary>
-      /// loads all essential components
+      /// Load all essential components of form
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void DashboardMember_Load(object sender, EventArgs e)
-      {
+      private void DashboardMember_Load(object sender, EventArgs e) {
          budgetInfo();
 
          listView_trans.FullRowSelect = true;
@@ -42,65 +35,52 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// closes the application
+      /// Close the application
       /// </summary>
-      /// <param name="e"></param>
-      protected override void OnFormClosing(FormClosingEventArgs e)
-      {
+      protected override void OnFormClosing(FormClosingEventArgs e) {
          Environment.Exit(0);
       }
 
-      //#####################################################################//
       /// <summary>
-      /// load account and budget information
+      /// Load account and budget information
       /// </summary>
-      private void budgetInfo()
-      {
+      private void budgetInfo() {
          lab1_accountName.Text = "Club Name: "
           + us.CLUB_NAME;
 
          lab3_budget.Text = "Budget Total: $"
           + sql.getCurrClubBalance(new Parameters(us.CLUB_ID));
 
-         lab4_debt.Text = "Debt Total: $" 
+         lab4_debt.Text = "Debt Total: $"
           + sql.getDebt(new Parameters(us.CLUB_ID));
 
       }
 
-      //#####################################################################//
       /// <summary>
-      /// opens the transaction window when the button is clicked
+      /// Open the transaction window on button click
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void but1_view_transactions_Click(object sender, EventArgs e)
-      {
-         try
-         {// Instantiate a Form3 object.
-            ViewTransactions newForm = new ViewTransactions(); 
-            newForm.StartPosition = FormStartPosition.CenterParent;
-            newForm.Show(ParentForm);
-         }
-         catch
-         {
+      private void but1_view_transactions_Click(object sender, EventArgs e) {
+         try {
+            ViewTransactions transForm = new ViewTransactions();
+
+            transForm.StartPosition = FormStartPosition.CenterParent;
+            transForm.Show(ParentForm);
+         } catch {
             System.Diagnostics.Debug.WriteLine("Failed to view transactions");
          }
       }
 
       /// <summary>
-      /// When the form is loaded, load the data from the club onto the list
+      /// Load the data from the club onto the list
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void ViewTransactions_Load(object sender, EventArgs e)
-      { loadList(sql.getTransactions(new Parameters(us.CLUB_ID))); }
+      private void ViewTransactions_Load(object sender, EventArgs e) {
+         loadList(sql.getTransactions(new Parameters(us.CLUB_ID)));
+      }
 
       /// <summary>
-      /// loads the transactions for the club Id into the viewList.
+      /// Load the transactions for the club Id into the viewList
       /// </summary>
-      /// <param name="trans"></param>
-      private void loadList(ArrayList trans)
-      {
+      private void loadList(ArrayList trans) {
          listView_trans.View = View.Details;
 
          listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
@@ -108,47 +88,55 @@ namespace ClubBudgeting.Forms
          listView_trans.Columns.Add("Cost");
          listView_trans.Columns.Add("Description", 180);
 
-         foreach (ArrayList dataP in trans)
-         {
+         foreach (ArrayList dataP in trans) {
             string ID = dataP[0].ToString(),
-            purDate = dataP[1].ToString().Substring(0, 9),
-            cost = dataP[2].ToString(),
-            desc = dataP[3].ToString();
+             purDate = dataP[1].ToString().Substring(0, 9),
+             cost = dataP[2].ToString(),
+             desc = dataP[3].ToString();
 
             listView_trans.Items.Add(new ListViewItem(new[] {ID,
                purDate, cost, desc}));
          }
-      } // end loadList
+      }
 
-      private void button1_Click(object sender, EventArgs e)
-      {
+      /// <summary>
+      /// Add budget proposal
+      /// </summary>
+      private void button1_Click(object sender, EventArgs e) {
          OFD_budget_prop.Filter = "Excel Files | *.xlsx; *.xls; *.csv;";
          OFD_budget_prop.InitialDirectory = @"C:\Users";
 
-         if (OFD_budget_prop.ShowDialog() == DialogResult.OK)
-         {
+         if (OFD_budget_prop.ShowDialog() == DialogResult.OK) {
             byte[] file = System.IO.File.ReadAllBytes
                (OFD_budget_prop.FileName);
-            pList.addParams(us.CLUB_ID, file, 
+
+            pList.addParams(us.CLUB_ID, file,
                Path.GetExtension(OFD_budget_prop.FileName));
             sql.AddBudgetProp(pList);
          }
       }
 
-      private void LV_trans_SelectedIndexChanged(object sender, EventArgs e)
-      {
+      /// <summary>
+      /// Change the selectedId var when listview is updated
+      /// </summary>
+      private void LV_trans_SelectedIndexChanged(object sender, EventArgs e) {
          if (listView_trans.SelectedItems.Count == 0)
             return;
+
          selectedId = listView_trans.SelectedItems[0].SubItems[0].Text;
       }
 
-      private void but6_logout_Click(object sender, EventArgs e)
-      {
+      /// <summary>
+      /// Logout of user account and exit program
+      /// </summary>
+      private void but6_logout_Click(object sender, EventArgs e) {
          Environment.Exit(0);
       }
 
-      private void uploadReceipt_Click(object sender, EventArgs e)
-      {
+      /// <summary>
+      /// Upload receipt to database
+      /// </summary>
+      private void uploadReceipt_Click(object sender, EventArgs e) {
          OFD_budget_prop.Filter = ".pdf Files | *.pdf; *.png; *.jpg;";
          OFD_budget_prop.InitialDirectory = @"C:\Users";
 
@@ -156,12 +144,12 @@ namespace ClubBudgeting.Forms
             if (OFD_budget_prop.ShowDialog() == DialogResult.OK) {
                byte[] file = System.IO.File.ReadAllBytes
                   (OFD_budget_prop.FileName);
+
                pList.addParams(selectedId, file,
                   Path.GetExtension(OFD_budget_prop.FileName));
                sql.addPDFReceipt(pList);
             }
-         } 
-         else {
+         } else {
             MessageBox.Show("Please select a transaction",
                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
          }

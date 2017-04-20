@@ -9,18 +9,15 @@ using System.Threading.Tasks;
 using System.Collections;
 using System.Windows.Forms;
 
-namespace ClubBudgeting.Forms
-{
-   public partial class CreateAccount : Form
-   {
-      private ClubList clubForm = new ClubList();
+namespace ClubBudgeting.Forms {
+   public partial class CreateAccount : Form {
+
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
       private string clubSelected;
 
-      public CreateAccount()
-      {
+      public CreateAccount() {
          InitializeComponent();
          populateDropDown();
       }
@@ -28,45 +25,36 @@ namespace ClubBudgeting.Forms
       /// <summary>
       /// Populate the drop down menu with all the club names
       /// </summary>
-      private void populateDropDown()
-      {
-         ArrayList clubs = sql.CLUB_LIST;         
+      private void populateDropDown() {
+         ArrayList clubs = sql.CLUB_LIST;
          string[] names = new string[clubs.Count - 1];
 
          for (int i = 1; i < clubs.Count; i++)
-            names[i - 1] = ((ArrayList)clubs[i])[1].ToString(); 
+            names[i - 1] = ((ArrayList)clubs[i])[1].ToString();
 
          cb_clublist.Items.AddRange(names);
       }
 
       /// <summary>
-      /// 
+      /// Set the club selected index
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
-      private void cb_clubList_index(object sender, EventArgs e)
-      {
-         clubSelected = 
+      private void cb_clubList_index(object sender, EventArgs e) {
+         clubSelected =
           this.cb_clublist.GetItemText(this.cb_clublist.SelectedItem);
       }
 
       /// <summary>
-      /// 
+      /// Add new member to the database
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void but1_register_Click(object sender, EventArgs e)
-      {
+      private void but1_register_Click(object sender, EventArgs e) {
          if (txtbx2_password.Text == txtbx3_password_check.Text
-            || getId() != null)
-         {
-            sql.addMember(new Parameters(getId(), 0,
-            txtbx1_userName.Text, txt4_firstName.Text, txtbx5_lastName.Text,
-            txtbx2_password.Text));
-         }
-         else
-         {
-            MessageBox.Show("Password Error", 
+          || getId() != null) {
+            sql.addMember(new Parameters(getId(), 0, txtbx1_userName.Text, 
+             txt4_firstName.Text, txtbx5_lastName.Text, txtbx2_password.Text));
+         } else {
+            MessageBox.Show("Password Error",
                "Passwords don't match - try again", MessageBoxButtons.OK);
          }
       }
@@ -75,13 +63,12 @@ namespace ClubBudgeting.Forms
       /// Return the id of the currently selected club
       /// </summary>
       /// <returns>string</returns>
-      public string getId()
-      {
+      public string getId() {
          ArrayList clubs = sql.CLUB_LIST;
 
          foreach (ArrayList names in clubs)
             if (cb_clublist.Text.Equals(names[1]))
-               return names[1].ToString(); 
+               return names[1].ToString();
 
          return null;
       }

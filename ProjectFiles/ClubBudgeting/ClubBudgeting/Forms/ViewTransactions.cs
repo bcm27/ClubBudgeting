@@ -10,35 +10,29 @@ using System.Windows.Forms;
 using ClubBudgeting.Source;
 using System.Collections;
 
-namespace ClubBudgeting.Forms
-{
-   public partial class ViewTransactions : Form
-   {
+namespace ClubBudgeting.Forms {
+   public partial class ViewTransactions : Form {
       // static instance methods so we can access this information
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
       private ArrayList trans = new ArrayList();
 
-      public ViewTransactions()
-      {
+      public ViewTransactions() {
          InitializeComponent();
          listView_trans.FullRowSelect = true;
       }
 
       /// <summary>
-      /// When the form is loaded, load the data from the club onto the list
+      /// Load the data from the club into the transactions list
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void ViewTransactions_Load(object sender, EventArgs e)
-      { loadList(sql.getTransactions(new Parameters(us.CLUB_ID))); }
+      private void ViewTransactions_Load(object sender, EventArgs e) {
+         loadList(sql.getTransactions(new Parameters(us.CLUB_ID)));
+      }
 
       /// <summary>
-      /// loads the transactions for the club Id into the viewList.
+      /// Load the transactions for the club Id into the viewList.
       /// </summary>
-      /// <param name="trans"></param>
-      private void loadList(ArrayList trans)
-      {
+      private void loadList(ArrayList trans) {
          listView_trans.View = View.Details;
 
          listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
@@ -47,25 +41,26 @@ namespace ClubBudgeting.Forms
          listView_trans.Columns.Add("Description", 180);
          listView_trans.Columns.Add("Approved", 60);
 
-         foreach (ArrayList dataP in trans)
-         {
+         foreach (ArrayList dataP in trans) {
             string ID = dataP[0].ToString(),
-            purDate = dataP[1].ToString().Substring(0, 9),
-            cost = dataP[2].ToString(),
-            desc = dataP[3].ToString(),
-            appr = dataP[5].ToString();
+             purDate = dataP[1].ToString().Substring(0, 9),
+             cost = dataP[2].ToString(),
+             desc = dataP[3].ToString(),
+             appr = dataP[5].ToString();
 
             listView_trans.Items.Add(new ListViewItem(new[] {ID,
                purDate, cost, desc, appr}));
          }
-      } // end loadList
+      }
 
-      private void listView_trans_SelectedIndexChanged(object sender, EventArgs e)
-      {
+      /// <summary>
+      /// Get the PDF 
+      /// </summary>
+      private void listView_trans_SelectedIndexChanged(object sender, EventArgs e) {
          if (listView_trans.SelectedItems.Count == 0)
             return;
-         sql.getPDF(new Parameters(listView_trans.SelectedItems[0].Text));
 
+         sql.getPDF(new Parameters(listView_trans.SelectedItems[0].Text));
       }
    }
 }
