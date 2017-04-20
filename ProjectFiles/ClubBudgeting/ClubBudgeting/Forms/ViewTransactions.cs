@@ -44,7 +44,7 @@ namespace ClubBudgeting.Forms
          listView_trans.Columns.Add("Purchase Date", 100);
          listView_trans.Columns.Add("Cost");
          listView_trans.Columns.Add("Description", 180);
-         listView_trans.Columns.Add("Approved", 25);
+         listView_trans.Columns.Add("Approved", 60);
 
          foreach (ArrayList dataP in trans)
          {

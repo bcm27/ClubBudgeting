@@ -53,15 +53,20 @@ namespace ClubBudgeting
 
       private void openUserForm()
       {
-         DashboardMember userDashboard = new DashboardMember(); // Instantiate a Form3 object.
-         userDashboard.StartPosition = FormStartPosition.CenterParent;
-         userDashboard.Show(ParentForm);
+         // Instantiate a Form3 object.
+         this.Hide();
+         DashboardMember newForm = new DashboardMember();
+         //newForm.Close += (sender, args) => this.Close();
+         newForm.StartPosition = FormStartPosition.CenterParent;
+         newForm.Show(ParentForm);
       } // end open user dashboard
 
       private void openAdminForm()
       {
-         clubList.StartPosition = FormStartPosition.CenterParent;
-         clubList.Show(ParentForm);
+         this.Hide();
+         ClubList newForm = new ClubList();
+         newForm.StartPosition = FormStartPosition.CenterParent;
+         newForm.Show(ParentForm);
       } // end open admin dashboard
 
       private void but2_createAccount_Click(object sender, EventArgs e)
