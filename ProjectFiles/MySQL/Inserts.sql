@@ -16,18 +16,18 @@ INSERT INTO Club VALUES
   (NULL, 'Lazy Zipper', 'Club that practices improvisation');
 
 INSERT INTO Transactions VALUES
-  (NULL, '2016-09-18', null, null, 50, 'Travel costs', 2, false),
-  (NULL, '2016-10-10', null, null, 150, 'Conference costs', 3, false),
-  (NULL, '2016-09-11', null, null, 15, 'Food costs', 4, false),
-  (NULL, '2016-10-13', null, null, 40, 'Travel costs', 5, false),
-  (NULL, '2016-10-01', null, null, 300, 'Materials costs', 6, false),
-  (NULL, '2016-10-21', null, null, 55, 'Materials costs', 7, false),
-  (NULL, '2016-09-11', null, null, 20, 'Food costs', 8, false),
-  (NULL, '2016-09-10', null, null, 30, 'Travel costs', 9, false),
-  (NULL, '2016-09-12', null, null, 50, 'Food costs', 10, false),
-  (NULL, '2016-10-15', null, null, 170, 'Events costs', 11, false),
-  (NULL, '2016-10-20', null, null, 30, 'Event costs', 12, false),
-  (NULL, '2016-09-01', null, null, 30, 'Food costs', 13, false);
+  (NULL, '2016-09-18',  50, 'Travel costs', 2, false),
+  (NULL, '2016-10-10', 150, 'Conference costs', 3, false),
+  (NULL, '2016-09-11', 15, 'Food costs', 4, false),
+  (NULL, '2016-10-13', 40, 'Travel costs', 5, false),
+  (NULL, '2016-10-01', 300, 'Materials costs', 6, false),
+  (NULL, '2016-10-21', 55, 'Materials costs', 7, false),
+  (NULL, '2016-09-11', 20, 'Food costs', 8, false),
+  (NULL, '2016-09-10', 30, 'Travel costs', 9, false),
+  (NULL, '2016-09-12', 50, 'Food costs', 10, false),
+  (NULL, '2016-10-15', 170, 'Events costs', 11, false),
+  (NULL, '2016-10-20', 30, 'Event costs', 12, false),
+  (NULL, '2016-09-01', 30, 'Food costs', 13, false);
 
 INSERT INTO Term VALUES
  (NULL, 'F13'), (NULL, 'S14'), (NULL, 'F14'), (NULL, 'S15'),

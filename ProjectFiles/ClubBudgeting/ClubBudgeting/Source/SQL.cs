@@ -197,8 +197,6 @@ namespace ClubBudgeting
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         double budget = double.Parse(getCurrClubBudg(new Parameters
-            (pLists.PARAM_LIST[5])));
          double balance = double.Parse(getCurrClubBalance(new Parameters
             (pLists.PARAM_LIST[5])));
          double price = double.Parse(pLists.PARAM_LIST[3].ToString());
