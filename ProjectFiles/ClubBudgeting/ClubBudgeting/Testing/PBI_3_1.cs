@@ -38,7 +38,6 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_1()
       {
-         string var = "";
          stmt = "";
          MySqlCommand cmd;
          // check Club

@@ -8,10 +8,6 @@ namespace ClubBudgeting
 {
    class User
    {
-      // Global Variables
-      private bool admin,
-         loggedIn;
-      Parameters pLists;
 
       // username and club
       private string username, clubId, clubName;
@@ -40,8 +36,6 @@ namespace ClubBudgeting
       /// </summary>
       private void Initilize()
       {
-         admin = false;
-         loggedIn = false;
       }
       
       /*
@@ -101,10 +95,7 @@ namespace ClubBudgeting
          {
             string temp = sql.logIn(name, pass);
             username = name;
-            if (temp.Equals("0"))
-               admin = true;
             clubId = temp;
-            loggedIn = true;
             clubName = sql.getClubName(new Parameters(clubId));
             return true;
          }
