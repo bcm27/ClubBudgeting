@@ -114,7 +114,9 @@ namespace ClubBudgeting.Testing
       {
          try
          {
-            SQL.getPDF(new Parameters());
+            sql.addPDFReceipt(new Parameters(file, ".pdf", "1"));
+
+            sql.getPDF(new Parameters("1"));
          }
          catch
          {
@@ -172,7 +174,7 @@ namespace ClubBudgeting.Testing
       }
       //#####################################################################//
       [Test]
-      public void PBI_5()
+      public void PBI_5_1()
       {
          try
          {
@@ -202,5 +204,4 @@ namespace ClubBudgeting.Testing
 
    } // end of scope 
 } // end of namespace
-
 */
