@@ -33,6 +33,8 @@ namespace ClubBudgeting.Forms
       private void DashboardMember_Load(object sender, EventArgs e)
       {
          budgetInfo();
+
+         listView_trans.FullRowSelect = true;
          ViewTransactions_Load(sender, e);
       }
 
@@ -98,11 +100,11 @@ namespace ClubBudgeting.Forms
       {
          listView_trans.View = View.Details;
 
-         //listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
+         listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
          listView_trans.Columns.Add("Purchase Date", 100);
          listView_trans.Columns.Add("Cost");
          listView_trans.Columns.Add("Description", 180);
-         listView_trans.Columns.Add("Approved", 55);
+         listView_trans.Columns.Add("Approved", 60);
 
          foreach (ArrayList dataP in trans)
          {
@@ -112,7 +114,7 @@ namespace ClubBudgeting.Forms
             desc = dataP[5].ToString(),
             appr = dataP[7].ToString();
 
-            listView_trans.Items.Add(new ListViewItem(new[] {
+            listView_trans.Items.Add(new ListViewItem(new[] {ID,
                purDate, cost, desc, appr}));
          }
       } // end loadList
@@ -132,7 +134,16 @@ namespace ClubBudgeting.Forms
 
       private void listView_trans_SelectedIndexChanged(object sender, EventArgs e)
       {
+         if (listView_trans.SelectedItems.Count == 0)
+            return;
+         ListViewItem item = listView_trans.SelectedItems[0];
+         System.Diagnostics.Debug.WriteLine(item.SubItems[0].Text);
 
+      }
+
+      private void but6_logout_Click(object sender, EventArgs e)
+      {
+         Environment.Exit(0);
       }
    }
 }

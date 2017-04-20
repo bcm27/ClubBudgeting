@@ -76,6 +76,7 @@
          this.but6_logout.TabIndex = 9;
          this.but6_logout.Text = "Logout";
          this.but6_logout.UseVisualStyleBackColor = true;
+         this.but6_logout.Click += new System.EventHandler(this.but6_logout_Click);
          // 
          // but4_upload_receipt
          // 
