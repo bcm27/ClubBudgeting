@@ -312,7 +312,7 @@ namespace ClubBudgeting
       {
          string[] listing = { "@transId" };
          statement = "SELECT invoice, fileExtention FROM Receipt"
-            + "WHERE id = @transId;";
+            + "WHERE transId = @transId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
@@ -368,13 +368,13 @@ namespace ClubBudgeting
       /// <summary>
       /// adds a pdf receipts
       /// </summary>
-      /// <param name="pLists">@termId, @file, @ext</param>
+      /// <param name="pLists">@clubId, @file, @ext</param>
       /// <returns>completed</returns>
       public bool AddBudgetProp(Parameters pLists)
       {
-         string[] listing = { "@termId", "@file", "@ext" };
-         statement = "INSERT INTO BudgetProposal VALUES (null, @termId, "
-            + "@file, @ext);";
+         string[] listing = { "@clubId", "@file", "@ext" };
+         statement = "INSERT INTO BudgetProposal VALUES (null," 
+          + getCurrSemesterId() + ",@clubId, @file, @ext);";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
@@ -394,13 +394,13 @@ namespace ClubBudgeting
       /// <summary>
       /// retrieves PDF from DB
       /// </summary>
-      /// <param name="pLists">@BdgPropId</param>
+      /// <param name="pLists">@clubId</param>
       /// <returns></returns>
       public bool getBudgetProp(Parameters pLists)
       {
-         string[] listing = { "@BdgPropId" };
-         statement = "SELECT proposal, fileExtention FROM BudgetProposal "
-            + "WHERE id = @BdgPropId;";
+         string[] listing = { "@clubId" };
+         statement = "SELECT proposal, fileExtention, MAX(termId) FROM "
+            + "BudgetProposal WHERE id = @clubId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          Reader.Close();
@@ -546,7 +546,7 @@ namespace ClubBudgeting
                ArrayList partialTransaction = new ArrayList();
 
                int loop = 0;
-               while (loop <= 7)
+               while (loop <= 5)
                   partialTransaction.Add(Reader[loop++].ToString());
 
                transactions.Add(partialTransaction);

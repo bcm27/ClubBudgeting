@@ -69,3 +69,6 @@ CREATE TABLE BudgetProposal (
 	CONSTRAINT FKBudgetProposal_clubId FOREIGN KEY (clubId) REFERENCES club (id)
 		ON DELETE CASCADE ON UPDATE CASCADE    
 );
+
+
+

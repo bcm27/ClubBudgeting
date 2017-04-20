@@ -51,9 +51,9 @@ namespace ClubBudgeting.Forms
          {
             string ID = dataP[0].ToString(),
             purDate = dataP[1].ToString().Substring(0, 9),
-            cost = dataP[4].ToString(),
-            desc = dataP[5].ToString(),
-            appr = dataP[7].ToString();
+            cost = dataP[2].ToString(),
+            desc = dataP[3].ToString(),
+            appr = dataP[4].ToString();
 
             listView_trans.Items.Add(new ListViewItem(new[] {ID,
                purDate, cost, desc, appr}));

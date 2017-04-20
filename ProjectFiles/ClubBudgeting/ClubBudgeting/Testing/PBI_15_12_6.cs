@@ -171,7 +171,7 @@ namespace ClubBudgeting.Testing
          MySqlCommand cmd;
          MySqlDataReader rd;
          Parameters pList = new Parameters
-            (sql.getCurrSemesterId(), System.IO.File.ReadAllBytes
+            (1, System.IO.File.ReadAllBytes
             (@"F:\Documents\GitHub\MeierPiler\Timelog.xlsx"), "xlsx");
 
          // correct file and type
@@ -185,6 +185,7 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
             rd.Read();
             rd.Close();
+            sql.getBudgetProp(new Parameters(1));
          }
          catch
          {
