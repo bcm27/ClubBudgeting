@@ -68,7 +68,7 @@
          // lab4_purchaseAmt
          // 
          this.lab4_purchaseAmt.AutoSize = true;
-         this.lab4_purchaseAmt.Location = new System.Drawing.Point(40, 254);
+         this.lab4_purchaseAmt.Location = new System.Drawing.Point(36, 253);
          this.lab4_purchaseAmt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab4_purchaseAmt.Name = "lab4_purchaseAmt";
          this.lab4_purchaseAmt.Size = new System.Drawing.Size(276, 25);
@@ -87,16 +87,16 @@
          // 
          // txtbx1_transAmt
          // 
-         this.txtbx1_transAmt.Location = new System.Drawing.Point(320, 250);
-         this.txtbx1_transAmt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.txtbx1_transAmt.Location = new System.Drawing.Point(320, 253);
+         this.txtbx1_transAmt.Margin = new System.Windows.Forms.Padding(4);
          this.txtbx1_transAmt.Name = "txtbx1_transAmt";
          this.txtbx1_transAmt.Size = new System.Drawing.Size(192, 31);
          this.txtbx1_transAmt.TabIndex = 6;
          // 
          // txtbx2_date
          // 
-         this.txtbx2_date.Location = new System.Drawing.Point(320, 306);
-         this.txtbx2_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.txtbx2_date.Location = new System.Drawing.Point(309, 307);
+         this.txtbx2_date.Margin = new System.Windows.Forms.Padding(4);
          this.txtbx2_date.Name = "txtbx2_date";
          this.txtbx2_date.Size = new System.Drawing.Size(192, 31);
          this.txtbx2_date.TabIndex = 8;
@@ -124,7 +124,7 @@
          // but1_submitTransaction
          // 
          this.but1_submitTransaction.Location = new System.Drawing.Point(576, 250);
-         this.but1_submitTransaction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.but1_submitTransaction.Margin = new System.Windows.Forms.Padding(4);
          this.but1_submitTransaction.Name = "but1_submitTransaction";
          this.but1_submitTransaction.Size = new System.Drawing.Size(168, 87);
          this.but1_submitTransaction.TabIndex = 14;
@@ -146,7 +146,7 @@
          // 
          this.label4.AutoSize = true;
          this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label4.Location = new System.Drawing.Point(40, 194);
+         this.label4.Location = new System.Drawing.Point(36, 194);
          this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.label4.Name = "label4";
          this.label4.Size = new System.Drawing.Size(221, 29);
@@ -186,7 +186,7 @@
          // but_viewTransactions
          // 
          this.but_viewTransactions.Location = new System.Drawing.Point(708, 35);
-         this.but_viewTransactions.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.but_viewTransactions.Margin = new System.Windows.Forms.Padding(6);
          this.but_viewTransactions.Name = "but_viewTransactions";
          this.but_viewTransactions.Size = new System.Drawing.Size(168, 85);
          this.but_viewTransactions.TabIndex = 27;
@@ -214,7 +214,7 @@
          this.Controls.Add(this.lab4_purchaseAmt);
          this.Controls.Add(this.lab3_budgetTotal);
          this.Controls.Add(this.lab1_acctName);
-         this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+         this.Margin = new System.Windows.Forms.Padding(4);
          this.Name = "DashboardAdmin";
          this.Text = "Admin Dashboard";
          this.ResumeLayout(false);

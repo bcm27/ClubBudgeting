@@ -28,7 +28,7 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Load club names into the listbox
+      /// Load all of the club names into the listbox
       /// </summary>
       private void loadClubNames()
       {
@@ -37,7 +37,7 @@ namespace ClubBudgeting.Forms
 
          foreach (ArrayList club in clubNames)
          {
-            listBox1_clubList.Items.Add(club[1]); // add club name to listbox
+            listBox1_clubList.Items.Add(club[1]);
          }
       }
 
@@ -110,7 +110,7 @@ namespace ClubBudgeting.Forms
          }
          catch
          {
-            MessageBox.Show("Error: could not open add club form");
+            MessageBox.Show("Error: could not open Add Club form");
          }
       }
 
@@ -132,6 +132,24 @@ namespace ClubBudgeting.Forms
       protected override void OnFormClosing(FormClosingEventArgs e)
       {
          Environment.Exit(0);
+      }
+
+      /// <summary>
+      /// Get a budget proposal and upload to the database
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void but_getBudgProp_Click(object sender, EventArgs e)
+      {
+         try
+         {
+            sql.getBudgetProp(new Parameters
+               (listBox1_clubList.SelectedIndex.ToString()));
+         }
+         catch
+         {
+            MessageBox.Show("Error: could not get budget proposal");
+         }
       }
    }
 }

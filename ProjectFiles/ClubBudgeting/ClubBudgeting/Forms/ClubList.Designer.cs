@@ -34,16 +34,17 @@
          this.but_exit = new System.Windows.Forms.Button();
          this.but_addClub = new System.Windows.Forms.Button();
          this.but_refresh = new System.Windows.Forms.Button();
+         this.but_getBudgProp = new System.Windows.Forms.Button();
          this.SuspendLayout();
          // 
          // lab1_selectClub
          // 
          this.lab1_selectClub.AutoSize = true;
-         this.lab1_selectClub.Location = new System.Drawing.Point(40, 37);
+         this.lab1_selectClub.Location = new System.Drawing.Point(40, 33);
          this.lab1_selectClub.Name = "lab1_selectClub";
-         this.lab1_selectClub.Size = new System.Drawing.Size(375, 25);
+         this.lab1_selectClub.Size = new System.Drawing.Size(645, 25);
          this.lab1_selectClub.TabIndex = 0;
-         this.lab1_selectClub.Text = "Select a club to view their information:";
+         this.lab1_selectClub.Text = "Select a club to view their information or get their budget proposal:";
          // 
          // listBox1_clubList
          // 
@@ -56,9 +57,9 @@
          // 
          // but1_clubInfo
          // 
-         this.but1_clubInfo.Location = new System.Drawing.Point(457, 241);
+         this.but1_clubInfo.Location = new System.Drawing.Point(457, 179);
          this.but1_clubInfo.Name = "but1_clubInfo";
-         this.but1_clubInfo.Size = new System.Drawing.Size(197, 75);
+         this.but1_clubInfo.Size = new System.Drawing.Size(228, 75);
          this.but1_clubInfo.TabIndex = 2;
          this.but1_clubInfo.Text = "View club information";
          this.but1_clubInfo.UseVisualStyleBackColor = true;
@@ -66,9 +67,9 @@
          // 
          // but_exit
          // 
-         this.but_exit.Location = new System.Drawing.Point(45, 526);
+         this.but_exit.Location = new System.Drawing.Point(45, 540);
          this.but_exit.Name = "but_exit";
-         this.but_exit.Size = new System.Drawing.Size(197, 55);
+         this.but_exit.Size = new System.Drawing.Size(221, 55);
          this.but_exit.TabIndex = 3;
          this.but_exit.Text = "Exit";
          this.but_exit.UseVisualStyleBackColor = true;
@@ -76,9 +77,9 @@
          // 
          // but_addClub
          // 
-         this.but_addClub.Location = new System.Drawing.Point(457, 455);
+         this.but_addClub.Location = new System.Drawing.Point(457, 469);
          this.but_addClub.Name = "but_addClub";
-         this.but_addClub.Size = new System.Drawing.Size(197, 55);
+         this.but_addClub.Size = new System.Drawing.Size(228, 55);
          this.but_addClub.TabIndex = 4;
          this.but_addClub.Text = "Add club";
          this.but_addClub.UseVisualStyleBackColor = true;
@@ -86,19 +87,30 @@
          // 
          // but_refresh
          // 
-         this.but_refresh.Location = new System.Drawing.Point(457, 526);
+         this.but_refresh.Location = new System.Drawing.Point(457, 540);
          this.but_refresh.Name = "but_refresh";
-         this.but_refresh.Size = new System.Drawing.Size(197, 55);
+         this.but_refresh.Size = new System.Drawing.Size(228, 55);
          this.but_refresh.TabIndex = 5;
          this.but_refresh.Text = "Refresh club list";
          this.but_refresh.UseVisualStyleBackColor = true;
          this.but_refresh.Click += new System.EventHandler(this.but_refresh_Click);
          // 
+         // but_getBudgProp
+         // 
+         this.but_getBudgProp.Location = new System.Drawing.Point(457, 291);
+         this.but_getBudgProp.Name = "but_getBudgProp";
+         this.but_getBudgProp.Size = new System.Drawing.Size(228, 75);
+         this.but_getBudgProp.TabIndex = 6;
+         this.but_getBudgProp.Text = "Upload budget proposal";
+         this.but_getBudgProp.UseVisualStyleBackColor = true;
+         this.but_getBudgProp.Click += new System.EventHandler(this.but_getBudgProp_Click);
+         // 
          // ClubList
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(686, 612);
+         this.ClientSize = new System.Drawing.Size(720, 628);
+         this.Controls.Add(this.but_getBudgProp);
          this.Controls.Add(this.but_refresh);
          this.Controls.Add(this.but_addClub);
          this.Controls.Add(this.but_exit);
@@ -120,5 +132,6 @@
       private System.Windows.Forms.Button but_exit;
       private System.Windows.Forms.Button but_addClub;
       private System.Windows.Forms.Button but_refresh;
+      private System.Windows.Forms.Button but_getBudgProp;
    }
 }
