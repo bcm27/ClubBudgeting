@@ -20,9 +20,6 @@ namespace ClubBudgeting.Forms
       private string clubSelected;
       private bool isAdmin = false;
 
-      /// <summary>
-      /// 
-      /// </summary>
       public CreateAccount()
       {
          InitializeComponent();
@@ -30,7 +27,7 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// 
+      /// Populate the drop down menu with all the club names
       /// </summary>
       private void populateDropDown()
       {
@@ -40,18 +37,18 @@ namespace ClubBudgeting.Forms
          for (int i = 1; i < clubs.Count; i++)
             names[i - 1] = ((ArrayList)clubs[i])[1].ToString(); 
 
-         comboBox_clublist.Items.AddRange(names);
-
-      }// end populateDropDown
+         cb_clublist.Items.AddRange(names);
+      }
 
       /// <summary>
       /// 
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
-      private void comboBox_clublist_SelectedIndexChanged(object sender, EventArgs e)
+      private void cb_clubList_index(object sender, EventArgs e)
       {
-         clubSelected = this.comboBox_clublist.GetItemText(this.comboBox_clublist.SelectedItem);
+         clubSelected = 
+          this.cb_clublist.GetItemText(this.cb_clublist.SelectedItem);
       }
 
       /// <summary>
@@ -71,15 +68,12 @@ namespace ClubBudgeting.Forms
          else
          {
             MessageBox.Show("Password Error", 
-               "Passwords do not match please try again", MessageBoxButtons.OK);
+               "Passwords don't match - try again", MessageBoxButtons.OK);
          }
-
-         //{ "@club", "@admin", "@user", "@first",
-         //"@last", "@pass" };
       }
 
       /// <summary>
-      /// 
+      /// Set admin rights if user is admin
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
@@ -98,7 +92,7 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// returns the id of the currently selected club
+      /// Return the id of the currently selected club
       /// </summary>
       /// <returns>string</returns>
       public string getId()
@@ -106,7 +100,7 @@ namespace ClubBudgeting.Forms
          ArrayList clubs = sql.CLUB_LIST;
 
          foreach (ArrayList names in clubs)
-            if (comboBox_clublist.Text.Equals(names[1]))
+            if (cb_clublist.Text.Equals(names[1]))
                return names[1].ToString(); 
 
          return null;

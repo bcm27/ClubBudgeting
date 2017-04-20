@@ -52,9 +52,10 @@ namespace ClubBudgeting.Forms
             if (double.TryParse(txtbx1_transAmt.Text, out parsedVal) &&
              txtbx2_date.Text.ToString().Length == kDateLength)
             {
-               sql.addTransaction(new Parameters(txtbx2_date.Text, null, null,
-                txtbx1_transAmt.Text, null, clubListForm.getClubIndex));
-               lab_transStatus.Text = "Successfully added";
+               bool b = sql.addTransaction(new Parameters(txtbx2_date.Text, 
+                null, null, txtbx1_transAmt.Text, null, 
+                clubListForm.getClubIndex));
+               lab_transStatus.Text = "Success";
             }
             else
                throw new Exception();
@@ -64,8 +65,7 @@ namespace ClubBudgeting.Forms
             lab_transStatus.Text = "Failed";
             MessageBox.Show("Error: could not add transaction - " 
              + "check budget and date formatting");
-         }
-         
+         } 
       }
 
       /// <summary>
@@ -84,13 +84,8 @@ namespace ClubBudgeting.Forms
          }
          catch
          {
-            MessageBox.Show("Error: could not show transactions");
+            MessageBox.Show("Error: could not show transactions form");
          }
-      }
-
-      private void DashboardAdmin_Load(object sender, EventArgs e)
-      {
-
       }
    }
 }

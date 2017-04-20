@@ -40,7 +40,7 @@
          // lab_clubStatus
          // 
          this.lab_clubStatus.AutoSize = true;
-         this.lab_clubStatus.Location = new System.Drawing.Point(766, 151);
+         this.lab_clubStatus.Location = new System.Drawing.Point(756, 139);
          this.lab_clubStatus.Name = "lab_clubStatus";
          this.lab_clubStatus.Size = new System.Drawing.Size(73, 25);
          this.lab_clubStatus.TabIndex = 31;
@@ -50,7 +50,7 @@
          // 
          this.label3.AutoSize = true;
          this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label3.Location = new System.Drawing.Point(45, 58);
+         this.label3.Location = new System.Drawing.Point(35, 46);
          this.label3.Name = "label3";
          this.label3.Size = new System.Drawing.Size(143, 29);
          this.label3.TabIndex = 30;
@@ -58,7 +58,7 @@
          // 
          // but_addClub
          // 
-         this.but_addClub.Location = new System.Drawing.Point(581, 117);
+         this.but_addClub.Location = new System.Drawing.Point(571, 105);
          this.but_addClub.Name = "but_addClub";
          this.but_addClub.Size = new System.Drawing.Size(169, 92);
          this.but_addClub.TabIndex = 29;
@@ -68,14 +68,14 @@
          // 
          // txtbx_clubDesc
          // 
-         this.txtbx_clubDesc.Location = new System.Drawing.Point(325, 178);
+         this.txtbx_clubDesc.Location = new System.Drawing.Point(315, 166);
          this.txtbx_clubDesc.Name = "txtbx_clubDesc";
          this.txtbx_clubDesc.Size = new System.Drawing.Size(192, 31);
          this.txtbx_clubDesc.TabIndex = 28;
          // 
          // txtbx_clubName
          // 
-         this.txtbx_clubName.Location = new System.Drawing.Point(325, 117);
+         this.txtbx_clubName.Location = new System.Drawing.Point(315, 105);
          this.txtbx_clubName.Name = "txtbx_clubName";
          this.txtbx_clubName.Size = new System.Drawing.Size(192, 31);
          this.txtbx_clubName.TabIndex = 27;
@@ -83,7 +83,7 @@
          // label2
          // 
          this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(45, 178);
+         this.label2.Location = new System.Drawing.Point(35, 166);
          this.label2.Name = "label2";
          this.label2.Size = new System.Drawing.Size(244, 25);
          this.label2.TabIndex = 26;
@@ -92,7 +92,7 @@
          // lab_
          // 
          this.lab_.AutoSize = true;
-         this.lab_.Location = new System.Drawing.Point(45, 120);
+         this.lab_.Location = new System.Drawing.Point(35, 108);
          this.lab_.Name = "lab_";
          this.lab_.Size = new System.Drawing.Size(192, 25);
          this.lab_.TabIndex = 25;
@@ -102,7 +102,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(904, 299);
+         this.ClientSize = new System.Drawing.Size(884, 261);
          this.Controls.Add(this.lab_clubStatus);
          this.Controls.Add(this.label3);
          this.Controls.Add(this.but_addClub);

@@ -8,9 +8,10 @@ using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-/*
+
 namespace ClubBudgeting.Testing
-{ /*
+{ 
+   /*
    [TestFixture]
    class PBI_TESTING
    {
@@ -198,6 +199,7 @@ namespace ClubBudgeting.Testing
       } // end PBI_5_OverLimit//
 
    } // end of scope 
-} // end of namespace 
-*/
+
+   */
+} // end of namespace
 

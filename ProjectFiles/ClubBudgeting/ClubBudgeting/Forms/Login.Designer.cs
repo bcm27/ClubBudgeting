@@ -59,7 +59,7 @@
          // txtbx1_userName
          // 
          this.txtbx1_userName.Location = new System.Drawing.Point(430, 173);
-         this.txtbx1_userName.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.txtbx1_userName.Margin = new System.Windows.Forms.Padding(6);
          this.txtbx1_userName.Name = "txtbx1_userName";
          this.txtbx1_userName.Size = new System.Drawing.Size(282, 31);
          this.txtbx1_userName.TabIndex = 2;
@@ -67,7 +67,7 @@
          // txtbx2_password
          // 
          this.txtbx2_password.Location = new System.Drawing.Point(430, 237);
-         this.txtbx2_password.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.txtbx2_password.Margin = new System.Windows.Forms.Padding(6);
          this.txtbx2_password.Name = "txtbx2_password";
          this.txtbx2_password.PasswordChar = '●';
          this.txtbx2_password.Size = new System.Drawing.Size(282, 31);
@@ -76,7 +76,7 @@
          // but1_login
          // 
          this.but1_login.Location = new System.Drawing.Point(510, 287);
-         this.but1_login.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.but1_login.Margin = new System.Windows.Forms.Padding(6);
          this.but1_login.Name = "but1_login";
          this.but1_login.Size = new System.Drawing.Size(206, 44);
          this.but1_login.TabIndex = 4;
@@ -87,7 +87,7 @@
          // but2_createAccount
          // 
          this.but2_createAccount.Location = new System.Drawing.Point(510, 342);
-         this.but2_createAccount.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.but2_createAccount.Margin = new System.Windows.Forms.Padding(6);
          this.but2_createAccount.Name = "but2_createAccount";
          this.but2_createAccount.Size = new System.Drawing.Size(206, 44);
          this.but2_createAccount.TabIndex = 5;
@@ -97,6 +97,7 @@
          // 
          // Form1
          // 
+         this.AcceptButton = this.but1_login;
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(1100, 502);
@@ -106,7 +107,7 @@
          this.Controls.Add(this.txtbx1_userName);
          this.Controls.Add(this.label1);
          this.Controls.Add(this.lab1_login);
-         this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+         this.Margin = new System.Windows.Forms.Padding(6);
          this.Name = "Form1";
          this.Text = "Login";
          this.ResumeLayout(false);

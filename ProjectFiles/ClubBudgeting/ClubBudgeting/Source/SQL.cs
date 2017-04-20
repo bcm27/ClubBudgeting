@@ -203,7 +203,6 @@ namespace ClubBudgeting
 
          if (budget >= Math.Abs(price))
          {
-
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
                "@club" };
             statement = "INSERT INTO Transactions VALUES "
@@ -213,8 +212,11 @@ namespace ClubBudgeting
             try
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+<<<<<<< HEAD
+=======
                updateBudget(
                   new Parameters(pLists.PARAM_LIST[5], budget - price));
+>>>>>>> master
                return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
