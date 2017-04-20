@@ -35,13 +35,16 @@ namespace ClubBudgeting.Forms
          budgetInfo();
          ViewTransactions_Load(sender, e);
       }
-      
-      private void DashboardMenber_FormClosed(object sender, FormClosedEventArgs e)
+
+      /// <summary>
+      /// closes the application
+      /// </summary>
+      /// <param name="e"></param>
+      protected override void OnFormClosing(FormClosingEventArgs e)
       {
-         System.Diagnostics.Debug.WriteLine("Searching for input from user...");
-         Application.Exit();
+         Environment.Exit(0);
       }
-           
+
       //#####################################################################//
       /// <summary>
       /// load account and budget information

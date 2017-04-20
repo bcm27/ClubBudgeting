@@ -8,6 +8,7 @@ using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
+/*
 namespace ClubBudgeting.Testing
 { /*
    [TestFixture]
@@ -195,5 +196,8 @@ namespace ClubBudgeting.Testing
          }
          Assert.True(pass);
       } // end PBI_5_OverLimit//
-   } // end of scope */
+
+   } // end of scope 
 } // end of namespace 
+*/
+

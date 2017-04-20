@@ -22,6 +22,7 @@ namespace ClubBudgeting.Forms
       public ViewTransactions()
       {
          InitializeComponent();
+         listView_trans.FullRowSelect = true;
       }
 
       /// <summary>
@@ -58,5 +59,14 @@ namespace ClubBudgeting.Forms
                purDate, cost, desc, appr}));
          }
       } // end loadList
+
+      private void listView_trans_SelectedIndexChanged(object sender, EventArgs e)
+      {
+         if (listView_trans.SelectedItems.Count == 0)
+            return;
+         ListViewItem item = listView_trans.SelectedItems[0];
+         System.Diagnostics.Debug.WriteLine(item.SubItems[0].Text);
+
+      }
    }
 }
