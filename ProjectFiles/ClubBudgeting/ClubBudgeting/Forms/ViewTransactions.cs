@@ -53,7 +53,11 @@ namespace ClubBudgeting.Forms
             purDate = dataP[1].ToString().Substring(0, 9),
             cost = dataP[2].ToString(),
             desc = dataP[3].ToString(),
+<<<<<<< HEAD
             appr = dataP[4].ToString();
+=======
+            appr = dataP[5].ToString();
+>>>>>>> bmathisen
 
             listView_trans.Items.Add(new ListViewItem(new[] {ID,
                purDate, cost, desc, appr}));
@@ -64,8 +68,7 @@ namespace ClubBudgeting.Forms
       {
          if (listView_trans.SelectedItems.Count == 0)
             return;
-         ListViewItem item = listView_trans.SelectedItems[0];
-         System.Diagnostics.Debug.WriteLine(item.SubItems[0].Text);
+         sql.getPDF(new Parameters(listView_trans.SelectedItems[0].Text));
 
       }
    }
