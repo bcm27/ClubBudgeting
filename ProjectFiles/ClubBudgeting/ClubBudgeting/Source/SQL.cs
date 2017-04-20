@@ -197,25 +197,22 @@ namespace ClubBudgeting
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         double budget = double.Parse(getCurrClubBudg(new Parameters
-            (pLists.PARAM_LIST[5])));
          double balance = double.Parse(getCurrClubBalance(new Parameters
-            (pLists.PARAM_LIST[5])));
-         double price = double.Parse(pLists.PARAM_LIST[3].ToString());
+            (pLists.PARAM_LIST[3])));
+         double price = double.Parse(pLists.PARAM_LIST[1].ToString());
 
          if (0 <= balance - price)
          {
-            string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
-               "@club" };
+            string[] listing = { "@Date", "@price", "@desc", "@club" };
             statement = "INSERT INTO Transactions VALUES "
-               + "(null, @Date, @File, @Ext, @price, @desc, @club, false);";
+               + "(null, @Date, @price, @desc, @club, false);";
             cmd = new MySqlCommand(statement, SQLCONN);
             cmd.Prepare();
             try
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
                updateBudget(
-                  new Parameters(pLists.PARAM_LIST[5], balance - price));
+                  new Parameters(pLists.PARAM_LIST[3], balance - price));
                return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -286,13 +283,13 @@ namespace ClubBudgeting
       /// <summary>
       /// adds a pdf receipts
       /// </summary>
-      /// <param name="pLists">@file, @ext, @transId</param>
+      /// <param name="pLists">@transId, @file, @ext</param>
       /// <returns>completed</returns>
       public bool addPDFReceipt(Parameters pLists)
       {
-         string[] listing = { "@file", "@ext", "@transId" };
-         statement = "UPDATE Transactions SET invoice = @file "
-            + "AND fileExtention = @ext WHERE id = @transId;";
+         string[] listing = { "@transId", "@file", "@ext" };
+         statement = "INSERT INTO Receipt VALUES "
+            + "( NULL, @transId, @file, @ext)";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          try
@@ -314,7 +311,7 @@ namespace ClubBudgeting
       public bool getPDF(Parameters pLists)
       {
          string[] listing = { "@transId" };
-         statement = "SELECT invoice, fileExtention FROM Transactions"
+         statement = "SELECT invoice, fileExtention FROM Receipt"
             + "WHERE id = @transId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
