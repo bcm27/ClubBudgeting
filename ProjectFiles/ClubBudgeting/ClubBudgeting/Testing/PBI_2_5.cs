@@ -8,10 +8,9 @@ using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-
+/*
 namespace ClubBudgeting.Testing
 { 
-   /*
    [TestFixture]
    class PBI_TESTING
    {
@@ -86,7 +85,7 @@ namespace ClubBudgeting.Testing
       // PDF to the database. 
       //#####################################################################//
       [Test]
-      public void PBI_2_AddReceipt()
+      public void PBI_2_3()
       {
          string pdf = "some series of bytes",
             accountId = "123534",
@@ -111,11 +110,11 @@ namespace ClubBudgeting.Testing
       } // end of PBI_2_AddReceipt
       //#####################################################################//
       [Test]
-      public void PBI_2_getPDF()
+      public void PBI_2_2()
       {
          try
          {
-            SQL.getPDF(fm.getPDFId());
+            SQL.getPDF(new Parameters());
          }
          catch
          {
@@ -125,7 +124,7 @@ namespace ClubBudgeting.Testing
       } // PBI_2_getPDF
       //#####################################################################//
       [Test]
-      public void PBI_2_RemoveReceipt()
+      public void PBI_2_1()
       {
          try
          {
@@ -156,7 +155,7 @@ namespace ClubBudgeting.Testing
       // to be hand coded in C# using a testing library known as nUnit.
       //#####################################################################//      
       [Test]
-      public void PBI_5_addBudget()
+      public void PBI_5()
       {
          try
          {
@@ -173,13 +172,16 @@ namespace ClubBudgeting.Testing
       }
       //#####################################################################//
       [Test]
-      public void PBI_5_OverLimit()
+      public void PBI_5()
       {
          try
          {
-            int budgetLimit = 50;
-            string clubId = sql.getClubId(), money = fm.getBudget();
-            SQL.addBudget(clubId, accountId, money);
+            int budgetLimit = 5000;
+            string clubId = us.CLUB_ID, 
+               money = sql.getCurrClubBudg(new Parameters(us.CLUB_ID));
+
+            sql.addBudget(new Parameters(2, 8, 1000.00, 500.00, 200.00));
+
             statement = "SELECT * FROM Budget";
             cmd = new MySqlCommand(statement, SQLCONN);
             MySqlDataReader rd = cmd.ExecuteReader();
@@ -199,7 +201,7 @@ namespace ClubBudgeting.Testing
       } // end PBI_5_OverLimit//
 
    } // end of scope 
-
-   */
 } // end of namespace
+
+*/
 
