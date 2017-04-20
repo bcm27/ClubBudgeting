@@ -56,6 +56,10 @@ namespace ClubBudgeting.Forms
                didAdd = sql.addTransaction(new Parameters(txtbx2_date.Text, 
                 null, null, txtbx1_transAmt.Text, null, 
                 clubListForm.getClubIndex));
+               lab_budget.Text = sql.getCurrClubBalance
+                (new Parameters(clubListForm.getClubIndex));
+               lab_totalDebt.Text =
+                sql.getDebt(new Parameters(clubListForm.getClubIndex));
 
                if (didAdd)
                   lab_transStatus.Text = "Success";
