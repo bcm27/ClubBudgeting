@@ -125,7 +125,7 @@ namespace ClubBudgeting.Testing
          try
          {
             sql.addBudget(new Parameters(1,2,1000,750,0));
-            if (sql.getCurrClubBudg(new Parameters(us.CLUB_ID)).Equals("100"))
+            if (sql.getCurrClubBudg(new Parameters(us.CLUB_ID))==("750"))
                pass = true;
          }
          catch

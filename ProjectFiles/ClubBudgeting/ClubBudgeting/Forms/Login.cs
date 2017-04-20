@@ -71,18 +71,6 @@ namespace ClubBudgeting
       }
 
       /// <summary>
-      /// Open the create account form
-      /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void but2_createAccount_Click(object sender, EventArgs e)
-      {
-         CreateAccount createAccount = new CreateAccount();
-         createAccount.StartPosition = FormStartPosition.CenterParent;
-         createAccount.Show(ParentForm);
-      }
-
-      /// <summary>
       /// Hitting enter performs button click action
       /// </summary>
       /// <param name="sender"></param>

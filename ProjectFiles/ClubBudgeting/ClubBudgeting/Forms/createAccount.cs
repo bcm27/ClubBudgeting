@@ -18,7 +18,6 @@ namespace ClubBudgeting.Forms
       private static User us = User.Instance;
 
       private string clubSelected;
-      private bool isAdmin = false;
 
       public CreateAccount()
       {
@@ -69,25 +68,6 @@ namespace ClubBudgeting.Forms
          {
             MessageBox.Show("Password Error", 
                "Passwords don't match - try again", MessageBoxButtons.OK);
-         }
-      }
-
-      /// <summary>
-      /// Set admin rights if user is admin
-      /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void button1_Click(object sender, EventArgs e)
-      {
-         if (!isAdmin)
-         {
-            isAdmin = true;
-            lab7_admin.Text = "User is Admin";
-         }
-         else
-         {
-            isAdmin = false;
-            lab7_admin.Text = "User is not Admin";
          }
       }
 

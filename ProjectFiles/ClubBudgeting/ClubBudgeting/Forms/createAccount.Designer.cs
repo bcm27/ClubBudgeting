@@ -41,8 +41,6 @@
          this.txtbx5_lastName = new System.Windows.Forms.TextBox();
          this.but1_register = new System.Windows.Forms.Button();
          this.cb_clublist = new System.Windows.Forms.ComboBox();
-         this.button1 = new System.Windows.Forms.Button();
-         this.lab7_admin = new System.Windows.Forms.Label();
          this.SuspendLayout();
          // 
          // lab1_account
@@ -144,42 +142,21 @@
          this.but1_register.UseVisualStyleBackColor = true;
          this.but1_register.Click += new System.EventHandler(this.but1_register_Click);
          // 
-         // comboBox_clublist
+         // cb_clublist
          // 
          this.cb_clublist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
          this.cb_clublist.FormattingEnabled = true;
          this.cb_clublist.Location = new System.Drawing.Point(302, 90);
-         this.cb_clublist.Name = "comboBox_clublist";
+         this.cb_clublist.Name = "cb_clublist";
          this.cb_clublist.Size = new System.Drawing.Size(100, 21);
          this.cb_clublist.TabIndex = 14;
          this.cb_clublist.SelectedIndexChanged += new System.EventHandler(this.cb_clubList_index);
-         // 
-         // button1
-         // 
-         this.button1.Location = new System.Drawing.Point(428, 18);
-         this.button1.Name = "button1";
-         this.button1.Size = new System.Drawing.Size(75, 23);
-         this.button1.TabIndex = 15;
-         this.button1.Text = "Is Admin?";
-         this.button1.UseVisualStyleBackColor = true;
-         this.button1.Click += new System.EventHandler(this.button1_Click);
-         // 
-         // lab7_admin
-         // 
-         this.lab7_admin.AutoSize = true;
-         this.lab7_admin.Location = new System.Drawing.Point(425, 49);
-         this.lab7_admin.Name = "lab7_admin";
-         this.lab7_admin.Size = new System.Drawing.Size(29, 13);
-         this.lab7_admin.TabIndex = 16;
-         this.lab7_admin.Text = "True";
          // 
          // CreateAccount
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(518, 129);
-         this.Controls.Add(this.lab7_admin);
-         this.Controls.Add(this.button1);
          this.Controls.Add(this.cb_clublist);
          this.Controls.Add(this.but1_register);
          this.Controls.Add(this.txtbx5_lastName);
@@ -215,7 +192,5 @@
       private System.Windows.Forms.TextBox txtbx5_lastName;
       private System.Windows.Forms.Button but1_register;
       private System.Windows.Forms.ComboBox cb_clublist;
-      private System.Windows.Forms.Button button1;
-      private System.Windows.Forms.Label lab7_admin;
    }
 }

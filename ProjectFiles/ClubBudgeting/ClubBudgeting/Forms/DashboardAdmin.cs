@@ -96,5 +96,13 @@ namespace ClubBudgeting.Forms
             MessageBox.Show("Error: could not show transactions form");
          }
       }
+
+      private void button1_Click(object sender, EventArgs e)
+      {       
+         CreateAccount createAccount = new CreateAccount();
+         createAccount.StartPosition = FormStartPosition.CenterParent;
+         createAccount.Show(ParentForm);
+         
+      }
    }
 }
