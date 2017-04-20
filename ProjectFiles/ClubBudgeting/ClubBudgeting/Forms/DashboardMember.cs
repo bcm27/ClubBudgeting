@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClubBudgeting.Forms;
+using System.Collections;
 
 namespace ClubBudgeting.Forms
 {
@@ -15,6 +16,7 @@ namespace ClubBudgeting.Forms
    {
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
+      private ArrayList trans = new ArrayList();
 
       public DashboardMember()
       {
@@ -29,30 +31,24 @@ namespace ClubBudgeting.Forms
       /// <param name="sender"></param>
       /// <param name="e"></param>
       private void DashboardMember_Load(object sender, EventArgs e)
-      { loadData(); }
-
+      {
+         budgetInfo();
+         ViewTransactions_Load(sender, e);
+      }
+      
       private void DashboardMenber_FormClosed(object sender, FormClosedEventArgs e)
       {
          System.Diagnostics.Debug.WriteLine("Searching for input from user...");
          Application.Exit();
       }
-
-      //#####################################################################//
-      /// <summary>
-      /// loads budgetInfo(),
-      /// </summary>
-      private void loadData()
-      {
-         budgetInfo();
-      }
-
+           
       //#####################################################################//
       /// <summary>
       /// load account and budget information
       /// </summary>
       private void budgetInfo()
       {
-         lab1_accountName.Text = "Club Name: " 
+         lab1_accountName.Text = "Club Name: "
           + us.CLUB_NAME;
 
          lab3_budget.Text = "Budget Total: $"
@@ -72,8 +68,8 @@ namespace ClubBudgeting.Forms
       private void but1_view_transactions_Click(object sender, EventArgs e)
       {
          try
-         {
-            ViewTransactions newForm = new ViewTransactions(); // Instantiate a Form3 object.
+         {// Instantiate a Form3 object.
+            ViewTransactions newForm = new ViewTransactions(); 
             newForm.StartPosition = FormStartPosition.CenterParent;
             newForm.Show(ParentForm);
          }
@@ -83,6 +79,41 @@ namespace ClubBudgeting.Forms
          }
       }
 
+      /// <summary>
+      /// When the form is loaded, load the data from the club onto the list
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void ViewTransactions_Load(object sender, EventArgs e)
+      { loadList(sql.getTransactions(new Parameters(us.CLUB_ID))); }
+
+      /// <summary>
+      /// loads the transactions for the club Id into the viewList.
+      /// </summary>
+      /// <param name="trans"></param>
+      private void loadList(ArrayList trans)
+      {
+         listView_trans.View = View.Details;
+
+         listView_trans.Columns.Add("ID", 25, HorizontalAlignment.Center);
+         listView_trans.Columns.Add("Purchase Date", 100);
+         listView_trans.Columns.Add("Cost");
+         listView_trans.Columns.Add("Description", 180);
+         listView_trans.Columns.Add("Approved", 55);
+
+         foreach (ArrayList dataP in trans)
+         {
+            string ID = dataP[0].ToString(),
+            purDate = dataP[1].ToString().Substring(0, 9),
+            cost = dataP[4].ToString(),
+            desc = dataP[5].ToString(),
+            appr = dataP[7].ToString();
+
+            listView_trans.Items.Add(new ListViewItem(new[] {ID,
+               purDate, cost, desc, appr}));
+         }
+      } // end loadList
+
       private void button1_Click(object sender, EventArgs e)
       {
          openFileD_budget_prop.Filter = ".pdf Files | *.pdf;";
@@ -90,9 +121,15 @@ namespace ClubBudgeting.Forms
 
          if (openFileD_budget_prop.ShowDialog() == DialogResult.OK)
          {
-            string SOURCE_FILE = openFileD_budget_prop.SafeFileName;
-            string SOURCE_DIR = openFileD_budget_prop.InitialDirectory;
+            byte[] file = System.IO.File.ReadAllBytes
+               (openFileD_budget_prop.FileName);
+            
          }
+      }
+
+      private void listView_trans_SelectedIndexChanged(object sender, EventArgs e)
+      {
+
       }
    }
 }
