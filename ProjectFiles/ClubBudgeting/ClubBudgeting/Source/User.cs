@@ -93,9 +93,8 @@ namespace ClubBudgeting
       {
          try
          {
-            string temp = sql.logIn(name, pass);
+            clubId = sql.logIn(name, pass);
             username = name;
-            clubId = temp;
             clubName = sql.getClubName(new Parameters(clubId));
             return true;
          }

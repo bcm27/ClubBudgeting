@@ -30,10 +30,10 @@
       {
          this.lab1_accountName = new System.Windows.Forms.Label();
          this.lab3_budget = new System.Windows.Forms.Label();
-         this.but1_upload_budget_prop = new System.Windows.Forms.Button();
+         this.UploadBudgProp = new System.Windows.Forms.Button();
          this.but6_logout = new System.Windows.Forms.Button();
-         this.but4_upload_receipt = new System.Windows.Forms.Button();
-         this.openFileD_budget_prop = new System.Windows.Forms.OpenFileDialog();
+         this.uploadReceipt = new System.Windows.Forms.Button();
+         this.OFD_budget_prop = new System.Windows.Forms.OpenFileDialog();
          this.openFileD_receipt = new System.Windows.Forms.OpenFileDialog();
          this.lab4_debt = new System.Windows.Forms.Label();
          this.listView_trans = new System.Windows.Forms.ListView();
@@ -58,15 +58,15 @@
          this.lab3_budget.TabIndex = 2;
          this.lab3_budget.Text = "Budget Total: $928.37";
          // 
-         // but1_upload_budget_prop
+         // UploadBudgProp
          // 
-         this.but1_upload_budget_prop.Location = new System.Drawing.Point(15, 110);
-         this.but1_upload_budget_prop.Name = "but1_upload_budget_prop";
-         this.but1_upload_budget_prop.Size = new System.Drawing.Size(140, 23);
-         this.but1_upload_budget_prop.TabIndex = 5;
-         this.but1_upload_budget_prop.Text = "Upload Budget Proposal";
-         this.but1_upload_budget_prop.UseVisualStyleBackColor = true;
-         this.but1_upload_budget_prop.Click += new System.EventHandler(this.button1_Click);
+         this.UploadBudgProp.Location = new System.Drawing.Point(15, 110);
+         this.UploadBudgProp.Name = "UploadBudgProp";
+         this.UploadBudgProp.Size = new System.Drawing.Size(140, 23);
+         this.UploadBudgProp.TabIndex = 5;
+         this.UploadBudgProp.Text = "Upload Budget Proposal";
+         this.UploadBudgProp.UseVisualStyleBackColor = true;
+         this.UploadBudgProp.Click += new System.EventHandler(this.button1_Click);
          // 
          // but6_logout
          // 
@@ -78,18 +78,20 @@
          this.but6_logout.UseVisualStyleBackColor = true;
          this.but6_logout.Click += new System.EventHandler(this.but6_logout_Click);
          // 
-         // but4_upload_receipt
+         // uploadReceipt
          // 
-         this.but4_upload_receipt.Location = new System.Drawing.Point(15, 81);
-         this.but4_upload_receipt.Name = "but4_upload_receipt";
-         this.but4_upload_receipt.Size = new System.Drawing.Size(140, 23);
-         this.but4_upload_receipt.TabIndex = 10;
-         this.but4_upload_receipt.Text = "Upload Receipt";
-         this.but4_upload_receipt.UseVisualStyleBackColor = true;
+         this.uploadReceipt.AutoEllipsis = true;
+         this.uploadReceipt.Location = new System.Drawing.Point(15, 81);
+         this.uploadReceipt.Name = "uploadReceipt";
+         this.uploadReceipt.Size = new System.Drawing.Size(140, 23);
+         this.uploadReceipt.TabIndex = 10;
+         this.uploadReceipt.Text = "Upload Receipt";
+         this.uploadReceipt.UseVisualStyleBackColor = true;
+         this.uploadReceipt.Click += new System.EventHandler(this.uploadReceipt_Click);
          // 
-         // openFileD_budget_prop
+         // OFD_budget_prop
          // 
-         this.openFileD_budget_prop.FileName = "openFileD_budget_prop";
+         this.OFD_budget_prop.FileName = "openFileD_budget_prop";
          // 
          // openFileD_receipt
          // 
@@ -112,7 +114,7 @@
          this.listView_trans.Size = new System.Drawing.Size(480, 398);
          this.listView_trans.TabIndex = 28;
          this.listView_trans.UseCompatibleStateImageBehavior = false;
-         this.listView_trans.SelectedIndexChanged += new System.EventHandler(this.listView_trans_SelectedIndexChanged);
+         this.listView_trans.SelectedIndexChanged += new System.EventHandler(this.LV_trans_SelectedIndexChanged);
          // 
          // but1_view_transactions
          // 
@@ -131,9 +133,9 @@
          this.ClientSize = new System.Drawing.Size(692, 423);
          this.Controls.Add(this.listView_trans);
          this.Controls.Add(this.lab4_debt);
-         this.Controls.Add(this.but4_upload_receipt);
+         this.Controls.Add(this.uploadReceipt);
          this.Controls.Add(this.but6_logout);
-         this.Controls.Add(this.but1_upload_budget_prop);
+         this.Controls.Add(this.UploadBudgProp);
          this.Controls.Add(this.lab3_budget);
          this.Controls.Add(this.lab1_accountName);
          this.Name = "DashboardMember";
@@ -148,10 +150,10 @@
 
       private System.Windows.Forms.Label lab1_accountName;
       private System.Windows.Forms.Label lab3_budget;
-      private System.Windows.Forms.Button but1_upload_budget_prop;
+      private System.Windows.Forms.Button UploadBudgProp;
       private System.Windows.Forms.Button but6_logout;
-      private System.Windows.Forms.Button but4_upload_receipt;
-      private System.Windows.Forms.OpenFileDialog openFileD_budget_prop;
+      private System.Windows.Forms.Button uploadReceipt;
+      private System.Windows.Forms.OpenFileDialog OFD_budget_prop;
       private System.Windows.Forms.OpenFileDialog openFileD_receipt;
       private System.Windows.Forms.Label lab4_debt;
       private System.Windows.Forms.ListView listView_trans;
