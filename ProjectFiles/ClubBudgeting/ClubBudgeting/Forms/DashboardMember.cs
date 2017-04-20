@@ -36,6 +36,12 @@ namespace ClubBudgeting.Forms
          ViewTransactions_Load(sender, e);
       }
       
+      private void DashboardMenber_FormClosed(object sender, FormClosedEventArgs e)
+      {
+         System.Diagnostics.Debug.WriteLine("Searching for input from user...");
+         Application.Exit();
+      }
+           
       //#####################################################################//
       /// <summary>
       /// load account and budget information

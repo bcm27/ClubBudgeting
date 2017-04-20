@@ -9,7 +9,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
-{/*
+{ 
    [TestFixture]
    class PBI_TESTING
    {
@@ -20,6 +20,10 @@ namespace ClubBudgeting.Testing
       private MySqlConnection SQLCONN = new MySqlConnection(server_details);
       private MySqlCommand cmd;
       private MySqlDataReader rd;
+
+      private static SQL sql = SQL.Instance;
+      private static User us = User.Instance;
+
       private bool pass = false;
       private string statement, temp;
 
@@ -87,7 +91,7 @@ namespace ClubBudgeting.Testing
             clubId = "1234534";
          try
          {
-            SQL.addPDFReceipt(pdf, accountId, clubId);
+            sql.addPDFReceipt(new Parameters("",".pdf",""));
             statement = "SELECT * FROM Receipt";
             cmd = new MySqlCommand(statement, SQLCONN);
             MySqlDataReader rd = cmd.ExecuteReader();
@@ -191,5 +195,5 @@ namespace ClubBudgeting.Testing
          }
          Assert.True(pass);
       } // end PBI_5_OverLimit//
-   } // end of scope */
+   } // end of scope 
 } // end of namespace 
