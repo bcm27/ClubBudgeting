@@ -8,7 +8,6 @@ using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-
 namespace ClubBudgeting.Testing
 { 
    /*
@@ -202,4 +201,3 @@ namespace ClubBudgeting.Testing
 
    */
 } // end of namespace
-
