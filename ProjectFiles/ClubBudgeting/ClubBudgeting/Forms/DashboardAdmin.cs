@@ -38,8 +38,8 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Add transaction - transaction amount must be a number and the date
-      /// must be the proper number of characters (10)
+      /// Add and approve transaction - transaction amount must be a number 
+      /// and the date must be the proper number of characters (10)
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
@@ -50,12 +50,12 @@ namespace ClubBudgeting.Forms
 
          try
          {
+            // add transaction and update labels
             if (double.TryParse(txtbx1_transAmt.Text, out parsedVal) &&
              txtbx2_date.Text.ToString().Length == kDateLength)
             {
                didAdd = sql.addTransaction(new Parameters(txtbx2_date.Text, 
-                null, null, txtbx1_transAmt.Text, null, 
-                clubListForm.getClubIndex));
+                  txtbx1_transAmt.Text, null, clubListForm.getClubIndex));
                lab_budget.Text = sql.getCurrClubBalance
                 (new Parameters(clubListForm.getClubIndex));
                lab_totalDebt.Text =
@@ -64,7 +64,7 @@ namespace ClubBudgeting.Forms
                if (didAdd)
                   lab_transStatus.Text = "Success";
                else
-                  throw new Exception();
+                  MessageBox.Show("Error: invalid transaction");
             }
             else
                throw new Exception();
@@ -72,7 +72,8 @@ namespace ClubBudgeting.Forms
          catch
          {
             lab_transStatus.Text = "Failed";
-            MessageBox.Show("Error: could not add transaction");
+            MessageBox.Show("Error: could not add transaction -" 
+             + " check date formatting");
          } 
       }
 
