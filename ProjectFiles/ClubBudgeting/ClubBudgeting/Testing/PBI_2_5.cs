@@ -10,6 +10,7 @@ using MySql.Data.MySqlClient;
 
 namespace ClubBudgeting.Testing
 { 
+   /*
    [TestFixture]
    class PBI_TESTING
    {
@@ -196,4 +197,5 @@ namespace ClubBudgeting.Testing
          Assert.True(pass);
       } // end PBI_5_OverLimit//
    } // end of scope 
+   */
 } // end of namespace 

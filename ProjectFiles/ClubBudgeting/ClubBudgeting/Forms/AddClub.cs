@@ -34,7 +34,6 @@ namespace ClubBudgeting.Forms
                sql.addClub(new Parameters(txtbx_clubName.Text,
                 txtbx_clubDesc.Text));
                lab_clubStatus.Text = "Success";
-               
             }
             else
                throw new Exception();

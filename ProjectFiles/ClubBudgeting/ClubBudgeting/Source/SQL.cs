@@ -203,7 +203,6 @@ namespace ClubBudgeting
          if (double.Parse(getCurrClubBudg(new Parameters(o)))
             >= Math.Abs(double.Parse(s)))
          {
-
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
                "@club" };
             statement = "INSERT INTO Transactions VALUES "
@@ -213,6 +212,7 @@ namespace ClubBudgeting
             try
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+               return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
             {
@@ -222,7 +222,7 @@ namespace ClubBudgeting
                return false;
             }
          }
-         return true;
+         return false;
       } // addTransaction
 
       /// <summary>
