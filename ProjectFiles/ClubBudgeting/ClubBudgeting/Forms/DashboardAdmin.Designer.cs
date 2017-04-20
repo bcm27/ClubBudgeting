@@ -38,15 +38,8 @@
          this.lab_budget = new System.Windows.Forms.Label();
          this.but1_submitTransaction = new System.Windows.Forms.Button();
          this.label1 = new System.Windows.Forms.Label();
-         this.but_addClub = new System.Windows.Forms.Button();
-         this.txtbx_clubDesc = new System.Windows.Forms.TextBox();
-         this.txtbx_clubName = new System.Windows.Forms.TextBox();
-         this.label2 = new System.Windows.Forms.Label();
-         this.lab_ = new System.Windows.Forms.Label();
-         this.label3 = new System.Windows.Forms.Label();
          this.label4 = new System.Windows.Forms.Label();
          this.lab_transStatus = new System.Windows.Forms.Label();
-         this.lab_clubStatus = new System.Windows.Forms.Label();
          this.lab_debt = new System.Windows.Forms.Label();
          this.lab_totalDebt = new System.Windows.Forms.Label();
          this.but_viewTransactions = new System.Windows.Forms.Button();
@@ -149,64 +142,6 @@
          this.label1.TabIndex = 15;
          this.label1.Text = "YYYY-MM-DD";
          // 
-         // but_addClub
-         // 
-         this.but_addClub.Location = new System.Drawing.Point(288, 245);
-         this.but_addClub.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-         this.but_addClub.Name = "but_addClub";
-         this.but_addClub.Size = new System.Drawing.Size(84, 48);
-         this.but_addClub.TabIndex = 20;
-         this.but_addClub.Text = "Add Club";
-         this.but_addClub.UseVisualStyleBackColor = true;
-         this.but_addClub.Click += new System.EventHandler(this.but_addClub_Click);
-         // 
-         // txtbx_clubDesc
-         // 
-         this.txtbx_clubDesc.Location = new System.Drawing.Point(160, 277);
-         this.txtbx_clubDesc.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-         this.txtbx_clubDesc.Name = "txtbx_clubDesc";
-         this.txtbx_clubDesc.Size = new System.Drawing.Size(98, 20);
-         this.txtbx_clubDesc.TabIndex = 19;
-         // 
-         // txtbx_clubName
-         // 
-         this.txtbx_clubName.Location = new System.Drawing.Point(160, 245);
-         this.txtbx_clubName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-         this.txtbx_clubName.Name = "txtbx_clubName";
-         this.txtbx_clubName.Size = new System.Drawing.Size(98, 20);
-         this.txtbx_clubName.TabIndex = 18;
-         // 
-         // label2
-         // 
-         this.label2.AutoSize = true;
-         this.label2.Location = new System.Drawing.Point(20, 277);
-         this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.label2.Name = "label2";
-         this.label2.Size = new System.Drawing.Size(121, 13);
-         this.label2.TabIndex = 17;
-         this.label2.Text = "Enter a club description:";
-         // 
-         // lab_
-         // 
-         this.lab_.AutoSize = true;
-         this.lab_.Location = new System.Drawing.Point(20, 247);
-         this.lab_.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.lab_.Name = "lab_";
-         this.lab_.Size = new System.Drawing.Size(96, 13);
-         this.lab_.TabIndex = 16;
-         this.lab_.Text = "Enter a club name:";
-         // 
-         // label3
-         // 
-         this.label3.AutoSize = true;
-         this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label3.Location = new System.Drawing.Point(20, 215);
-         this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.label3.Name = "label3";
-         this.label3.Size = new System.Drawing.Size(78, 15);
-         this.label3.TabIndex = 21;
-         this.label3.Text = "Add a club:";
-         // 
          // label4
          // 
          this.label4.AutoSize = true;
@@ -227,16 +162,6 @@
          this.lab_transStatus.Size = new System.Drawing.Size(37, 13);
          this.lab_transStatus.TabIndex = 23;
          this.lab_transStatus.Text = "Status";
-         // 
-         // lab_clubStatus
-         // 
-         this.lab_clubStatus.AutoSize = true;
-         this.lab_clubStatus.Location = new System.Drawing.Point(382, 266);
-         this.lab_clubStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-         this.lab_clubStatus.Name = "lab_clubStatus";
-         this.lab_clubStatus.Size = new System.Drawing.Size(37, 13);
-         this.lab_clubStatus.TabIndex = 24;
-         this.lab_clubStatus.Text = "Status";
          // 
          // lab_debt
          // 
@@ -260,10 +185,9 @@
          // 
          // but_viewTransactions
          // 
-         this.but_viewTransactions.Location = new System.Drawing.Point(377, 26);
-         this.but_viewTransactions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.but_viewTransactions.Location = new System.Drawing.Point(728, 35);
          this.but_viewTransactions.Name = "but_viewTransactions";
-         this.but_viewTransactions.Size = new System.Drawing.Size(84, 45);
+         this.but_viewTransactions.Size = new System.Drawing.Size(195, 71);
          this.but_viewTransactions.TabIndex = 27;
          this.but_viewTransactions.Text = "View Transactions";
          this.but_viewTransactions.UseVisualStyleBackColor = true;
@@ -273,19 +197,14 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(494, 323);
+
+         this.ClientSize = new System.Drawing.Size(988, 413);
+
          this.Controls.Add(this.but_viewTransactions);
          this.Controls.Add(this.lab_totalDebt);
          this.Controls.Add(this.lab_debt);
-         this.Controls.Add(this.lab_clubStatus);
          this.Controls.Add(this.lab_transStatus);
          this.Controls.Add(this.label4);
-         this.Controls.Add(this.label3);
-         this.Controls.Add(this.but_addClub);
-         this.Controls.Add(this.txtbx_clubDesc);
-         this.Controls.Add(this.txtbx_clubName);
-         this.Controls.Add(this.label2);
-         this.Controls.Add(this.lab_);
          this.Controls.Add(this.label1);
          this.Controls.Add(this.but1_submitTransaction);
          this.Controls.Add(this.lab_budget);
@@ -317,15 +236,8 @@
       private System.Windows.Forms.Label lab_budget;
       private System.Windows.Forms.Button but1_submitTransaction;
       private System.Windows.Forms.Label label1;
-      private System.Windows.Forms.Button but_addClub;
-      private System.Windows.Forms.TextBox txtbx_clubDesc;
-      private System.Windows.Forms.TextBox txtbx_clubName;
-      private System.Windows.Forms.Label label2;
-      private System.Windows.Forms.Label lab_;
-      private System.Windows.Forms.Label label3;
       private System.Windows.Forms.Label label4;
       private System.Windows.Forms.Label lab_transStatus;
-      private System.Windows.Forms.Label lab_clubStatus;
       private System.Windows.Forms.Label lab_debt;
       private System.Windows.Forms.Label lab_totalDebt;
       private System.Windows.Forms.Button but_viewTransactions;

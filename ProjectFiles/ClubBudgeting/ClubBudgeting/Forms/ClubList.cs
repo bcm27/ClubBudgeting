@@ -92,6 +92,21 @@ namespace ClubBudgeting.Forms
       private void but_exit_Click(object sender, EventArgs e)
       {
          this.Close();
+         System.Environment.Exit(1);
+      }
+
+      private void but_addClub_Click(object sender, EventArgs e)
+      {
+         try
+         {
+            AddClub newForm = new AddClub();
+            newForm.StartPosition = FormStartPosition.CenterParent;
+            newForm.Show(ParentForm);
+         }
+         catch
+         {
+            MessageBox.Show("Error: could not open add club form");
+         }
       }
    }
 }
