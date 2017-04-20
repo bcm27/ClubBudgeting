@@ -512,8 +512,10 @@ namespace ClubBudgeting
       /// fills the club array list
       /// </summary>
       /// <returns></returns>
-      private ArrayList fillClubArray()
+      public ArrayList fillClubArray()
       {
+         clubArray = new ArrayList();
+
          statement = "SELECT id, name FROM Club";
          cmd = new MySqlCommand(statement, SQLCONN);
 

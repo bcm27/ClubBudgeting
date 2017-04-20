@@ -33,6 +33,7 @@
          this.but1_clubInfo = new System.Windows.Forms.Button();
          this.but_exit = new System.Windows.Forms.Button();
          this.but_addClub = new System.Windows.Forms.Button();
+         this.but_refresh = new System.Windows.Forms.Button();
          this.SuspendLayout();
          // 
          // lab1_selectClub
@@ -65,9 +66,9 @@
          // 
          // but_exit
          // 
-         this.but_exit.Location = new System.Drawing.Point(45, 479);
+         this.but_exit.Location = new System.Drawing.Point(45, 557);
          this.but_exit.Name = "but_exit";
-         this.but_exit.Size = new System.Drawing.Size(197, 65);
+         this.but_exit.Size = new System.Drawing.Size(197, 55);
          this.but_exit.TabIndex = 3;
          this.but_exit.Text = "Exit";
          this.but_exit.UseVisualStyleBackColor = true;
@@ -77,17 +78,28 @@
          // 
          this.but_addClub.Location = new System.Drawing.Point(457, 479);
          this.but_addClub.Name = "but_addClub";
-         this.but_addClub.Size = new System.Drawing.Size(197, 65);
+         this.but_addClub.Size = new System.Drawing.Size(197, 55);
          this.but_addClub.TabIndex = 4;
          this.but_addClub.Text = "Add club";
          this.but_addClub.UseVisualStyleBackColor = true;
          this.but_addClub.Click += new System.EventHandler(this.but_addClub_Click);
          // 
+         // but_refresh
+         // 
+         this.but_refresh.Location = new System.Drawing.Point(457, 557);
+         this.but_refresh.Name = "but_refresh";
+         this.but_refresh.Size = new System.Drawing.Size(197, 55);
+         this.but_refresh.TabIndex = 5;
+         this.but_refresh.Text = "Refresh club list";
+         this.but_refresh.UseVisualStyleBackColor = true;
+         this.but_refresh.Click += new System.EventHandler(this.but_refresh_Click);
+         // 
          // ClubList
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(690, 570);
+         this.ClientSize = new System.Drawing.Size(690, 638);
+         this.Controls.Add(this.but_refresh);
          this.Controls.Add(this.but_addClub);
          this.Controls.Add(this.but_exit);
          this.Controls.Add(this.but1_clubInfo);
@@ -107,5 +119,6 @@
       private System.Windows.Forms.Button but1_clubInfo;
       private System.Windows.Forms.Button but_exit;
       private System.Windows.Forms.Button but_addClub;
+      private System.Windows.Forms.Button but_refresh;
    }
 }
