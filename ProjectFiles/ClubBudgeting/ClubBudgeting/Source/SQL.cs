@@ -201,7 +201,7 @@ namespace ClubBudgeting
             (pLists.PARAM_LIST[5])));
          double price = double.Parse(pLists.PARAM_LIST[3].ToString());
 
-         if (budget >= Math.Abs(price))
+         if (budget >= Math.Abs(price) + budget)
          {
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
                "@club" };
@@ -212,11 +212,8 @@ namespace ClubBudgeting
             try
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-<<<<<<< HEAD
-=======
                updateBudget(
-                  new Parameters(pLists.PARAM_LIST[5], budget - price));
->>>>>>> master
+                  new Parameters(pLists.PARAM_LIST[5], budget + price));
                return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -473,7 +470,7 @@ namespace ClubBudgeting
          string temp;
 
          statement = "SELECT balance, max(termId) FROM Budget "
-            + "WHERE clubId = @clubId;";
+            + "WHERE clubId = @clubId GROUP BY termId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
