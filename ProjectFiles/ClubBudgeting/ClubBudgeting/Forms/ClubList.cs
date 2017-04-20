@@ -92,6 +92,7 @@ namespace ClubBudgeting.Forms
       private void but_exit_Click(object sender, EventArgs e)
       {
          this.Close();
+         System.Environment.Exit(1);
       }
 
       private void but_addClub_Click(object sender, EventArgs e)
