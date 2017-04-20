@@ -30,7 +30,6 @@
       {
          this.lab1_accountName = new System.Windows.Forms.Label();
          this.lab3_budget = new System.Windows.Forms.Label();
-         this.but1_view_transactions = new System.Windows.Forms.Button();
          this.but1_upload_budget_prop = new System.Windows.Forms.Button();
          this.but6_logout = new System.Windows.Forms.Button();
          this.but4_upload_receipt = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
          this.openFileD_receipt = new System.Windows.Forms.OpenFileDialog();
          this.lab4_debt = new System.Windows.Forms.Label();
          this.listView_trans = new System.Windows.Forms.ListView();
+         this.but1_view_transactions = new System.Windows.Forms.Button();
          this.SuspendLayout();
          // 
          // lab1_accountName
@@ -57,16 +57,6 @@
          this.lab3_budget.Size = new System.Drawing.Size(113, 13);
          this.lab3_budget.TabIndex = 2;
          this.lab3_budget.Text = "Budget Total: $928.37";
-         // 
-         // but1_view_transactions
-         // 
-         this.but1_view_transactions.Location = new System.Drawing.Point(15, 82);
-         this.but1_view_transactions.Name = "but1_view_transactions";
-         this.but1_view_transactions.Size = new System.Drawing.Size(140, 23);
-         this.but1_view_transactions.TabIndex = 3;
-         this.but1_view_transactions.Text = "View Transactions";
-         this.but1_view_transactions.UseVisualStyleBackColor = true;
-         this.but1_view_transactions.Click += new System.EventHandler(this.but1_view_transactions_Click);
          // 
          // but1_upload_budget_prop
          // 
@@ -123,6 +113,16 @@
          this.listView_trans.UseCompatibleStateImageBehavior = false;
          this.listView_trans.SelectedIndexChanged += new System.EventHandler(this.listView_trans_SelectedIndexChanged);
          // 
+         // but1_view_transactions
+         // 
+         this.but1_view_transactions.Location = new System.Drawing.Point(15, 82);
+         this.but1_view_transactions.Name = "but1_view_transactions";
+         this.but1_view_transactions.Size = new System.Drawing.Size(140, 23);
+         this.but1_view_transactions.TabIndex = 3;
+         this.but1_view_transactions.Text = "View Transactions";
+         this.but1_view_transactions.UseVisualStyleBackColor = true;
+         this.but1_view_transactions.Click += new System.EventHandler(this.but1_view_transactions_Click);
+         // 
          // DashboardMember
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,7 +148,6 @@
 
       private System.Windows.Forms.Label lab1_accountName;
       private System.Windows.Forms.Label lab3_budget;
-      private System.Windows.Forms.Button but1_view_transactions;
       private System.Windows.Forms.Button but1_upload_budget_prop;
       private System.Windows.Forms.Button but6_logout;
       private System.Windows.Forms.Button but4_upload_receipt;
@@ -156,5 +155,6 @@
       private System.Windows.Forms.OpenFileDialog openFileD_receipt;
       private System.Windows.Forms.Label lab4_debt;
       private System.Windows.Forms.ListView listView_trans;
+      private System.Windows.Forms.Button but1_view_transactions;
    }
 }
