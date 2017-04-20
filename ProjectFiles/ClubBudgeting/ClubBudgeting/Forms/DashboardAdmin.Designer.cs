@@ -217,7 +217,6 @@
          this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
          this.Name = "DashboardAdmin";
          this.Text = "Admin Dashboard";
-         this.Load += new System.EventHandler(this.DashboardAdmin_Load);
          this.ResumeLayout(false);
          this.PerformLayout();
 
