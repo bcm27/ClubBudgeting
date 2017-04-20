@@ -57,7 +57,7 @@ namespace ClubBudgeting.Testing
          MySqlCommand cmd;
          MySqlDataReader rd;
          // correct format for a purchase
-         pList.addParams("2017-04-20", "NULL", "NULL", "30.20", "NULL", "6" );
+         pList.addParams("2017-04-20", "NULL", "NULL", "30.20", "NULL", "3" );
          sql.addTransaction(pList); 
          try
          {
@@ -96,7 +96,7 @@ namespace ClubBudgeting.Testing
          Assert.AreEqual("-20.20", temp);
 
          // too large of a purchase
-         pList.addParams("2017-04-22", "NULL", "NULL", "20000.20", "NULL", "1");
+         pList.addParams("2017-04-22", "NULL", "NULL", "20000.20", "NULL", "3");
          sql.addTransaction(pList);
 
          try
