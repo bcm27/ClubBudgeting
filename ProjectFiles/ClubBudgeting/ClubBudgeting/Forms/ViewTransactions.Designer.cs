@@ -38,6 +38,7 @@
          this.listView_trans.Size = new System.Drawing.Size(455, 475);
          this.listView_trans.TabIndex = 0;
          this.listView_trans.UseCompatibleStateImageBehavior = false;
+         this.listView_trans.SelectedIndexChanged += new System.EventHandler(this.listView_trans_SelectedIndexChanged);
          // 
          // ViewTransactions
          // 

@@ -197,11 +197,11 @@ namespace ClubBudgeting
       /// <returns>Whether or not the user is an admit</returns>
       public bool addTransaction(Parameters pLists)
       {
-         object o = pLists.PARAM_LIST[5];
-         string s = pLists.PARAM_LIST[3].ToString();
+         double budget = double.Parse(getCurrClubBudg(new Parameters
+            (pLists.PARAM_LIST[5])));
+         double price = double.Parse(pLists.PARAM_LIST[3].ToString());
 
-         if (double.Parse(getCurrClubBudg(new Parameters(o)))
-            >= Math.Abs(double.Parse(s)))
+         if (budget >= Math.Abs(price))
          {
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
                "@club" };
@@ -212,6 +212,11 @@ namespace ClubBudgeting
             try
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+<<<<<<< HEAD
+=======
+               updateBudget(
+                  new Parameters(pLists.PARAM_LIST[5], budget - price));
+>>>>>>> master
                return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -335,6 +340,31 @@ namespace ClubBudgeting
          finally
          {
             Reader.Close();
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// updates budget with specific parameters
+      /// </summary>
+      /// <param name="pList"></param>
+      /// <returns></returns>
+      public bool updateBudget(Parameters pList)
+      {
+         string[] listing = { "@clubId", "@budget" };
+         statement = "UPDATE Budget SET balance = @budget WHERE id = @clubId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+         try
+         {
+            addParams(cmd, listing, pList.PARAM_LIST).ExecuteNonQuery();
+         }
+         catch (MySql.Data.MySqlClient.MySqlException ex)
+         {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
          }
          return true;
       }

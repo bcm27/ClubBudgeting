@@ -77,6 +77,7 @@ namespace ClubBudgeting.Forms
       {
          try
          {
+            us.CLUB_ID = clubListForm.getClubIndex;
             ViewTransactions transactionsForm = new ViewTransactions();
             transactionsForm.StartPosition = FormStartPosition.CenterParent;
             transactionsForm.Show(ParentForm);
