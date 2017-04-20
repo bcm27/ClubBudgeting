@@ -546,7 +546,7 @@ namespace ClubBudgeting
                ArrayList partialTransaction = new ArrayList();
 
                int loop = 0;
-               while (loop <= 7)
+               while (loop <= 5)
                   partialTransaction.Add(Reader[loop++].ToString());
 
                transactions.Add(partialTransaction);
