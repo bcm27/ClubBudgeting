@@ -203,7 +203,6 @@ namespace ClubBudgeting
 
          if (budget >= Math.Abs(price) + budget)
          {
-
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
                "@club" };
             statement = "INSERT INTO Transactions VALUES "

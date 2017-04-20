@@ -40,7 +40,7 @@
          this.txt4_firstName = new System.Windows.Forms.TextBox();
          this.txtbx5_lastName = new System.Windows.Forms.TextBox();
          this.but1_register = new System.Windows.Forms.Button();
-         this.comboBox_clublist = new System.Windows.Forms.ComboBox();
+         this.cb_clublist = new System.Windows.Forms.ComboBox();
          this.button1 = new System.Windows.Forms.Button();
          this.lab7_admin = new System.Windows.Forms.Label();
          this.SuspendLayout();
@@ -146,13 +146,13 @@
          // 
          // comboBox_clublist
          // 
-         this.comboBox_clublist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-         this.comboBox_clublist.FormattingEnabled = true;
-         this.comboBox_clublist.Location = new System.Drawing.Point(302, 90);
-         this.comboBox_clublist.Name = "comboBox_clublist";
-         this.comboBox_clublist.Size = new System.Drawing.Size(100, 21);
-         this.comboBox_clublist.TabIndex = 14;
-         this.comboBox_clublist.SelectedIndexChanged += new System.EventHandler(this.comboBox_clublist_SelectedIndexChanged);
+         this.cb_clublist.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+         this.cb_clublist.FormattingEnabled = true;
+         this.cb_clublist.Location = new System.Drawing.Point(302, 90);
+         this.cb_clublist.Name = "comboBox_clublist";
+         this.cb_clublist.Size = new System.Drawing.Size(100, 21);
+         this.cb_clublist.TabIndex = 14;
+         this.cb_clublist.SelectedIndexChanged += new System.EventHandler(this.cb_clubList_index);
          // 
          // button1
          // 
@@ -180,7 +180,7 @@
          this.ClientSize = new System.Drawing.Size(518, 129);
          this.Controls.Add(this.lab7_admin);
          this.Controls.Add(this.button1);
-         this.Controls.Add(this.comboBox_clublist);
+         this.Controls.Add(this.cb_clublist);
          this.Controls.Add(this.but1_register);
          this.Controls.Add(this.txtbx5_lastName);
          this.Controls.Add(this.txt4_firstName);
@@ -214,7 +214,7 @@
       private System.Windows.Forms.TextBox txt4_firstName;
       private System.Windows.Forms.TextBox txtbx5_lastName;
       private System.Windows.Forms.Button but1_register;
-      private System.Windows.Forms.ComboBox comboBox_clublist;
+      private System.Windows.Forms.ComboBox cb_clublist;
       private System.Windows.Forms.Button button1;
       private System.Windows.Forms.Label lab7_admin;
    }

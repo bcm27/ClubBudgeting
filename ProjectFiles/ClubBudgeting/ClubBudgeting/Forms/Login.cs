@@ -13,7 +13,6 @@ namespace ClubBudgeting
 {
    public partial class Form1 : Form
    {
-      private ClubList clubList = new ClubList();
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
@@ -22,10 +21,9 @@ namespace ClubBudgeting
          InitializeComponent();
       }
 
-      //#####################################################################//
       /// <summary>
-      /// logsin the user provoding they have a proper username, loads either
-      /// the user form or the admin dashboard depending on permission levels
+      /// Login the user - providing they have a proper username, load either
+      /// the user or admin dashboard depending on permission levels
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
@@ -34,10 +32,9 @@ namespace ClubBudgeting
          try
          {
             string check = sql.logIn(txtbx1_userName.Text, txtbx2_password.Text);
-            // check user previledges; if admin launch admin window
+            // check user privileges - if admin launch admin window
             if (check == "0")
-               openAdminForm();
-                        
+               openAdminForm();           
             else 
             {
                us.CLUB_ID = check;
@@ -49,26 +46,35 @@ namespace ClubBudgeting
             MessageBox.Show("Incorrect username/password combination",
                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
-      } // end button login press
+      }
 
+      /// <summary>
+      /// Open the user dashboard
+      /// </summary>
       private void openUserForm()
       {
-         // Instantiate a Form3 object.
          this.Hide();
-         DashboardMember newForm = new DashboardMember();
-         //newForm.Close += (sender, args) => this.Close();
-         newForm.StartPosition = FormStartPosition.CenterParent;
-         newForm.Show(ParentForm);
-      } // end open user dashboard
+         DashboardMember dashboardMember = new DashboardMember();
+         dashboardMember.StartPosition = FormStartPosition.CenterParent;
+         dashboardMember.Show(ParentForm);
+      }
 
+      /// <summary>
+      /// Open the club list form
+      /// </summary>
       private void openAdminForm()
       {
          this.Hide();
-         ClubList newForm = new ClubList();
-         newForm.StartPosition = FormStartPosition.CenterParent;
-         newForm.Show(ParentForm);
-      } // end open admin dashboard
+         ClubList clubList = new ClubList();
+         clubList.StartPosition = FormStartPosition.CenterParent;
+         clubList.Show(ParentForm);
+      }
 
+      /// <summary>
+      /// Open the create account form
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void but2_createAccount_Click(object sender, EventArgs e)
       {
          CreateAccount createAccount = new CreateAccount();
@@ -77,15 +83,16 @@ namespace ClubBudgeting
       }
 
       /// <summary>
-      /// Get function for club index
+      /// Hitting enter performs button click action
       /// </summary>
-      public ClubList getClubListForm
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void txtbx2_password_KeyDown(object sender, KeyEventArgs e)
       {
-         get
+         if (e.KeyCode == Keys.Enter)
          {
-            return clubList;
+            but1_login_Click(this, new EventArgs());
          }
       }
-
-   } // end class
+   }
 }

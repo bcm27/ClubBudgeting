@@ -66,7 +66,7 @@
          // 
          // but_exit
          // 
-         this.but_exit.Location = new System.Drawing.Point(45, 557);
+         this.but_exit.Location = new System.Drawing.Point(45, 526);
          this.but_exit.Name = "but_exit";
          this.but_exit.Size = new System.Drawing.Size(197, 55);
          this.but_exit.TabIndex = 3;
@@ -76,7 +76,7 @@
          // 
          // but_addClub
          // 
-         this.but_addClub.Location = new System.Drawing.Point(457, 479);
+         this.but_addClub.Location = new System.Drawing.Point(457, 455);
          this.but_addClub.Name = "but_addClub";
          this.but_addClub.Size = new System.Drawing.Size(197, 55);
          this.but_addClub.TabIndex = 4;
@@ -86,7 +86,7 @@
          // 
          // but_refresh
          // 
-         this.but_refresh.Location = new System.Drawing.Point(457, 557);
+         this.but_refresh.Location = new System.Drawing.Point(457, 526);
          this.but_refresh.Name = "but_refresh";
          this.but_refresh.Size = new System.Drawing.Size(197, 55);
          this.but_refresh.TabIndex = 5;
@@ -98,7 +98,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(690, 638);
+         this.ClientSize = new System.Drawing.Size(686, 612);
          this.Controls.Add(this.but_refresh);
          this.Controls.Add(this.but_addClub);
          this.Controls.Add(this.but_exit);

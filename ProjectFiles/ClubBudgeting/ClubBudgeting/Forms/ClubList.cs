@@ -86,7 +86,7 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Exit form
+      /// Exit form (and program)
       /// </summary>
       /// <param name="sender"></param>
       /// <param name="e"></param>
@@ -95,6 +95,11 @@ namespace ClubBudgeting.Forms
          System.Environment.Exit(1);
       }
 
+      /// <summary>
+      /// Open add club form
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void but_addClub_Click(object sender, EventArgs e)
       {
          try

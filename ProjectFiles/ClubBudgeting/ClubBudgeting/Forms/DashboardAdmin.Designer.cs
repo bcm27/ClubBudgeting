@@ -48,85 +48,85 @@
          // lab1_acctName
          // 
          this.lab1_acctName.AutoSize = true;
-         this.lab1_acctName.Location = new System.Drawing.Point(18, 18);
-         this.lab1_acctName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab1_acctName.Location = new System.Drawing.Point(36, 35);
+         this.lab1_acctName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab1_acctName.Name = "lab1_acctName";
-         this.lab1_acctName.Size = new System.Drawing.Size(62, 13);
+         this.lab1_acctName.Size = new System.Drawing.Size(124, 25);
          this.lab1_acctName.TabIndex = 0;
          this.lab1_acctName.Text = "Club Name:";
          // 
          // lab3_budgetTotal
          // 
          this.lab3_budgetTotal.AutoSize = true;
-         this.lab3_budgetTotal.Location = new System.Drawing.Point(18, 42);
-         this.lab3_budgetTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab3_budgetTotal.Location = new System.Drawing.Point(36, 81);
+         this.lab3_budgetTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab3_budgetTotal.Name = "lab3_budgetTotal";
-         this.lab3_budgetTotal.Size = new System.Drawing.Size(71, 13);
+         this.lab3_budgetTotal.Size = new System.Drawing.Size(140, 25);
          this.lab3_budgetTotal.TabIndex = 2;
          this.lab3_budgetTotal.Text = "Budget Total:";
          // 
          // lab4_purchaseAmt
          // 
          this.lab4_purchaseAmt.AutoSize = true;
-         this.lab4_purchaseAmt.Location = new System.Drawing.Point(20, 132);
-         this.lab4_purchaseAmt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab4_purchaseAmt.Location = new System.Drawing.Point(40, 254);
+         this.lab4_purchaseAmt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab4_purchaseAmt.Name = "lab4_purchaseAmt";
-         this.lab4_purchaseAmt.Size = new System.Drawing.Size(137, 13);
+         this.lab4_purchaseAmt.Size = new System.Drawing.Size(276, 25);
          this.lab4_purchaseAmt.TabIndex = 3;
          this.lab4_purchaseAmt.Text = "Enter a transaction amount:";
          // 
          // lab5_refundAmt
          // 
          this.lab5_refundAmt.AutoSize = true;
-         this.lab5_refundAmt.Location = new System.Drawing.Point(18, 161);
-         this.lab5_refundAmt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab5_refundAmt.Location = new System.Drawing.Point(36, 310);
+         this.lab5_refundAmt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab5_refundAmt.Name = "lab5_refundAmt";
-         this.lab5_refundAmt.Size = new System.Drawing.Size(132, 13);
+         this.lab5_refundAmt.Size = new System.Drawing.Size(265, 25);
          this.lab5_refundAmt.TabIndex = 4;
          this.lab5_refundAmt.Text = "Enter the transaction date:";
          // 
          // txtbx1_transAmt
          // 
-         this.txtbx1_transAmt.Location = new System.Drawing.Point(160, 130);
-         this.txtbx1_transAmt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.txtbx1_transAmt.Location = new System.Drawing.Point(320, 250);
+         this.txtbx1_transAmt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
          this.txtbx1_transAmt.Name = "txtbx1_transAmt";
-         this.txtbx1_transAmt.Size = new System.Drawing.Size(98, 20);
+         this.txtbx1_transAmt.Size = new System.Drawing.Size(192, 31);
          this.txtbx1_transAmt.TabIndex = 6;
          // 
          // txtbx2_date
          // 
-         this.txtbx2_date.Location = new System.Drawing.Point(160, 159);
-         this.txtbx2_date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.txtbx2_date.Location = new System.Drawing.Point(320, 306);
+         this.txtbx2_date.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
          this.txtbx2_date.Name = "txtbx2_date";
-         this.txtbx2_date.Size = new System.Drawing.Size(98, 20);
+         this.txtbx2_date.Size = new System.Drawing.Size(192, 31);
          this.txtbx2_date.TabIndex = 8;
          // 
          // lab_clubName
          // 
          this.lab_clubName.AutoSize = true;
-         this.lab_clubName.Location = new System.Drawing.Point(83, 18);
-         this.lab_clubName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab_clubName.Location = new System.Drawing.Point(166, 35);
+         this.lab_clubName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab_clubName.Name = "lab_clubName";
-         this.lab_clubName.Size = new System.Drawing.Size(57, 13);
+         this.lab_clubName.Size = new System.Drawing.Size(115, 25);
          this.lab_clubName.TabIndex = 11;
          this.lab_clubName.Text = "Club name";
          // 
          // lab_budget
          // 
          this.lab_budget.AutoSize = true;
-         this.lab_budget.Location = new System.Drawing.Point(91, 42);
-         this.lab_budget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab_budget.Location = new System.Drawing.Point(182, 81);
+         this.lab_budget.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab_budget.Name = "lab_budget";
-         this.lab_budget.Size = new System.Drawing.Size(40, 13);
+         this.lab_budget.Size = new System.Drawing.Size(78, 25);
          this.lab_budget.TabIndex = 13;
          this.lab_budget.Text = "budget";
          // 
          // but1_submitTransaction
          // 
-         this.but1_submitTransaction.Location = new System.Drawing.Point(288, 130);
-         this.but1_submitTransaction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.but1_submitTransaction.Location = new System.Drawing.Point(576, 250);
+         this.but1_submitTransaction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
          this.but1_submitTransaction.Name = "but1_submitTransaction";
-         this.but1_submitTransaction.Size = new System.Drawing.Size(84, 45);
+         this.but1_submitTransaction.Size = new System.Drawing.Size(168, 87);
          this.but1_submitTransaction.TabIndex = 14;
          this.but1_submitTransaction.Text = "Submit Transaction";
          this.but1_submitTransaction.UseVisualStyleBackColor = true;
@@ -135,10 +135,10 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(166, 184);
-         this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.label1.Location = new System.Drawing.Point(332, 354);
+         this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(75, 13);
+         this.label1.Size = new System.Drawing.Size(152, 25);
          this.label1.TabIndex = 15;
          this.label1.Text = "YYYY-MM-DD";
          // 
@@ -146,48 +146,49 @@
          // 
          this.label4.AutoSize = true;
          this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.label4.Location = new System.Drawing.Point(20, 101);
-         this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.label4.Location = new System.Drawing.Point(40, 194);
+         this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.label4.Name = "label4";
-         this.label4.Size = new System.Drawing.Size(122, 15);
+         this.label4.Size = new System.Drawing.Size(221, 29);
          this.label4.TabIndex = 22;
          this.label4.Text = "Add a transaction:";
          // 
          // lab_transStatus
          // 
          this.lab_transStatus.AutoSize = true;
-         this.lab_transStatus.Location = new System.Drawing.Point(382, 150);
-         this.lab_transStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab_transStatus.Location = new System.Drawing.Point(764, 288);
+         this.lab_transStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab_transStatus.Name = "lab_transStatus";
-         this.lab_transStatus.Size = new System.Drawing.Size(37, 13);
+         this.lab_transStatus.Size = new System.Drawing.Size(73, 25);
          this.lab_transStatus.TabIndex = 23;
          this.lab_transStatus.Text = "Status";
          // 
          // lab_debt
          // 
          this.lab_debt.AutoSize = true;
-         this.lab_debt.Location = new System.Drawing.Point(18, 66);
-         this.lab_debt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab_debt.Location = new System.Drawing.Point(36, 127);
+         this.lab_debt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab_debt.Name = "lab_debt";
-         this.lab_debt.Size = new System.Drawing.Size(60, 13);
+         this.lab_debt.Size = new System.Drawing.Size(117, 25);
          this.lab_debt.TabIndex = 25;
          this.lab_debt.Text = "Total Debt:";
          // 
          // lab_totalDebt
          // 
          this.lab_totalDebt.AutoSize = true;
-         this.lab_totalDebt.Location = new System.Drawing.Point(80, 66);
-         this.lab_totalDebt.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+         this.lab_totalDebt.Location = new System.Drawing.Point(160, 127);
+         this.lab_totalDebt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
          this.lab_totalDebt.Name = "lab_totalDebt";
-         this.lab_totalDebt.Size = new System.Drawing.Size(28, 13);
+         this.lab_totalDebt.Size = new System.Drawing.Size(54, 25);
          this.lab_totalDebt.TabIndex = 26;
          this.lab_totalDebt.Text = "debt";
          // 
          // but_viewTransactions
          // 
-         this.but_viewTransactions.Location = new System.Drawing.Point(728, 35);
+         this.but_viewTransactions.Location = new System.Drawing.Point(708, 35);
+         this.but_viewTransactions.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
          this.but_viewTransactions.Name = "but_viewTransactions";
-         this.but_viewTransactions.Size = new System.Drawing.Size(195, 71);
+         this.but_viewTransactions.Size = new System.Drawing.Size(168, 85);
          this.but_viewTransactions.TabIndex = 27;
          this.but_viewTransactions.Text = "View Transactions";
          this.but_viewTransactions.UseVisualStyleBackColor = true;
@@ -195,11 +196,9 @@
          // 
          // DashboardAdmin
          // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+         this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-
-         this.ClientSize = new System.Drawing.Size(988, 413);
-
+         this.ClientSize = new System.Drawing.Size(938, 416);
          this.Controls.Add(this.but_viewTransactions);
          this.Controls.Add(this.lab_totalDebt);
          this.Controls.Add(this.lab_debt);
@@ -215,10 +214,9 @@
          this.Controls.Add(this.lab4_purchaseAmt);
          this.Controls.Add(this.lab3_budgetTotal);
          this.Controls.Add(this.lab1_acctName);
-         this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
          this.Name = "DashboardAdmin";
          this.Text = "Admin Dashboard";
-         this.Load += new System.EventHandler(this.DashboardAdmin_Load);
          this.ResumeLayout(false);
          this.PerformLayout();
 
