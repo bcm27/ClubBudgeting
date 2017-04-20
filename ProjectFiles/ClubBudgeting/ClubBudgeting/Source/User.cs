@@ -103,7 +103,7 @@ namespace ClubBudgeting
             username = name;
             if (temp.Equals("0"))
                admin = true;
-            club = temp;
+            clubId = temp;
             loggedIn = true;
             return true;
          }
