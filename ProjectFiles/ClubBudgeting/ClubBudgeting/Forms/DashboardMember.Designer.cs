@@ -30,7 +30,6 @@
       {
          this.lab1_accountName = new System.Windows.Forms.Label();
          this.lab3_budget = new System.Windows.Forms.Label();
-         this.but1_view_transactions = new System.Windows.Forms.Button();
          this.but1_upload_budget_prop = new System.Windows.Forms.Button();
          this.but6_logout = new System.Windows.Forms.Button();
          this.but4_upload_receipt = new System.Windows.Forms.Button();
@@ -58,19 +57,9 @@
          this.lab3_budget.TabIndex = 2;
          this.lab3_budget.Text = "Budget Total: $928.37";
          // 
-         // but1_view_transactions
-         // 
-         this.but1_view_transactions.Location = new System.Drawing.Point(15, 82);
-         this.but1_view_transactions.Name = "but1_view_transactions";
-         this.but1_view_transactions.Size = new System.Drawing.Size(140, 23);
-         this.but1_view_transactions.TabIndex = 3;
-         this.but1_view_transactions.Text = "View Transactions";
-         this.but1_view_transactions.UseVisualStyleBackColor = true;
-         this.but1_view_transactions.Click += new System.EventHandler(this.but1_view_transactions_Click);
-         // 
          // but1_upload_budget_prop
          // 
-         this.but1_upload_budget_prop.Location = new System.Drawing.Point(15, 140);
+         this.but1_upload_budget_prop.Location = new System.Drawing.Point(15, 110);
          this.but1_upload_budget_prop.Name = "but1_upload_budget_prop";
          this.but1_upload_budget_prop.Size = new System.Drawing.Size(140, 23);
          this.but1_upload_budget_prop.TabIndex = 5;
@@ -89,7 +78,7 @@
          // 
          // but4_upload_receipt
          // 
-         this.but4_upload_receipt.Location = new System.Drawing.Point(15, 111);
+         this.but4_upload_receipt.Location = new System.Drawing.Point(15, 81);
          this.but4_upload_receipt.Name = "but4_upload_receipt";
          this.but4_upload_receipt.Size = new System.Drawing.Size(140, 23);
          this.but4_upload_receipt.TabIndex = 10;
@@ -133,7 +122,6 @@
          this.Controls.Add(this.but4_upload_receipt);
          this.Controls.Add(this.but6_logout);
          this.Controls.Add(this.but1_upload_budget_prop);
-         this.Controls.Add(this.but1_view_transactions);
          this.Controls.Add(this.lab3_budget);
          this.Controls.Add(this.lab1_accountName);
          this.Name = "DashboardMember";
@@ -148,7 +136,6 @@
 
       private System.Windows.Forms.Label lab1_accountName;
       private System.Windows.Forms.Label lab3_budget;
-      private System.Windows.Forms.Button but1_view_transactions;
       private System.Windows.Forms.Button but1_upload_budget_prop;
       private System.Windows.Forms.Button but6_logout;
       private System.Windows.Forms.Button but4_upload_receipt;
