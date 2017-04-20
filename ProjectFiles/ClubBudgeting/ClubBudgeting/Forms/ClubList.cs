@@ -37,10 +37,8 @@ namespace ClubBudgeting.Forms {
       }
 
       /// <summary>
-      /// Save the selected club's info and create new admin form
+      /// Save the selected club's info and create new admin dashboard form
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
       private void but1_clubInfo_Click(object sender, EventArgs e) {
          try {
             clubIndex = (listBox1_clubList.SelectedIndex + 1).ToString();
@@ -49,8 +47,7 @@ namespace ClubBudgeting.Forms {
             DashboardAdmin adminForm = new DashboardAdmin();
             adminForm.StartPosition = FormStartPosition.CenterParent;
             adminForm.Show(ParentForm);
-         }
-         catch {
+         } catch {
             MessageBox.Show("Error: please select a club");
          }
       }
@@ -90,10 +87,10 @@ namespace ClubBudgeting.Forms {
       private void but_addClub_Click(object sender, EventArgs e) {
          try {
             AddClub newForm = new AddClub();
+ 
             newForm.StartPosition = FormStartPosition.CenterParent;
             newForm.Show(ParentForm);
-         }
-         catch {
+         } catch {
             MessageBox.Show("Error: could not open Add Club form");
          }
       }
@@ -124,9 +121,8 @@ namespace ClubBudgeting.Forms {
       private void but_getBudgProp_Click(object sender, EventArgs e) {
          try {
             sql.getBudgetProp(new Parameters
-               (listBox1_clubList.SelectedIndex.ToString()));
-         }
-         catch {
+             (listBox1_clubList.SelectedIndex.ToString()));
+         } catch {
             MessageBox.Show("Error: could not get budget proposal");
          }
       }

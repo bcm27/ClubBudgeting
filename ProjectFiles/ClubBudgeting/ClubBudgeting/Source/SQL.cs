@@ -358,45 +358,42 @@ namespace ClubBudgeting {
          return true;
       }
 
-      //////////////////////////////////////////////////////////////////////////////////
-
       /// <summary>
-      /// returns current semester Id
+      /// Return current semester Id
       /// </summary>
-      /// <returns>return ID</returns>
       public string getCurrSemesterId() {
+         string tempId;
+
          statement = "SELECT max(id) FROM Term";
          cmd = new MySqlCommand(statement, SQLCONN);
-         string temp;
 
          try {
             Reader = cmd.ExecuteReader();
             Reader.Read();
-            temp = Reader[0].ToString();
+            tempId = Reader[0].ToString();
          } catch {
             return null;
          } finally {
             Reader.Close();
          }
-         return temp;
+         return tempId;
       }
 
       /// <summary>
-      /// returns the balence for the clubId passed as a param
+      /// Return the balance for a club whose id id passed in
       /// </summary>
-      /// <returns>return ID</returns>
       public string getCurrClubBalance(Parameters pList) {
          string[] listings = { "@clubId" };
          string temp;
 
          statement = "SELECT balance, max(termId) FROM Budget "
-            + "WHERE clubId = @clubId GROUP BY termId;";
+          + "WHERE clubId = @clubId GROUP BY termId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
          try {
             Reader =
-               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
             temp = Reader[0].ToString();
          } catch {
@@ -408,42 +405,41 @@ namespace ClubBudgeting {
       }
 
       /// <summary>
-      /// returns the budget for the clubId passed as a param
+      /// Returns the budget for the clubId passed as a parameter
       /// </summary>
-      /// <returns>return ID</returns>
       public string getCurrClubBudg(Parameters pList) {
          string[] listings = { "@clubId" };
-         string temp;
+         string tempBudget;
 
          statement = "SELECT balance, max(termId) FROM Budget "
-            + "WHERE clubId = @clubId GROUP BY termId;";
+          + "WHERE clubId = @clubId GROUP BY termId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
          try {
             Reader =
-               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
-            temp = Reader[0].ToString();
+            tempBudget = Reader[0].ToString();
          } catch {
             return null;
          } finally {
             Reader.Close();
          }
-         return temp;
+         return tempBudget;
       }
 
       /// <summary>
-      /// Gets an arraylist of all the clubIds transactions.
+      /// Get an arraylist of the specified club's transactions
       /// </summary>
-      /// <param name="clubId">@club</param>
-      /// <returns></returns>
       public ArrayList getTransactions(Parameters pList) {
          ArrayList transactions = new ArrayList();
          string[] listings = { "@club" };
+
          statement = "SELECT * FROM Transactions WHERE clubId = @club;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
+
          try {
             Reader = addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
 
@@ -455,24 +451,21 @@ namespace ClubBudgeting {
                while (loop <= 5)
                   partialTransaction.Add(Reader[loop++].ToString());
 
-               transactions.Add(partialTransaction);
                // create collection of information
+               transactions.Add(partialTransaction);
             }
          } catch (MySql.Data.MySqlClient.MySqlException ex) {
             MessageBox.Show("Error " + ex.Number + " has occurred: " +
-               ex.Message,
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             ex.Message,  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
          } finally {
             Reader.Close();
          }
-
          return transactions;
-      } // end get Transactions
+      }
 
       /// <summary>
-      /// fills the club array list
+      /// Fill the club arraylist with club names
       /// </summary>
-      /// <returns></returns>
       public ArrayList fillClubArray() {
          clubArray = new ArrayList();
 
@@ -482,7 +475,7 @@ namespace ClubBudgeting {
          try {
             Reader = cmd.ExecuteReader();
 
-            // read in and store each club's name and 
+            // Read in and store each club's name in the arraylist
             while (Reader.Read()) {
                ArrayList clubInfo = new ArrayList();
                clubInfo.Add(Reader[0].ToString());
@@ -490,11 +483,11 @@ namespace ClubBudgeting {
                clubArray.Add(clubInfo);
             }
          } catch {
-            throw new Exception("fillClubArray failed");
+            MessageBox.Show("Failed to fill the club array",
+             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
          } finally {
             Reader.Close();
          }
-
          return clubArray;
       }
 
@@ -505,42 +498,39 @@ namespace ClubBudgeting {
          get { return clubArray; }
       }
 
-      // hello
       /// <summary>
-      /// adds a budget to the specified club
+      /// Add a budget to the specified club
+      /// {@clubId, @termId, @Budget, @bal, @debt}
       /// </summary>
-      /// <param name="pLists">@clubId, @termId, @Budget, @bal, @debt</param>
-      /// <returns></returns>
       public bool addBudget(Parameters pLists) {
          string[] listing = { "@clubId", "@termId", "@Budget", "@bal",
-            "@debt" };
+          "@debt" };
+
          statement = "INSERT INTO Budget VALUES "
-            + "( NULL, @clubId, @termId, @Budget, @bal, @debt );";
+          + "( NULL, @clubId, @termId, @Budget, @bal, @debt );";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
+
          try {
             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          } catch (MySql.Data.MySqlClient.MySqlException ex) {
             MessageBox.Show("Error " + ex.Number + " has occurred: " +
-               ex.Message + ex.StackTrace,
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             ex.Message + ex.StackTrace, 
+             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          return true;
       }
 
       /// <summary>
-      /// gets the id of the most recent club added
+      /// Get the id of the most recent club added
       /// </summary>
-      /// <returns>ID</returns>
       public string getRecClubId() {
          statement = "SELECT max(id) FROM Club";
          cmd = new MySqlCommand(statement, SQLCONN);
 
          try {
             Reader = cmd.ExecuteReader();
-
-            // read in and store each club's name and 
             Reader.Read();
             return Reader[0].ToString();
          } catch {
@@ -551,14 +541,12 @@ namespace ClubBudgeting {
       }
 
       /// <summary>
-      /// get the total debt
+      /// Get the total debt of the specified club
       /// </summary>
-      /// <param name="pList"></param>
-      /// <returns></returns>
       public string getDebt(Parameters pList) {
          string[] listings = { "@clubId" };
          statement = "SELECT debt, max(termId) FROM Budget "
-            + "WHERE clubId = @clubId;";
+          + "WHERE clubId = @clubId;";
 
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
@@ -567,7 +555,7 @@ namespace ClubBudgeting {
 
          try {
             Reader =
-               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
             temp = Reader[0].ToString();
          } catch {
@@ -579,7 +567,7 @@ namespace ClubBudgeting {
       }
 
       /// <summary>
-      /// returns the clubName when searched for by the clubID
+      /// Return the clubName when searched for by the clubID
       /// </summary>
       /// <param name="pList">@clubId</param>
       /// <returns></returns>
@@ -594,7 +582,7 @@ namespace ClubBudgeting {
 
          try {
             Reader =
-               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
             temp = Reader[0].ToString();
          } catch {
@@ -608,49 +596,43 @@ namespace ClubBudgeting {
       /// <summary>
       /// Retrieve the club name from an id
       /// </summary>
-      /// <param name="pList">@clubId</param>
-      /// <returns></returns>
       public string getClubName(Parameters pList) {
          if (pList.PARAM_LIST[0].Equals("0"))
             return "admin";
 
          string[] listings = { "@clubId" };
+         string tempName;
+
          statement = "SELECT name FROM Club WHERE id = @clubId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
-         string temp;
-
          try {
             Reader =
-               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
             Reader.Read();
-            temp = Reader[0].ToString();
+            tempName = Reader[0].ToString();
          } catch (MySql.Data.MySqlClient.MySqlException ex) {
             MessageBox.Show("Error " + ex.Number + " has occurred: " +
-               ex.Message + ex.StackTrace,
-                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             ex.Message + ex.StackTrace,
+             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return null;
          } finally {
             Reader.Close();
          }
-         return temp;
+         return tempName;
       }
 
       /// <summary>
-      /// closes everything needed
+      /// Close the database connection
       /// </summary>
       public void close() {
          SQLCONN.Close();
-      } // close
+      }
 
       /// <summary>
-      /// adds sterilized params to the command
+      /// Add sterilized params to the command
       /// </summary>
-      /// <param name="cmd">initial command</param>
-      /// <param name="listing">what order the prams are in</param>
-      /// <param name="prams">the parameters</param>
-      /// <returns>sterilized command</returns>
       private MySqlCommand addParams
          (MySqlCommand cmd, string[] listing, ArrayList prams) {
          for (int i = 0; i < listing.Length; i++)

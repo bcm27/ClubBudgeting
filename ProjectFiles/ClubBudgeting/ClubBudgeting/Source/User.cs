@@ -4,25 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClubBudgeting
-{
-   class User
-   {
-
-      // username and club
+namespace ClubBudgeting {
+   class User {
+      // Username and club information
       private string username, clubId, clubName;
 
-      // instance
+      // SQL class instance
       SQL sql = SQL.Instance;
 
-      /// <summary>
       /// Static instance of this class
-      /// </summary>
       private static User UsInstance;
 
       /// <summary>
-      /// To prevent access by more than one thread. This is the specific lock 
-      /// belonging to the FileManager Class object.
+      /// To prevent access by more than one thread
       /// </summary>
       private static Object fmLock = typeof(User);
 
@@ -34,24 +28,24 @@ namespace ClubBudgeting
       /// <summary>
       /// Initizlises variables before login.
       /// </summary>
-      private void Initilize()
-      {
-      }
-      
-      /*
-       * 
-       * Get/Set Methods
-       * 
-       */
+      private void Initilize() { }
 
-      public string CLUB_ID
-      {
+      /*------------------
+       * Get/Set Methods *
+      -------------------*/
+
+      /// <summary>
+      /// Get/set methods for clubId
+      /// </summary>
+      public string CLUB_ID {
          get { return clubId; }
          set { clubId = value; }
       }
 
-      public string CLUB_NAME
-      {
+      /// <summary>
+      /// Get/set methods for clubName
+      /// </summary>
+      public string CLUB_NAME {
          get { return clubName; }
          set { clubName = value; }
       }
@@ -59,21 +53,18 @@ namespace ClubBudgeting
       /// <summary>
       /// Management for static instance of this class
       /// </summaryUser
-      public static User Instance
-      {
-         get
-         {
-            lock (fmLock)
-            {
-               if (UsInstance == null) // if no instnace exists, we need to create one
+      public static User Instance {
+         get {
+            lock (fmLock) {
+               if (UsInstance == null) // If no instance exists, create one
                {
                   UsInstance = new User();
                   UsInstance.Initilize();
                }
-               return UsInstance; // return the only instance of this calss
+               return UsInstance; // Return the only instance of this class
             }
          }
-      } // Instance
+      }
 
 
       /*
@@ -83,23 +74,15 @@ namespace ClubBudgeting
        */
 
       /// <summary>
-      /// checks to see if the user/pass exists in the DB
-      /// returns false if any error happens
+      /// Check if the user/password exists in the database
       /// </summary>
-      /// <param name="name">case sensitive</param>
-      /// <param name="pass">already hashed</param>
-      /// <returns>successful login</returns>
-      public bool LogIn(string name, string pass)
-      {
-         try
-         {
+      public bool LogIn(string name, string pass) {
+         try {
             clubId = sql.logIn(name, pass);
             username = name;
             clubName = sql.getClubName(new Parameters(clubId));
             return true;
-         }
-         catch
-         {
+         } catch {
             return false;
          }
       }

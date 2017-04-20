@@ -13,6 +13,10 @@ namespace ClubBudgeting
       
       public Parameters() { prams = new ArrayList(); }
 
+      /// <summary>
+      /// Create new param list and add every param to it
+      /// </summary>
+      /// <param name="sList"></param>
       public Parameters(params object[] sList)
       {
          prams = new ArrayList();
@@ -21,6 +25,9 @@ namespace ClubBudgeting
             prams.Add(o);
       }
 
+      /// <summary>
+      /// Add a parameter to the parameter list
+      /// </summary>
       public void addParams(params object[] sList)
       {
          prams.Clear();
@@ -29,7 +36,7 @@ namespace ClubBudgeting
       }
 
       /// <summary>
-      /// get functions for getting and setting
+      /// Get/set functions to get/set param list
       /// </summary>
       public ArrayList PARAM_LIST
       {
