@@ -96,7 +96,7 @@ namespace ClubBudgeting.Testing
          // need to add club and budget before transaction
          sql.addClub(new Parameters("Solar Car", "Club builds solar car"));
          sql.addBudget(new Parameters(2, 8, 10000, 5000, 2000));
-         sql.addTransaction(new Parameters("2012-12-12", null, null, 300,
+         sql.addTransaction(new Parameters("2012-12-12", 300,
             "Food costs", 2));
 
          try
@@ -120,7 +120,7 @@ namespace ClubBudgeting.Testing
          try
          {
             // refund so this should fail 
-            sql.addTransaction(new Parameters("2012-12-12", null, null, -12000,
+            sql.addTransaction(new Parameters("2012-12-12", -12000,
                "Travel", 2));
 
             stmt = "SELECT * FROM Transactions WHERE transactionsType = 1";

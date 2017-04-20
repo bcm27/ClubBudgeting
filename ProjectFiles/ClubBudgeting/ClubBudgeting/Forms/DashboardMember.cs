@@ -122,7 +122,7 @@ namespace ClubBudgeting.Forms
 
       private void button1_Click(object sender, EventArgs e)
       {
-         OFD_budget_prop.Filter = "Excel Files | *.xlsx, *.xls, *.csv;";
+         OFD_budget_prop.Filter = "Excel Files | *.xlsx; *.xls; *.csv;";
          OFD_budget_prop.InitialDirectory = @"C:\Users";
 
          if (OFD_budget_prop.ShowDialog() == DialogResult.OK)
@@ -152,13 +152,18 @@ namespace ClubBudgeting.Forms
          OFD_budget_prop.Filter = ".pdf Files | *.pdf; *.png; *.jpg;";
          OFD_budget_prop.InitialDirectory = @"C:\Users";
 
-         if (OFD_budget_prop.ShowDialog() == DialogResult.OK)
-         {
-            byte[] file = System.IO.File.ReadAllBytes
-               (OFD_budget_prop.FileName);
-            pList.addParams(selectedId, file,
-               Path.GetExtension(OFD_budget_prop.FileName));
-            sql.addPDFReceipt(pList);
+         if (selectedId != null) {
+            if (OFD_budget_prop.ShowDialog() == DialogResult.OK) {
+               byte[] file = System.IO.File.ReadAllBytes
+                  (OFD_budget_prop.FileName);
+               pList.addParams(selectedId, file,
+                  Path.GetExtension(OFD_budget_prop.FileName));
+               sql.addPDFReceipt(pList);
+            }
+         } 
+         else {
+            MessageBox.Show("Please select a transaction",
+               "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
          }
       }
    }
