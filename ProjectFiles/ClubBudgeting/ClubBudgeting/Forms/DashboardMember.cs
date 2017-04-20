@@ -74,7 +74,7 @@ namespace ClubBudgeting.Forms
          }
          catch
          {
-            System.Diagnostics.Debug.WriteLine("Faildd to view transactions");
+            System.Diagnostics.Debug.WriteLine("Failed to view transactions");
          }
       }
 

@@ -69,33 +69,6 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Add club - club must have both a name and description to get added
-      /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
-      private void but_addClub_Click(object sender, EventArgs e)
-      {
-         try
-         {
-            if (!string.IsNullOrEmpty(txtbx_clubDesc.Text) &&
-             !string.IsNullOrEmpty(txtbx_clubName.Text))
-            {
-               sql.addClub(new Parameters(txtbx_clubName.Text,
-                txtbx_clubDesc.Text));
-               lab_clubStatus.Text = "Successfully added";
-            }
-            else
-               throw new Exception();
-         }
-         catch 
-         {
-            lab_transStatus.Text = "Failed";
-            MessageBox.Show("Error: could not add club - make sure"
-             + " club name and description are not blank");
-         }
-      }
-
-      /// <summary>
       /// View transactions - pull up transactions window
       /// </summary>
       /// <param name="sender"></param>

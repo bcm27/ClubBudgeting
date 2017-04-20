@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AddClub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddClub.Designer.cs">
+      <DependentUpon>AddClub.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ClubList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     <Compile Include="Testing\PBI_15_12_6.cs" />
     <Compile Include="Testing\PBI_2_5.cs" />
     <Compile Include="Testing\PBI_3_1.cs" />
+    <EmbeddedResource Include="Forms\AddClub.resx">
+      <DependentUpon>AddClub.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ClubList.resx">
       <DependentUpon>ClubList.cs</DependentUpon>
     </EmbeddedResource>
