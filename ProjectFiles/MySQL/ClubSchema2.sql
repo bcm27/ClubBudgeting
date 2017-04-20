@@ -40,7 +40,7 @@ CREATE TABLE Receipt (
 	id INT AUTO_INCREMENT PRIMARY KEY,  
     transId INT UNIQUE KEY,
 	invoice LONGBLOB DEFAULT NULL,
-    fileExtention VARCHAR(4) DEFAULT NULL,
+    fileExtention VARCHAR(5) DEFAULT NULL,
 	CONSTRAINT FKReceipt_transId FOREIGN KEY (transId) REFERENCES Transactions (id)
 		ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -63,7 +63,7 @@ CREATE TABLE BudgetProposal (
     termId INT NOT NULL,
     clubId INT NOT NULL,    
     proposal LONGBLOB NOT NULL,
-    fileExtention VARCHAR(4) NOT NULL,
+    fileExtention VARCHAR(5) NOT NULL,
 	CONSTRAINT FKBudgetProposal_termId FOREIGN KEY (termId) REFERENCES Term (id)
 		ON DELETE CASCADE ON UPDATE CASCADE,   
 	CONSTRAINT FKBudgetProposal_clubId FOREIGN KEY (clubId) REFERENCES club (id)
