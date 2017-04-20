@@ -66,7 +66,7 @@ namespace ClubBudgeting.Testing
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[4].ToString();
+            temp = rd[2].ToString();
             rd.Close();
          }
          catch
@@ -86,7 +86,7 @@ namespace ClubBudgeting.Testing
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[4].ToString();
+            temp = rd[2].ToString();
             rd.Close();
          }
          catch
