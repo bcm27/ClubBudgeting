@@ -55,7 +55,7 @@ namespace ClubBudgeting.Forms
           + us.CLUB_NAME;
 
          lab3_budget.Text = "Budget Total: $"
-          + sql.getCurrClubBudg(new Parameters(us.CLUB_ID));
+          + sql.getCurrClubBalance(new Parameters(us.CLUB_ID));
 
          lab4_debt.Text = "Debt Total: $" 
           + sql.getDebt(new Parameters(us.CLUB_ID));

@@ -43,7 +43,7 @@ namespace ClubBudgeting.Testing
       public void addTest()
       {
          // correct format for a purchase
-         pList.addParams("2017-04-20", "NULL", "NULL", "20.20", "NULL", "3");
+         pList.addParams("2017-04-27", "NULL", "NULL", "20.20", "NULL", "3");
          Assert.True(sql.addTransaction(pList));
       }
       /// <summary>
