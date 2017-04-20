@@ -40,7 +40,7 @@
          // lab_clubStatus
          // 
          this.lab_clubStatus.AutoSize = true;
-         this.lab_clubStatus.Location = new System.Drawing.Point(769, 157);
+         this.lab_clubStatus.Location = new System.Drawing.Point(766, 151);
          this.lab_clubStatus.Name = "lab_clubStatus";
          this.lab_clubStatus.Size = new System.Drawing.Size(73, 25);
          this.lab_clubStatus.TabIndex = 31;
@@ -102,7 +102,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(902, 299);
+         this.ClientSize = new System.Drawing.Size(904, 299);
          this.Controls.Add(this.lab_clubStatus);
          this.Controls.Add(this.label3);
          this.Controls.Add(this.but_addClub);
@@ -111,7 +111,7 @@
          this.Controls.Add(this.label2);
          this.Controls.Add(this.lab_);
          this.Name = "AddClub";
-         this.Text = "AddClub";
+         this.Text = "Add Club";
          this.ResumeLayout(false);
          this.PerformLayout();
 

@@ -13,7 +13,7 @@ namespace ClubBudgeting
 {
    public partial class Form1 : Form
    {
-      private ClubList clubForm = new ClubList();
+      private ClubList clubList = new ClubList();
       private static SQL sql = SQL.Instance;
       private static User us = User.Instance;
 
@@ -34,7 +34,6 @@ namespace ClubBudgeting
          try
          {
             string check = sql.logIn(txtbx1_userName.Text, txtbx2_password.Text);
-            us.LogIn(txtbx1_userName.Text, txtbx2_password.Text);
             // check user previledges; if admin launch admin window
             if (check == "0")
                openAdminForm();
@@ -54,24 +53,33 @@ namespace ClubBudgeting
 
       private void openUserForm()
       {
-         // Instantiate a Form3 object.
-         DashboardMember newForm = new DashboardMember(); 
-         newForm.StartPosition = FormStartPosition.CenterParent;
-         newForm.Show(ParentForm);
+         DashboardMember userDashboard = new DashboardMember(); // Instantiate a Form3 object.
+         userDashboard.StartPosition = FormStartPosition.CenterParent;
+         userDashboard.Show(ParentForm);
       } // end open user dashboard
 
       private void openAdminForm()
       {
-         ClubList newForm = new ClubList();
-         newForm.StartPosition = FormStartPosition.CenterParent;
-         newForm.Show(ParentForm);
+         clubList.StartPosition = FormStartPosition.CenterParent;
+         clubList.Show(ParentForm);
       } // end open admin dashboard
 
       private void but2_createAccount_Click(object sender, EventArgs e)
       {
-         CreateAccount newForm = new CreateAccount();
-         newForm.StartPosition = FormStartPosition.CenterParent;
-         newForm.Show(ParentForm);
+         CreateAccount createAccount = new CreateAccount();
+         createAccount.StartPosition = FormStartPosition.CenterParent;
+         createAccount.Show(ParentForm);
+      }
+
+      /// <summary>
+      /// Get function for club index
+      /// </summary>
+      public ClubList getClubListForm
+      {
+         get
+         {
+            return clubList;
+         }
       }
 
    } // end class

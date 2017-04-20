@@ -19,6 +19,11 @@ namespace ClubBudgeting.Forms
          InitializeComponent();
       }
 
+      /// <summary>
+      /// Add club name and description to database
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
       private void but_addClub_Click(object sender, EventArgs e)
       {
          try
@@ -28,7 +33,8 @@ namespace ClubBudgeting.Forms
             {
                sql.addClub(new Parameters(txtbx_clubName.Text,
                 txtbx_clubDesc.Text));
-               lab_clubStatus.Text = "Successfully added";
+               lab_clubStatus.Text = "Success";
+               
             }
             else
                throw new Exception();

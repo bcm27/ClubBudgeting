@@ -32,6 +32,7 @@ namespace ClubBudgeting.Forms
       /// </summary>
       private void loadClubNames()
       {
+         listBox1_clubList.Items.Clear();
          clubNames = sql.CLUB_LIST;
 
          foreach (ArrayList club in clubNames)
@@ -91,7 +92,6 @@ namespace ClubBudgeting.Forms
       /// <param name="e"></param>
       private void but_exit_Click(object sender, EventArgs e)
       {
-         this.Close();
          System.Environment.Exit(1);
       }
 
@@ -107,6 +107,26 @@ namespace ClubBudgeting.Forms
          {
             MessageBox.Show("Error: could not open add club form");
          }
+      }
+
+      /// <summary>
+      /// Refresh club list to load newly added clubs
+      /// </summary>
+      /// <param name="sender"></param>
+      /// <param name="e"></param>
+      private void but_refresh_Click(object sender, EventArgs e)
+      {
+         sql.fillClubArray();
+         loadClubNames();
+      }
+
+      /// <summary>
+      /// Terminate program when club list form is closed
+      /// </summary>
+      /// <param name="e"></param>
+      protected override void OnFormClosing(FormClosingEventArgs e)
+      {
+         Environment.Exit(0);
       }
    }
 }
