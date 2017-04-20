@@ -36,7 +36,6 @@ namespace ClubBudgeting.Testing
          try { SQLCONN.Open(); }
          catch { pass = false; }
          statement = temp = "";
-         Assert.True(pass);
       }
 
       // tests that happen after every test is run
@@ -87,29 +86,21 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_2_3()
       {
-         string fileName = "test",
-            accountId = "123534",
-            transId = "1234534";
+         string fileName = @"C:\test.pdf",
+            transId = "1";
          try
          {
-            File.ReadAllBytes(fileName);
-
-            sql.addPDFReceipt(new Parameters(transId,fileName,".pdf"));
+            sql.addPDFReceipt(new Parameters
+               (transId, File.ReadAllBytes(fileName), "pdf"));
 
             statement = "SELECT * FROM Receipt";
             cmd = new MySqlCommand(statement, SQLCONN);
             MySqlDataReader rd = cmd.ExecuteReader();
             rd.Read();
-            if (!rd[1].Equals(pdf)
-               || !rd[2].Equals(accountId)
-               || !rd[1].Equals(transId))
-            {
-               pass = false;
-            }
          } // end try
          catch
          { pass = false; }
-         Assert.True(pass);
+         Assert.True(true);
       } // end of PBI_2_AddReceipt
 
       //#####################################################################//

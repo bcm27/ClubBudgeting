@@ -296,8 +296,11 @@ namespace ClubBudgeting
          {
             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          return true;
@@ -311,8 +314,8 @@ namespace ClubBudgeting
       public bool getPDF(Parameters pLists)
       {
          string[] listing = { "@transId" };
-         statement = "SELECT invoice, fileExtention FROM Receipt"
-            + "WHERE id = @transId;";
+         statement = "SELECT invoice, fileExtention FROM Receipt "
+            + "WHERE transId = @transId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
@@ -329,8 +332,11 @@ namespace ClubBudgeting
                   + Reader[1].ToString(), (byte[])Reader[0]);
             }
          }
-         catch
+         catch (MySql.Data.MySqlClient.MySqlException ex)
          {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
          }
          finally
@@ -546,7 +552,7 @@ namespace ClubBudgeting
                ArrayList partialTransaction = new ArrayList();
 
                int loop = 0;
-               while (loop <= 7)
+               while (loop <= 5)
                   partialTransaction.Add(Reader[loop++].ToString());
 
                transactions.Add(partialTransaction);
