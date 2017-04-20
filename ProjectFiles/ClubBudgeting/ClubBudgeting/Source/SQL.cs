@@ -132,7 +132,7 @@ namespace ClubBudgeting
          if (checkPass(user, sec.hash(pass)))
          {
             Parameters pList = new Parameters(user, sec.hash(pass));
-            statement = "SELECT adminRight, c.name FROM Member"
+            statement = "SELECT adminRight, c.id FROM Member"
                + " JOIN Club c ON c.id = clubId"
                + " WHERE userName = @user AND pass = @pass;";
             string[] listing = { "@user", "@pass" };
@@ -612,7 +612,9 @@ namespace ClubBudgeting
       public string getDebt(Parameters pList)
       {
          string[] listings = { "@clubId" };
-         statement = "SELECT debt FROM Budget WHERE clubId = @clubId;";
+         statement = "SELECT debt, max(termId) FROM Budget "
+            + "WHERE clubId = @clubId;";
+            
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
 
@@ -639,9 +641,9 @@ namespace ClubBudgeting
       /// <summary>
       /// returns the clubName when searched for by the clubID
       /// </summary>
-      /// <param name="pList"></param>
+      /// <param name="pList">@clubId</param>
       /// <returns></returns>
-      public string getClubName(Parameters pList)
+      public string getClub(Parameters pList)
       {
          string[] listings = { "@clubId" };
          statement = "SELECT id FROM Member WHERE clubId = @clubId;";
@@ -667,6 +669,46 @@ namespace ClubBudgeting
          }
          return temp;
       }
+
+      /// <summary>
+      /// Retrieve the club name from an id
+      /// </summary>
+      /// <param name="pList">@clubId</param>
+      /// <returns></returns>
+      public string getClubName(Parameters pList)
+      {
+         if (pList.PARAM_LIST[0].Equals("0"))
+            return "admin";
+
+         string[] listings = { "@clubId" };
+         statement = "SELECT name FROM Club WHERE id = @clubId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+
+         string temp;
+
+         try
+         {
+            Reader =
+               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         }
+         catch (MySql.Data.MySqlClient.MySqlException ex)
+         {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+               ex.Message + ex.StackTrace,
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return null;
+         }
+         finally
+         {
+            Reader.Close();
+         }
+         return temp;
+      }
+   
 
       /// <summary>
       /// closes everything needed
