@@ -35,7 +35,7 @@ INSERT INTO Term VALUES
 
  INSERT INTO Budget VALUES
   (NULL, 1, 8, 25500, 0, 0),
-  (NULL, 2, 8, 1500, 10000, 5000),
+  (NULL, 2, 8, 15000, 10000, 5000),
   (NULL, 3, 8, 400, 400, 0),
   (NULL, 4, 8, 600, 50, 525),
   (NULL, 5, 8, 200, 50, 150),

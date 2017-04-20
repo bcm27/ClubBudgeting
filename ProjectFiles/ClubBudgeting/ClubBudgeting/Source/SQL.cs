@@ -199,9 +199,11 @@ namespace ClubBudgeting
       {
          double budget = double.Parse(getCurrClubBudg(new Parameters
             (pLists.PARAM_LIST[5])));
+         double balance = double.Parse(getCurrClubBalance(new Parameters
+            (pLists.PARAM_LIST[5])));
          double price = double.Parse(pLists.PARAM_LIST[3].ToString());
 
-         if (budget >= Math.Abs(price) + budget)
+         if (0 <= balance - price)
          {
             string[] listing = { "@Date", "@File", "@Ext", "@price", "@desc",
                "@club" };
@@ -213,7 +215,7 @@ namespace ClubBudgeting
             {
                addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
                updateBudget(
-                  new Parameters(pLists.PARAM_LIST[5], budget + price));
+                  new Parameters(pLists.PARAM_LIST[5], balance - price));
                return true;
             }
             catch (MySql.Data.MySqlClient.MySqlException ex)
@@ -459,6 +461,39 @@ namespace ClubBudgeting
          }
          return temp;
       }
+
+      /// <summary>
+      /// returns the balence for the clubId passed as a param
+      /// </summary>
+      /// <returns>return ID</returns>
+      public string getCurrClubBalance(Parameters pList)
+      {
+         string[] listings = { "@clubId" };
+         string temp;
+
+         statement = "SELECT balance, max(termId) FROM Budget "
+            + "WHERE clubId = @clubId GROUP BY termId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try
+         {
+            Reader =
+               addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         }
+         catch
+         {
+            return null;
+         }
+         finally
+         {
+            Reader.Close();
+         }
+         return temp;
+      }
+
 
       /// <summary>
       /// returns the budget for the clubId passed as a param
