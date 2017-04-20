@@ -31,6 +31,11 @@ namespace ClubBudgeting.Forms
       private void DashboardMember_Load(object sender, EventArgs e)
       { loadData(); }
 
+      private void DashboardMenber_FormClosed(object sender, FormClosedEventArgs e)
+      {
+         System.Diagnostics.Debug.WriteLine("Searching for input from user...");
+         Application.Exit();
+      }
 
       //#####################################################################//
       /// <summary>
