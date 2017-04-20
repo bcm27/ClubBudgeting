@@ -45,7 +45,7 @@ namespace ClubBudgeting
                openUserForm();
             }
          }
-         catch (MySql.Data.MySqlClient.MySqlException ex)
+         catch (MySql.Data.MySqlClient.MySqlException)
          {
             MessageBox.Show("Incorrect username/password combination",
                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
