@@ -38,7 +38,7 @@ namespace ClubBudgeting.Forms
       }
 
       /// <summary>
-      /// Add and approve transaction - transaction amount must be a number 
+      /// Add and approve transaction - transaction amount must be a number
       /// and the date must be the proper number of characters (10)
       /// </summary>
       /// <param name="sender"></param>
