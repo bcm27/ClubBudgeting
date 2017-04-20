@@ -7,8 +7,8 @@ using NUnit.Compatibility;
 using NUnit.Framework;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.IO;
 
-/*
 namespace ClubBudgeting.Testing
 { 
    [TestFixture]
@@ -87,19 +87,22 @@ namespace ClubBudgeting.Testing
       [Test]
       public void PBI_2_3()
       {
-         string pdf = "some series of bytes",
+         string fileName = "test",
             accountId = "123534",
-            clubId = "1234534";
+            transId = "1234534";
          try
          {
-            sql.addPDFReceipt(new Parameters("",".pdf",""));
+            File.ReadAllBytes(fileName);
+
+            sql.addPDFReceipt(new Parameters(transId,fileName,".pdf"));
+
             statement = "SELECT * FROM Receipt";
             cmd = new MySqlCommand(statement, SQLCONN);
             MySqlDataReader rd = cmd.ExecuteReader();
             rd.Read();
             if (!rd[1].Equals(pdf)
                || !rd[2].Equals(accountId)
-               || !rd[1].Equals(clubId))
+               || !rd[1].Equals(transId))
             {
                pass = false;
             }
@@ -108,39 +111,7 @@ namespace ClubBudgeting.Testing
          { pass = false; }
          Assert.True(pass);
       } // end of PBI_2_AddReceipt
-      //#####################################################################//
-      [Test]
-      public void PBI_2_2()
-      {
-         try
-         {
-            sql.addPDFReceipt(new Parameters(file, ".pdf", "1"));
 
-            sql.getPDF(new Parameters("1"));
-         }
-         catch
-         {
-            pass = false;
-         }
-         Assert.True(pass);
-      } // PBI_2_getPDF
-      //#####################################################################//
-      [Test]
-      public void PBI_2_1()
-      {
-         try
-         {
-            string accountId = fm.getAccountId(),
-               clubId = fm.getClubId(),
-               receiptId = fm.getReceiptId();
-            SQL.removeReceipt(accountId, clubId, receiptId);
-         }
-         catch
-         {
-            pass = false;
-         }
-         Assert.False(pass);
-      } // end of PBI_2_AttemptNegative
       //#####################################################################//
       // DESCRIPTION of Issue #5
       // As an administrator, I want to be able to view the overall club 
@@ -161,10 +132,9 @@ namespace ClubBudgeting.Testing
       {
          try
          {
-            string accountId = fm.getAccountId(),
-               clubId = fm.getClubId(),
-               money = fm.getBudget();
-            SQL.AddToBudget(clubId, accountId, money);
+            sql.addBudget(new Parameters(1,2,1000,750,0));
+            if (sql.getCurrClubBudg(new Parameters(us.CLUB_ID)).Equals("100"))
+               pass = true;
          }
          catch
          {
@@ -204,4 +174,3 @@ namespace ClubBudgeting.Testing
 
    } // end of scope 
 } // end of namespace
-*/
