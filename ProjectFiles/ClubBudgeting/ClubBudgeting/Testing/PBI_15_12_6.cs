@@ -185,7 +185,6 @@ namespace ClubBudgeting.Testing
             rd = cmd.ExecuteReader();
             rd.Read();
             rd.Close();
-            sql.getBudgetProp(new Parameters(1));
          }
          catch
          {
