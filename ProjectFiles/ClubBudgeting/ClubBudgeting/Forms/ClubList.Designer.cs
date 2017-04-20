@@ -101,7 +101,7 @@
          this.but_getBudgProp.Name = "but_getBudgProp";
          this.but_getBudgProp.Size = new System.Drawing.Size(228, 75);
          this.but_getBudgProp.TabIndex = 6;
-         this.but_getBudgProp.Text = "Upload budget proposal";
+         this.but_getBudgProp.Text = "Download budget proposal";
          this.but_getBudgProp.UseVisualStyleBackColor = true;
          this.but_getBudgProp.Click += new System.EventHandler(this.but_getBudgProp_Click);
          // 
