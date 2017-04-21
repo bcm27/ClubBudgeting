@@ -17,6 +17,7 @@ namespace ClubBudgeting.Testing {
    [TestFixture]
    class PBI_15_12_6 {
       MySqlConnection SQLCONN = new MySqlConnection
+         // make the connection
          ("server=localhost;user=root;database=ClubSchema2;port=3306;"
          + "password=potato123");
       SQL sql = SQL.Instance;
@@ -26,6 +27,7 @@ namespace ClubBudgeting.Testing {
 
       [SetUp]
       public void beforeTests() {
+         // clear the parameters list
          pList = new Parameters();
          SQLCONN.Open();
       }
@@ -60,6 +62,8 @@ namespace ClubBudgeting.Testing {
             statement = "SELECT * FROM Transactions WHERE purchaseDate = "
              + "'2017-04-20'";
             cmd = new MySqlCommand(statement, SQLCONN);
+
+            // check to see if added
             rd = cmd.ExecuteReader();
             rd.Read();
             temp = rd[2].ToString();
@@ -96,7 +100,6 @@ namespace ClubBudgeting.Testing {
             cmd = new MySqlCommand(statement, SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
-            temp = rd[4].ToString();
             rd.Close();
          } catch {
             Assert.True(true);
