@@ -154,17 +154,17 @@ namespace ClubBudgeting.Testing {
       public void PBI_6() {
          MySqlCommand cmd;
          MySqlDataReader rd;
-         Parameters pList = new Parameters
-            (1, System.IO.File.ReadAllBytes
+
+         // Correctly formated pList
+         Parameters pList = new Parameters(1, System.IO.File.ReadAllBytes
             (@"F:\Documents\GitHub\MeierPiler\Timelog.xlsx"), "xlsx");
 
          // Correct file and type
          sql.AddBudgetProp(pList);
 
          try {
-            string statement =
-               "SELECT * FROM BudgetProposal;";
-            cmd = new MySqlCommand(statement, SQLCONN);
+            // check to see if the file was added
+            cmd = new MySqlCommand("SELECT * FROM BudgetProposal;", SQLCONN);
             rd = cmd.ExecuteReader();
             rd.Read();
             rd.Close();
@@ -173,48 +173,6 @@ namespace ClubBudgeting.Testing {
          }
 
          Assert.True(true);
-
-         /*
-         // not a budgetProposal file
-         sql.addBudget(@"C:\path\to\the\Incorrect_file.XML", "'2017-04-21'"); 
-
-         try
-         {
-            statement = "SELECT * FROM BudgetProposals WHERE dateAdded = "
-               + "'2017-04-21'";
-            cmd = new MySqlCommand(statement, SQLCONN);
-            rd = cmd.ExecuteReader();
-            rd.Read();
-            temp = rd[2].ToString();
-            rd.Close();
-         }
-         catch
-         {
-            Assert.True(true); // file does not exist.
-         }
-
-         Assert.True(false);
-
-         // not a budgetProposal file
-         sql.addBudget(@"C:\path\to\the\BudgetProposal.docx", "'2017-04-22'");
-          
-         try
-         {
-            statement = "SELECT * FROM BudgetProposals WHERE dateAdded = "
-               +"'2017-04-22'";
-            cmd = new MySqlCommand(statement, SQLCONN);
-            rd = cmd.ExecuteReader();
-            rd.Read();
-            temp = rd[2].ToString();
-            rd.Close();
-         }
-         catch
-         {
-            Assert.True(true); // file does not exist.
-         }
-
-         Assert.True(false);*/
       }
    }
-
 }

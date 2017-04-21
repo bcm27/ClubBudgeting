@@ -9,24 +9,25 @@ namespace ClubBudgeting
 {
    class Parameters
    {
+      // List of objects
       ArrayList prams;
       
+      /// <summary>
+      /// takes a new arraylist as a whole
+      /// </summary>
       public Parameters() { prams = new ArrayList(); }
 
       /// <summary>
       /// Create new param list and add every param to it
       /// </summary>
-      /// <param name="sList"></param>
       public Parameters(params object[] sList)
       {
          prams = new ArrayList();
-         prams.Clear();
-         foreach (object o in sList)
-            prams.Add(o);
+         addParams(sList);
       }
 
       /// <summary>
-      /// Add a parameter to the parameter list
+      /// Add multiple parameters to the parameter list
       /// </summary>
       public void addParams(params object[] sList)
       {

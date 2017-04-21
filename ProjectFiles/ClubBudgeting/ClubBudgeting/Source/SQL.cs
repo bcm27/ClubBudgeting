@@ -331,8 +331,9 @@ namespace ClubBudgeting {
       public bool getBudgetProp(Parameters pLists) {
          string[] listing = { "@clubId" };
 
+         // the most recent proposal submitted
          statement = "SELECT proposal, fileExtention, MAX(termId) FROM "
-          + "BudgetProposal WHERE id = @clubId;";
+          + "BudgetProposal WHERE clubId = @clubId;";
          cmd = new MySqlCommand(statement, SQLCONN);
          cmd.Prepare();
          Reader.Close();
@@ -632,6 +633,9 @@ namespace ClubBudgeting {
 
       /// <summary>
       /// Add sterilized params to the command
+      /// This takes the 'Listing', supplied by the function that calls 
+      /// addParams and the actual information and formats it into
+      /// the SQL call
       /// </summary>
       private MySqlCommand addParams
          (MySqlCommand cmd, string[] listing, ArrayList prams) {
