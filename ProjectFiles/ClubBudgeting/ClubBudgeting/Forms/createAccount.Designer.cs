@@ -134,9 +134,9 @@
          // 
          // but1_register
          // 
-         this.but1_register.Location = new System.Drawing.Point(428, 93);
+         this.but1_register.Location = new System.Drawing.Point(431, 90);
          this.but1_register.Name = "but1_register";
-         this.but1_register.Size = new System.Drawing.Size(75, 23);
+         this.but1_register.Size = new System.Drawing.Size(75, 21);
          this.but1_register.TabIndex = 12;
          this.but1_register.Text = "Register";
          this.but1_register.UseVisualStyleBackColor = true;

@@ -38,7 +38,7 @@
          // lab1_login
          // 
          this.lab1_login.AutoSize = true;
-         this.lab1_login.Location = new System.Drawing.Point(146, 93);
+         this.lab1_login.Location = new System.Drawing.Point(38, 38);
          this.lab1_login.Name = "lab1_login";
          this.lab1_login.Size = new System.Drawing.Size(63, 13);
          this.lab1_login.TabIndex = 0;
@@ -47,7 +47,7 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(153, 126);
+         this.label1.Location = new System.Drawing.Point(45, 71);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(56, 13);
          this.label1.TabIndex = 1;
@@ -55,14 +55,14 @@
          // 
          // txtbx1_userName
          // 
-         this.txtbx1_userName.Location = new System.Drawing.Point(215, 90);
+         this.txtbx1_userName.Location = new System.Drawing.Point(107, 35);
          this.txtbx1_userName.Name = "txtbx1_userName";
          this.txtbx1_userName.Size = new System.Drawing.Size(143, 20);
          this.txtbx1_userName.TabIndex = 2;
          // 
          // txtbx2_password
          // 
-         this.txtbx2_password.Location = new System.Drawing.Point(215, 123);
+         this.txtbx2_password.Location = new System.Drawing.Point(107, 68);
          this.txtbx2_password.Name = "txtbx2_password";
          this.txtbx2_password.PasswordChar = '●';
          this.txtbx2_password.Size = new System.Drawing.Size(143, 20);
@@ -70,7 +70,7 @@
          // 
          // but1_login
          // 
-         this.but1_login.Location = new System.Drawing.Point(255, 149);
+         this.but1_login.Location = new System.Drawing.Point(147, 94);
          this.but1_login.Name = "but1_login";
          this.but1_login.Size = new System.Drawing.Size(103, 23);
          this.but1_login.TabIndex = 4;
@@ -83,7 +83,7 @@
          this.AcceptButton = this.but1_login;
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(550, 261);
+         this.ClientSize = new System.Drawing.Size(295, 151);
          this.Controls.Add(this.but1_login);
          this.Controls.Add(this.txtbx2_password);
          this.Controls.Add(this.txtbx1_userName);

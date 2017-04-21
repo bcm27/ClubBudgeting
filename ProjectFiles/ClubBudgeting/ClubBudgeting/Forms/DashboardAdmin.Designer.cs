@@ -89,15 +89,15 @@
          // txtbx1_transAmt
          // 
          this.txtbx1_transAmt.Location = new System.Drawing.Point(160, 132);
-         this.txtbx1_transAmt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.txtbx1_transAmt.Margin = new System.Windows.Forms.Padding(2);
          this.txtbx1_transAmt.Name = "txtbx1_transAmt";
          this.txtbx1_transAmt.Size = new System.Drawing.Size(98, 20);
          this.txtbx1_transAmt.TabIndex = 6;
          // 
          // txtbx2_date
          // 
-         this.txtbx2_date.Location = new System.Drawing.Point(154, 160);
-         this.txtbx2_date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.txtbx2_date.Location = new System.Drawing.Point(160, 161);
+         this.txtbx2_date.Margin = new System.Windows.Forms.Padding(2);
          this.txtbx2_date.Name = "txtbx2_date";
          this.txtbx2_date.Size = new System.Drawing.Size(98, 20);
          this.txtbx2_date.TabIndex = 8;
@@ -124,8 +124,8 @@
          // 
          // but1_submitTransaction
          // 
-         this.but1_submitTransaction.Location = new System.Drawing.Point(288, 130);
-         this.but1_submitTransaction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.but1_submitTransaction.Location = new System.Drawing.Point(288, 145);
+         this.but1_submitTransaction.Margin = new System.Windows.Forms.Padding(2);
          this.but1_submitTransaction.Name = "but1_submitTransaction";
          this.but1_submitTransaction.Size = new System.Drawing.Size(84, 45);
          this.but1_submitTransaction.TabIndex = 14;
@@ -136,7 +136,7 @@
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(166, 184);
+         this.label1.Location = new System.Drawing.Point(157, 183);
          this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          this.label1.Name = "label1";
          this.label1.Size = new System.Drawing.Size(75, 13);
@@ -157,7 +157,7 @@
          // lab_transStatus
          // 
          this.lab_transStatus.AutoSize = true;
-         this.lab_transStatus.Location = new System.Drawing.Point(382, 150);
+         this.lab_transStatus.Location = new System.Drawing.Point(285, 130);
          this.lab_transStatus.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
          this.lab_transStatus.Name = "lab_transStatus";
          this.lab_transStatus.Size = new System.Drawing.Size(37, 13);
@@ -186,7 +186,7 @@
          // 
          // but_viewTransactions
          // 
-         this.but_viewTransactions.Location = new System.Drawing.Point(354, 18);
+         this.but_viewTransactions.Location = new System.Drawing.Point(288, 11);
          this.but_viewTransactions.Name = "but_viewTransactions";
          this.but_viewTransactions.Size = new System.Drawing.Size(84, 44);
          this.but_viewTransactions.TabIndex = 27;
@@ -196,7 +196,7 @@
          // 
          // button1
          // 
-         this.button1.Location = new System.Drawing.Point(354, 72);
+         this.button1.Location = new System.Drawing.Point(288, 61);
          this.button1.Name = "button1";
          this.button1.Size = new System.Drawing.Size(84, 44);
          this.button1.TabIndex = 28;
@@ -207,7 +207,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(469, 216);
+         this.ClientSize = new System.Drawing.Size(386, 204);
          this.Controls.Add(this.button1);
          this.Controls.Add(this.but_viewTransactions);
          this.Controls.Add(this.lab_totalDebt);
@@ -224,7 +224,7 @@
          this.Controls.Add(this.lab4_purchaseAmt);
          this.Controls.Add(this.lab3_budgetTotal);
          this.Controls.Add(this.lab1_acctName);
-         this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+         this.Margin = new System.Windows.Forms.Padding(2);
          this.Name = "DashboardAdmin";
          this.Text = "Admin Dashboard";
          this.ResumeLayout(false);
