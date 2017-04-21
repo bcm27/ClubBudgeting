@@ -73,8 +73,6 @@ namespace ClubBudgeting.Forms {
       /// <summary>
       /// Exit form (and program)
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
       private void but_exit_Click(object sender, EventArgs e) {
          System.Environment.Exit(1);
       }
@@ -82,8 +80,6 @@ namespace ClubBudgeting.Forms {
       /// <summary>
       /// Open add club form
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
       private void but_addClub_Click(object sender, EventArgs e) {
          try {
             AddClub newForm = new AddClub();
@@ -98,8 +94,6 @@ namespace ClubBudgeting.Forms {
       /// <summary>
       /// Refresh club list to load newly added clubs
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
       private void but_refresh_Click(object sender, EventArgs e) {
          sql.fillClubArray();
          loadClubNames();
@@ -108,16 +102,13 @@ namespace ClubBudgeting.Forms {
       /// <summary>
       /// Terminate program when club list form is closed
       /// </summary>
-      /// <param name="e"></param>
       protected override void OnFormClosing(FormClosingEventArgs e) {
-         Environment.Exit(0);
+         Environment.Exit(1);
       }
 
       /// <summary>
       /// Get a budget proposal and upload to the database
       /// </summary>
-      /// <param name="sender"></param>
-      /// <param name="e"></param>
       private void but_getBudgProp_Click(object sender, EventArgs e) {
          try {
             sql.getBudgetProp(new Parameters
