@@ -52,6 +52,13 @@ namespace ClubBudgeting {
       }
 
       /// <summary>
+      /// Close the database connection
+      /// </summary>
+      public void close() {
+         SQLCONN.Close();
+      }
+
+      /// <summary>
       /// Management for static instance of this class
       /// </summaryUser
       public static SQL Instance {
@@ -72,6 +79,20 @@ namespace ClubBudgeting {
        * Functions
        * ---------
        */
+
+      /// <summary>
+      /// Add sterilized params to the command
+      /// This takes the 'Listing', supplied by the function that calls 
+      /// addParams and the actual information and formats it into
+      /// the SQL call
+      /// </summary>
+      private MySqlCommand addParams
+         (MySqlCommand cmd, string[] listing, ArrayList prams) {
+         for (int i = 0; i < listing.Length; i++)
+            cmd.Parameters.AddWithValue(listing[i], prams[i]);
+
+         return cmd;
+      }
 
       /// <summary>
       /// If user/password combo exists, it is a valid user
@@ -125,6 +146,60 @@ namespace ClubBudgeting {
             }
          }
          return ret;
+      }
+
+      /// <summary>
+      /// Add a pdf receipt
+      /// {@transId, @file, @ext}
+      /// </summary>
+      public bool addPDFReceipt(Parameters pLists) {
+         string[] listing = { "@transId", "@file", "@ext" };
+
+         statement = "INSERT INTO Receipt VALUES "
+          + "( NULL, @transId, @file, @ext)";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         } catch (MySql.Data.MySqlClient.MySqlException ex) {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// Retrieves PDF from database
+      /// {@transId}
+      /// </summary>
+      public bool getPDF(Parameters pLists) {
+         string[] listing = { "@transId" };
+
+         statement = "SELECT invoice, fileExtention FROM Receipt "
+            + "WHERE transId = @transId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try {
+            Reader =
+             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+
+            // Choose and set path
+            if (fbd.ShowDialog() == DialogResult.OK) {
+               System.IO.File.WriteAllBytes(fbd.SelectedPath + "\\invoice"
+                + Reader[1].ToString(), (byte[])Reader[0]);
+            }
+         } catch (MySql.Data.MySqlClient.MySqlException ex) {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         } finally {
+            Reader.Close();
+         }
+         return true;
       }
 
       /// <summary>
@@ -225,60 +300,6 @@ namespace ClubBudgeting {
              ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, 
              MessageBoxIcon.Error);
             return false;
-         }
-         return true;
-      }
-
-      /// <summary>
-      /// Add a pdf receipt
-      /// {@transId, @file, @ext}
-      /// </summary>
-      public bool addPDFReceipt(Parameters pLists) {
-         string[] listing = { "@transId", "@file", "@ext" };
-
-         statement = "INSERT INTO Receipt VALUES "
-          + "( NULL, @transId, @file, @ext)";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
-
-         try {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-         } catch (MySql.Data.MySqlClient.MySqlException ex) {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " +
-             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
-         }
-         return true;
-      }
-
-      /// <summary>
-      /// Retrieves PDF from database
-      /// {@transId}
-      /// </summary>
-      public bool getPDF(Parameters pLists) {
-         string[] listing = { "@transId" };
-
-         statement = "SELECT invoice, fileExtention FROM Receipt "
-            + "WHERE transId = @transId;";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
-
-         try {
-            Reader =
-             addParams(cmd, listing, pLists.PARAM_LIST).ExecuteReader();
-            Reader.Read();
-
-            // Choose and set path
-            if (fbd.ShowDialog() == DialogResult.OK) {
-               System.IO.File.WriteAllBytes(fbd.SelectedPath + "\\invoice"
-                + Reader[1].ToString(), (byte[])Reader[0]);
-            }
-         } catch (MySql.Data.MySqlClient.MySqlException ex) {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " +
-             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
-         } finally {
-            Reader.Close();
          }
          return true;
       }
@@ -624,25 +645,5 @@ namespace ClubBudgeting {
          return tempName;
       }
 
-      /// <summary>
-      /// Close the database connection
-      /// </summary>
-      public void close() {
-         SQLCONN.Close();
-      }
-
-      /// <summary>
-      /// Add sterilized params to the command
-      /// This takes the 'Listing', supplied by the function that calls 
-      /// addParams and the actual information and formats it into
-      /// the SQL call
-      /// </summary>
-      private MySqlCommand addParams
-         (MySqlCommand cmd, string[] listing, ArrayList prams) {
-         for (int i = 0; i < listing.Length; i++)
-            cmd.Parameters.AddWithValue(listing[i], prams[i]);
-
-         return cmd;
-      }
    }
 }
