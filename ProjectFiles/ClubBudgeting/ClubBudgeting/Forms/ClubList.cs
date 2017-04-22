@@ -112,7 +112,7 @@ namespace ClubBudgeting.Forms {
       private void but_getBudgProp_Click(object sender, EventArgs e) {
          try {
             sql.getBudgetProp(new Parameters
-             (listBox1_clubList.SelectedIndex.ToString()));
+             ((listBox1_clubList.SelectedIndex + 1).ToString()));
          } catch {
             MessageBox.Show("Error: could not get budget proposal");
          }

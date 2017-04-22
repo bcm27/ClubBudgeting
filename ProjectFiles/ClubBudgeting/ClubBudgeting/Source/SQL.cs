@@ -52,6 +52,13 @@ namespace ClubBudgeting {
       }
 
       /// <summary>
+      /// Close the database connection
+      /// </summary>
+      public void close() {
+         SQLCONN.Close();
+      }
+
+      /// <summary>
       /// Management for static instance of this class
       /// </summaryUser
       public static SQL Instance {
@@ -74,6 +81,20 @@ namespace ClubBudgeting {
        */
 
       /// <summary>
+      /// Add sterilized params to the command
+      /// This takes the 'Listing', supplied by the function that calls 
+      /// addParams and the actual information and formats it into
+      /// the SQL call
+      /// </summary>
+      private MySqlCommand addParams
+         (MySqlCommand cmd, string[] listing, ArrayList prams) {
+         for (int i = 0; i < listing.Length; i++)
+            cmd.Parameters.AddWithValue(listing[i], prams[i]);
+
+         return cmd;
+      }
+
+      /// <summary>
       /// If user/password combo exists, it is a valid user
       /// </summary>
       public bool checkPass(string user, string pass) {
@@ -83,6 +104,7 @@ namespace ClubBudgeting {
          statement = "SELECT userName FROM Member"
           + " WHERE userName = @user AND pass = @pass;";
          cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
 
          try {
             Reader = addParams(cmd, listing, pList.PARAM_LIST).ExecuteReader();
@@ -109,6 +131,7 @@ namespace ClubBudgeting {
              + " JOIN Club c ON c.id = clubId"
              + " WHERE userName = @user AND pass = @pass;";
             cmd = new MySqlCommand(statement, SQLCONN);
+            cmd.Prepare();
 
             try {
                Reader =
@@ -125,108 +148,6 @@ namespace ClubBudgeting {
             }
          }
          return ret;
-      }
-
-      /// <summary>
-      /// Add user to the DB - hash password first
-      /// {@user, @first, @last, @pass}
-      /// </summary>
-      public bool addUser(Parameters pLists) {
-         string[] listing = { "@club","@admin", "@user", "@first", "@last",
-          "@pass" };
-
-         statement = "INSERT INTO Member VALUES "
-          + "(null, @club, @admin, @user, @first, @last, @pass);";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
-
-         try {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-         } catch (MySql.Data.MySqlClient.MySqlException ex) {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " +
-             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
-         }
-         return true;
-      }
-
-      /// <summary>
-      /// Add transaction to the database
-      /// {@date, @price, @DESC, @club}
-      /// </summary>
-      public bool addTransaction(Parameters pLists) {
-         double balance = double.Parse(getCurrClubBalance(new Parameters
-            (pLists.PARAM_LIST[3])));
-         double price = double.Parse(pLists.PARAM_LIST[1].ToString());
-
-         if (0 <= balance - price) {
-            string[] listing = { "@Date", "@price", "@desc", "@club" };
-
-            statement = "INSERT INTO Transactions VALUES "
-             + "(null, @Date, @price, @desc, @club, false);";
-            cmd = new MySqlCommand(statement, SQLCONN);
-            cmd.Prepare();
-
-            try {
-               addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-               updateBudget(
-                new Parameters(pLists.PARAM_LIST[3], balance - price));
-               return true;
-            } catch (MySql.Data.MySqlClient.MySqlException ex) {
-               MessageBox.Show("Error " + ex.Number + " has occurred: " +
-                ex.Message, "Error", MessageBoxButtons.OK, 
-                MessageBoxIcon.Error);
-               return false;
-            }
-         }
-         return false;
-      }
-
-      /// <summary>
-      /// Add club to the database
-      /// </summary>
-      /// <param name="pLists"></param>
-      /// <returns></returns>
-      public bool addClub(Parameters pLists) {
-         string[] listing = { "@club", "@desc" };
-
-         statement = "INSERT INTO Club VALUES "
-            + "(null, @club, @desc);";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
-
-         try {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-         } catch (MySql.Data.MySqlClient.MySqlException ex) {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " + 
-             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;
-         }
-         return true;
-      }
-
-      /// <summary>
-      /// Create new user to add to the database
-      /// {@club, @admin, @user, @first, @last, @pass}
-      /// </summary>
-      public bool addMember(Parameters pLists) {
-         string[] listing = { "@club", "@admin", "@user", "@first",
-          "@last", "@pass" };
-
-         statement = "INSERT INTO Club VALUES "
-          + "(null, @club, @admin, @user, @first, @last, @pass);";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
-
-         try {
-            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
-         } catch (MySql.Data.MySqlClient.MySqlException ex) {
-            MessageBox.Show("Error " + ex.Number + " has occurred: " +
-             ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, 
-             MessageBoxIcon.Error);
-            return false;
-         }
-         return true;
       }
 
       /// <summary>
@@ -279,6 +200,133 @@ namespace ClubBudgeting {
             return false;
          } finally {
             Reader.Close();
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// Add transaction to the database
+      /// {@date, @price, @DESC, @club}
+      /// </summary>
+      public bool addTransaction(Parameters pLists) {
+         double balance = double.Parse(getCurrClubBalance(new Parameters
+            (pLists.PARAM_LIST[3])));
+         double price = double.Parse(pLists.PARAM_LIST[1].ToString());
+
+         if (0 <= balance - price) {
+            string[] listing = { "@Date", "@price", "@desc", "@club" };
+
+            statement = "INSERT INTO Transactions VALUES "
+             + "(null, @Date, @price, @desc, @club, false);";
+            cmd = new MySqlCommand(statement, SQLCONN);
+            cmd.Prepare();
+
+            try {
+               addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+               updateBudget(
+                new Parameters(pLists.PARAM_LIST[3], balance - price));
+               return true;
+            } catch (MySql.Data.MySqlClient.MySqlException ex) {
+               MessageBox.Show("Error " + ex.Number + " has occurred: " +
+                ex.Message, "Error", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+               return false;
+            }
+         }
+         return false;
+      }
+
+      /// <summary>
+      /// Return the balance for a club whose id id passed in
+      /// </summary>
+      public string getCurrClubBalance(Parameters pList) {
+         string[] listings = { "@clubId" };
+         string temp;
+
+         statement = "SELECT balance, max(termId) FROM Budget "
+          + "WHERE clubId = @clubId GROUP BY termId;";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try {
+            Reader =
+             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
+            Reader.Read();
+            temp = Reader[0].ToString();
+         } catch {
+            return null;
+         } finally {
+            Reader.Close();
+         }
+         return temp;
+      }
+
+      /// <summary>
+      /// Add user to the DB - hash password first
+      /// {@user, @first, @last, @pass}
+      /// </summary>
+      public bool addUser(Parameters pLists) {
+         string[] listing = { "@club","@admin", "@user", "@first", "@last",
+          "@pass" };
+
+         statement = "INSERT INTO Member VALUES "
+          + "(null, @club, @admin, @user, @first, @last, @pass);";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         } catch (MySql.Data.MySqlClient.MySqlException ex) {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// Add club to the database
+      /// </summary>
+      /// <param name="pLists"></param>
+      /// <returns></returns>
+      public bool addClub(Parameters pLists) {
+         string[] listing = { "@club", "@desc" };
+
+         statement = "INSERT INTO Club VALUES "
+            + "(null, @club, @desc);";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         } catch (MySql.Data.MySqlClient.MySqlException ex) {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " + 
+             ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;
+         }
+         return true;
+      }
+
+      /// <summary>
+      /// Create new user to add to the database
+      /// {@club, @admin, @user, @first, @last, @pass}
+      /// </summary>
+      public bool addMember(Parameters pLists) {
+         string[] listing = { "@club", "@admin", "@user", "@first",
+          "@last", "@pass" };
+
+         statement = "INSERT INTO Club VALUES "
+          + "(null, @club, @admin, @user, @first, @last, @pass);";
+         cmd = new MySqlCommand(statement, SQLCONN);
+         cmd.Prepare();
+
+         try {
+            addParams(cmd, listing, pLists.PARAM_LIST).ExecuteNonQuery();
+         } catch (MySql.Data.MySqlClient.MySqlException ex) {
+            MessageBox.Show("Error " + ex.Number + " has occurred: " +
+             ex.Message + ex.StackTrace, "Error", MessageBoxButtons.OK, 
+             MessageBoxIcon.Error);
+            return false;
          }
          return true;
       }
@@ -378,31 +426,6 @@ namespace ClubBudgeting {
             Reader.Close();
          }
          return tempId;
-      }
-
-      /// <summary>
-      /// Return the balance for a club whose id id passed in
-      /// </summary>
-      public string getCurrClubBalance(Parameters pList) {
-         string[] listings = { "@clubId" };
-         string temp;
-
-         statement = "SELECT balance, max(termId) FROM Budget "
-          + "WHERE clubId = @clubId GROUP BY termId;";
-         cmd = new MySqlCommand(statement, SQLCONN);
-         cmd.Prepare();
-
-         try {
-            Reader =
-             addParams(cmd, listings, pList.PARAM_LIST).ExecuteReader();
-            Reader.Read();
-            temp = Reader[0].ToString();
-         } catch {
-            return null;
-         } finally {
-            Reader.Close();
-         }
-         return temp;
       }
 
       /// <summary>
@@ -624,25 +647,5 @@ namespace ClubBudgeting {
          return tempName;
       }
 
-      /// <summary>
-      /// Close the database connection
-      /// </summary>
-      public void close() {
-         SQLCONN.Close();
-      }
-
-      /// <summary>
-      /// Add sterilized params to the command
-      /// This takes the 'Listing', supplied by the function that calls 
-      /// addParams and the actual information and formats it into
-      /// the SQL call
-      /// </summary>
-      private MySqlCommand addParams
-         (MySqlCommand cmd, string[] listing, ArrayList prams) {
-         for (int i = 0; i < listing.Length; i++)
-            cmd.Parameters.AddWithValue(listing[i], prams[i]);
-
-         return cmd;
-      }
    }
 }
