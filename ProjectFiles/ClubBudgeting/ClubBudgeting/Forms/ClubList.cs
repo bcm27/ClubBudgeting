@@ -25,7 +25,7 @@ namespace ClubBudgeting.Forms {
       }
 
       /// <summary>
-      /// Load all of the club names into the listbox
+      /// Load all of the club names into the listbox from the database
       /// </summary>
       private void loadClubNames() {
          listBox1_clubList.Items.Clear();
@@ -71,13 +71,6 @@ namespace ClubBudgeting.Forms {
       }
 
       /// <summary>
-      /// Exit form (and program)
-      /// </summary>
-      private void but_exit_Click(object sender, EventArgs e) {
-         System.Environment.Exit(1);
-      }
-
-      /// <summary>
       /// Open add club form
       /// </summary>
       private void but_addClub_Click(object sender, EventArgs e) {
@@ -116,6 +109,13 @@ namespace ClubBudgeting.Forms {
          } catch {
             MessageBox.Show("Error: could not get budget proposal");
          }
+      }
+
+      /// <summary>
+      /// Exit form (and program)
+      /// </summary>
+      private void but_exit_Click(object sender, EventArgs e) {
+         System.Environment.Exit(1);
       }
    }
 }
